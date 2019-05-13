@@ -4,28 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\Pegawai;
-use App\\Surat;
+use App\Surat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    //data pegawai
-    public function dataPegawai()
-    {
-        //send all user data to data pegawai page
-        $dataPegawai = Pegawai::all();
-        return view('admin_dataPegawai', compact('dataPegawai'));
-    }
-
-    //data surat
-    public function dataSurat()
-    {
-        //send all surat data
-        $dataSurat = Surat::all();
-        return view('admin_dataSurat', compact('dataSurat'));
-    }
 
     //halaman login
     public function login(){
@@ -59,4 +44,50 @@ class AdminController extends Controller
         Session::flush();
         return redirect('admin')->with('alert','Kamu sudah logout');
     }
+
+    //data pegawai
+    public function dataPegawai()
+    {
+        //send all user data to data pegawai page
+        $dataPegawai = Pegawai::all();
+        return view('admin_dataPegawai', compact('dataPegawai'));
+    }
+
+    //data surat
+    public function dataSurat()
+    {
+        //send all surat data
+        $dataSurat = Surat::all();
+        return view('admin_dataSurat', compact('dataSurat'));
+    }
+
+    //menjadikan pegawai pimpinan
+    public function promoteUser($id)
+    {
+        $promotion = Pegawai::find($id);
+        $promotion->jabatan_pegawai = 'pimpinan';
+        $promotion->save();
+
+        return redirect()->back();
+    }
+
+    //menjadikan pimpinan staf biasa
+    public function demoteUser($id)
+    {
+        $demotion = Pegawai::find($id);
+        $demotion->jabatan_pegawai = 'staf';
+        $demotion->save();
+
+        return redirect()->back();
+    }
+
+    //menghapus akun user
+    public function deleteUser($id)
+    {
+        $delete = Surat::find($id);
+        $delete->delete();
+
+        return redirect()->back();
+    }
+
 }

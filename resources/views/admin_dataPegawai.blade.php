@@ -37,6 +37,7 @@
                     <th>No. Telp</th>
                     <th>Email</th>
                     <th>Jabatan</th>
+                    <th></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -50,6 +51,23 @@
                           <td>{{$pegawai->no_telp_pegawai}}</td>
                           <td>{{$pegawai->email_pegawai}}</td>
                           <td>{{$pegawai->jabatan_pegawai}}</td>
+                          <td>
+                              @if($pegawai->jabatan_pegawai == 'pimpinan')
+                              <a href="{{ url('/admin_dataPegawai/promotion/' . $pegawai->pegawai_id) }}">
+                              <button disabled type="button" class="btn btn-sm btn-primary btn-flat">Pimpinan</button>
+                              </a>
+                              @else
+                              <a href="{{ url('/admin_dataPegawai/promotion/' . $pegawai->pegawai_id) }}">
+                              <button type="button" class="btn btn-sm btn-primary btn-flat">Pimpinan</button>
+                              </a>
+                              @endif
+                              <a href="{{ url('/admin_dataPegawai/demotion/' . $pegawai->pegawai_id) }}">
+                              <button type="button" class="btn btn-sm btn-primary btn-flat">Staf</button>
+                              </a>
+                              <a href="{{ url('/admin_dataPegawai/delete/' . $pegawai->pegawai_id) }}">
+                              <button type="button" class="btn btn-sm btn-danger btn-flat">Hapus</button>
+                              </a>
+                            </td>
                         </tr>
                     @endforeach
                   @else

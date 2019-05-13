@@ -20,7 +20,7 @@ class CreatePegawaisTable extends Migration
             $table->string('no_telp_pegawai');
             $table->string('email_pegawai');
             $table->string('foto_pegawai')->nullable();
-            $table->string('jabatan_pegawai')->default('staff');
+            $table->string('jabatan_pegawai')->default('staf');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

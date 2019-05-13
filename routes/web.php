@@ -30,3 +30,8 @@ Route::post('/admin/loginPost', 'AdminController@loginPost');
 Route::get('/admin/logout', 'AdminController@logout');
 Route::get('/admin_dataPegawai', 'AdminController@dataPegawai');
 Route::get('/admin_dataSurat', 'AdminController@dataSurat');
+
+//data pegawai
+Route::get('/admin_dataPegawai/promotion/{id}', 'AdminController@promoteUser');
+Route::get('/admin_dataPegawai/demotion/{id}', 'AdminController@demoteUser');
+Route::delete('/admin_dataPegawai/delete/{id}', 'AdminController@deleteUser');
