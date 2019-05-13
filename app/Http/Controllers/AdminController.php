@@ -3,21 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Pegawai;
+use App\\Surat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    //data pegawai
+    public function dataPegawai()
     {
-        //
-        return view('admin_dataPegawai');
+        //send all user data to data pegawai page
+        $dataPegawai = Pegawai::all();
+        return view('admin_dataPegawai', compact('dataPegawai'));
+    }
+
+    //data surat
+    public function dataSurat()
+    {
+        //send all surat data
+        $dataSurat = Surat::all();
+        return view('admin_dataSurat', compact('dataSurat'));
     }
 
     //halaman login

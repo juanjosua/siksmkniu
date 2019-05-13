@@ -28,4 +28,5 @@ Route::get('/logout', 'PegawaiController@logout');
 Route::get('/admin', 'AdminController@login');
 Route::post('/admin/loginPost', 'AdminController@loginPost');
 Route::get('/admin/logout', 'AdminController@logout');
-Route::get('/admin_dataPegawai', 'AdminController@index');
+Route::get('/admin_dataPegawai', 'AdminController@dataPegawai');
+Route::get('/admin_dataSurat', 'AdminController@dataSurat');

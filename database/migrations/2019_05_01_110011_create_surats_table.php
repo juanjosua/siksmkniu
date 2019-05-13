@@ -22,6 +22,13 @@ class CreateSuratsTable extends Migration
             $table->string('tanggal_pembuatan_surat');
             $table->string('jenis_surat');
             $table->string('pengunggah_surat');
+            $table->string('status_surat')->default('1');
+            
+            //1 = unggah
+            //2 = tinjau
+            //3 = disposisi
+            //4 = arsip
+
             $table->timestamps();
         });
     }

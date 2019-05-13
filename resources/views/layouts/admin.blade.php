@@ -86,7 +86,7 @@
                       <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                           <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="user-image" alt="User Image">
-                          <span class="hidden-xs">Nama</span>
+                          <span class="hidden-xs">Admin</span>
                         </a>
                         <ul class="dropdown-menu">
                           <!-- User image -->
@@ -95,17 +95,14 @@
                             <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
                             <p>
                               
-                              <small>Member since September 28, 2018</small>
+                              <small>Admin</small>
                             </p>
                           </li>
 
                           <!-- Menu Footer-->
                           <li class="user-footer">
-                            <div class="pull-left">
-                              <a href="{{ url('/profile') }}" class="btn btn-default btn-flat">Profile</a>
-                            </div>
                             <div class="pull-right">
-                              <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                              <a href="{{ url('/admin/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                           </li>
                         </ul>
@@ -144,13 +141,13 @@
                     
 
                     <li>
-                      <a href="{{ url('/upload') }}">
+                      <a href="{{ url('/admin_dataPegawai') }}">
                         <i class="fa fa-file-text"></i> <span>Data Pegawai</span>
                       </a>
                     </li>
 
                     <li>
-                      <a href="{{ url('/pimpinan_document_approval') }}">
+                      <a href="{{ url('/admin_dataSurat') }}">
                         <i class="fa fa-file-text"></i> <span>Data Surat</span>
                       </a>
                     </li>
