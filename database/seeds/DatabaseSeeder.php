@@ -20,12 +20,23 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('pegawais')->insert([
-            'nama_pegawai' => 'Joe',
+            'nama_pegawai' => 'Donna',
             'nip' => Str::random(10),
             'no_telp_pegawai' => Str::random(10),
-            'email_pegawai' => 'juan@gmail.com',
+            'email_pegawai' => 'staff@gmail.com',
             'jabatan_pegawai' => 'staff',
-            'password' => bcrypt('secret')
+            'password' => bcrypt('secret'),
+            'created_at' => '2019-05-15 16:40:53'
+        ]);
+
+        DB::table('pegawais')->insert([
+            'nama_pegawai' => 'Desi',
+            'nip' => Str::random(10),
+            'no_telp_pegawai' => Str::random(10),
+            'email_pegawai' => 'pimpinan@gmail.com',
+            'jabatan_pegawai' => 'pimpinan',
+            'password' => bcrypt('secret'),
+            'created_at' => '2019-05-15 16:40:53'
         ]);
     }
 }

@@ -35,3 +35,17 @@ Route::get('/admin_dataSurat', 'AdminController@dataSurat');
 Route::get('/admin_dataPegawai/promotion/{id}', 'AdminController@promoteUser');
 Route::get('/admin_dataPegawai/demotion/{id}', 'AdminController@demoteUser');
 Route::delete('/admin_dataPegawai/delete/{id}', 'AdminController@deleteUser');
+
+//main func rout
+Route::get('/unggahSurat', 'SuratController@createSurat');
+Route::post('/unggahSurat/post', 'SuratController@storeSurat');
+
+//halaman surat baru
+Route::get('/surat', 'SuratController@showSurat'); //page surat baru untuk staff atau pimpinan setelah upload
+
+//rute surat
+Route::get('/surat/tinjau/{id}', 'SuratController@prosesSurat'); //status ++
+Route::get('/surat/detail/{id}', 'SuratController@detailSurat'); //status --
+Route::get('/surat/cancel/{id}', 'SuratController@cancelSurat'); //surat tidak jadi ditinjau
+Route::get('/surat/edit/{id}', 'SuratController@editSurat');   //buka halaman edit surat
+Route::patch('/surat/edit/update/{id}', 'SuratController@updateSurat'); //menyimpan hasil editing surat

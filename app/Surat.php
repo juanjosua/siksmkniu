@@ -11,4 +11,9 @@ class Surat extends Model
     protected $fillable = [
         'no_surat', 'perihal_surat', 'pengirim_surat', 'tujuan_surat', 'tanggal_pembuatan_surat', 'jenis_surat', 'pengunggah_surat', 'status_surat'
     ];
+
+    public function pengunggah()
+    {
+        return $this->belongsTo('App\Pegawai', 'pengunggah_surat');
+    }
 }

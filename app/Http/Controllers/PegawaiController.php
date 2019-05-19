@@ -33,10 +33,13 @@ class PegawaiController extends Controller
         $data = Pegawai::where('email_pegawai',$email)->first();
         if($data){ //apakah email tersebut ada atau tidak
             if(Hash::check($password,$data->password)){
+                //home test
                 Session::put('nama_pegawai',$data->nama_pegawai);
                 Session::put('email_pegawai',$data->email_pegawai);
                 Session::put('login',TRUE);
-                return redirect('home');
+                //put all user data into 1 session variable
+                Session::put('data', $data);
+                return redirect('unggahSurat');
             }
             else{
                 return redirect('login')->with('alert','Password atau Email, Salah !');

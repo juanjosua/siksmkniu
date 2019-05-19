@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>SIKSM KNIU</title>]
+      <title>SIKSM KNIU</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -80,89 +80,31 @@
                   <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
 
-                      <!-- NOTIFICATION STARTS -->
-
-                      <!-- Notifications: style can be found in dropdown.less -->
-                      <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          <i class="fa fa-bell-o"></i>
-                          <?php if ($suratbaru == 0 && $disposisibaru == 0 && $arsipbaru == 0): ?>
-                          <?php else: ?>
-                            <span class="label label-warning">!</span>
-                          <?php endif ?>
-                        </a>
-                        <ul class="dropdown-menu">
-                          
-                          <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
-
-                              <!-- SURAT BARU -->
-                              <li>
-                                <a href="{{ url('/pimpinan_document_approval') }}">
-                                  @if($suratbaru == 0)
-                                    <i class="fa fa-times text-danger"></i> Tidak Ada Surat Baru
-                                  @else
-                                    <i class="fa fa-plus text-success"></i> Ada Surat Baru   
-                                  @endif
-                                </a>
-                              </li>
-                              <!-- ########## -->
-
-                              <!-- DISPOSISI BARU -->
-                              <li>
-                                <a href="{{ url('/document_archived') }}">
-                                  @if($disposisibaru == 0)
-                                    <i class="fa fa-times text-danger"></i> Tidak Ada Disposisi Baru
-                                  @else
-                                    <i class="fa fa-plus text-success"></i> Ada Disposisi Baru   
-                                  @endif
-                                </a>
-                              </li>
-                              <!-- ########## -->
-
-                              <!-- ARSIP BARU -->
-                              <li>
-                                <a href="{{ url('/document_archived') }}">
-                                  @if($arsipbaru == 0)
-                                    <i class="fa fa-times text-danger"></i> Tidak Ada Arsip Baru
-                                  @else
-                                    <i class="fa fa-plus text-success"></i> Ada Arsip Baru   
-                                  @endif
-                                </a>
-                              </li>
-                              <!-- ########## -->
-
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-
-                      <!-- NOTIFICATION ENDS -->
+                      <!-- tempat notif -->
 
                       <!-- User Account: style can be found in dropdown.less -->
                       <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                           <!-- profile picture default & update-->
-                          @if(auth()->user()->avatar)
-                          <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="user-image" alt="User Image">
+                          @if(Session::get('data')->foto_pegawai)
+                          <img src="{{ asset('storage/' . Session::get('data')->foto_pegawai) }}" class="user-image" alt="User Image">
                           @else
                           <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="user-image" alt="User Image">
                           @endif
-                          <span class="hidden-xs">{{Auth::User()->name}}</span>
+                          <span class="hidden-xs">{{Session::get('data')->nama_pegawai}}</span>
                         </a>
                         <ul class="dropdown-menu">
                           <!-- User image -->
                           <li class="user-header">
                             <!-- profile picture default & update-->
-                            @if(auth()->user()->avatar)
-                            <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+                            @if(Session::get('data')->foto_pegawai)
+                            <img src="{{ asset('storage/' . Session::get('data')->foto_pegawai) }}" class="img-circle" alt="User Image">
                             @else
                             <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
                             @endif
 
                             <p>
-                              {{Auth::User()->name}} - {{Auth::User()->jabatan}}
+                              {{Session::get('data')->nama_pegawai}} - {{Session::get('data')->jabatan_pegawai}}
                               <small>Member since September 28, 2018</small>
                             </p>
                           </li>
@@ -173,7 +115,7 @@
                               <a href="{{ url('/profile') }}" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                              <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                              <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                           </li>
                         </ul>
@@ -198,15 +140,15 @@
                   <div class="user-panel">
                     <div class="pull-left image">
                       <!-- profile picture default & update-->
-                      @if(auth()->user()->avatar)
-                      <img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+                      @if(Session::get('data')->foto_pegawai)
+                      <img src="{{ asset('storage/' . Session::get('data')->foto_pegawai) }}" class="img-circle" alt="User Image">
                       @else
                       <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
                       @endif
                     </div>
                     <div class="pull-left info">
                       <br>
-                      <p>{{Auth::User()->name}}</p>
+                      <p>{{Session::get('data')->nama_pegawai}}</p>
                     </div>
                   </div>
 
