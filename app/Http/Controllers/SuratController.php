@@ -31,6 +31,7 @@ class SuratController extends Controller
         //simpan form surat yang baru dibuat
         //upload gambar
         $image  = $request->file('image')->store('gambar');
+        $pengunggah = Session::get('data')->pegawai_id;
 
         Surat::create([
           'image'                   => $image,
@@ -40,12 +41,12 @@ class SuratController extends Controller
           'perihal_surat'           => $request->perihal_surat,
           'jenis_surat'             => $request->jenis_surat,
           'tanggal_pembuatan_surat' => $request->tanggal_pembuatan_surat,
-          'pengunggah_surat'        => $request->email_pegawai,
+          'pengunggah_surat'        => $pengunggah
         ]);
 
         //redirect halaman daftar surat masuk
         //redirect ke show surat
-        return redirect()->route('/surat');
+        return redirect('/surat');
     }
 
     /**
@@ -57,19 +58,19 @@ class SuratController extends Controller
     public function showSurat(surat $surat)
     {
         //view semua daftar surat
-        $surat = Surat::all();
-        $jumlahsuratunggah = $surat->where('status_surat', 1)->count(); //jumlah surat baru diupload
-        $jumlahsurattinjau = $surat->where('status_surat', 2)->count(); //jumlah surat sedang ditinjau
-        $jumlahsuratdisposisi = $surat->where('status_surat', 3)->count(); //jumlah surat disposisi
+        $surats = Surat::all();
+        $jumlahsuratunggah = $surats->where('status_surat', 1)->count(); //jumlah surat baru diupload
+        $jumlahsurattinjau = $surats->where('status_surat', 2)->count(); //jumlah surat sedang ditinjau
+        $jumlahsuratdisposisi = $surats->where('status_surat', 3)->count(); //jumlah surat disposisi
 
         if (Session::get('data')->jabatan_pegawai == 'staff') {
-            return view('staff_suratBaru', compact('surats', 'jumlahsuratfresh', 'jumlahsuratreview', 'jumlahsuratapproved'));    
+            return view('staff_suratBaru', compact('surats', 'jumlahsuratunggah', 'jumlahsurattinjau', 'jumlahsuratdisposisi'));    
         } else {
-            return view('pimpinan_suratBaru', compact('surats', 'jumlahsuratfresh', 'jumlahsuratreview', 'jumlahsuratapproved'));
+            return view('pimpinan_suratBaru', compact('surats', 'jumlahsuratunggah', 'jumlahsurattinjau', 'jumlahsuratdisposisi'));
         }
     }
 
-    public function detailSurat(Request $id)
+    public function detailSurat($id)
     {
         //menampilkan detil informasi setiap surat
         $surat = Surat::find($id);
@@ -101,9 +102,9 @@ class SuratController extends Controller
           'perihal_surat'           => $request->input('perihal_surat'),
           'jenis_surat'             => $request->input('jenis_surat'),
           'tanggal_pembuatan_surat' => $request->input('tanggal_pembuatan_surat'),
-       ]);
+        ]);
 
-      return redirect('/surat/detail/' . $id);
+        return redirect('/surat/detail/' . $id);
     }
 
     /**
@@ -113,7 +114,7 @@ class SuratController extends Controller
      * @param  \App\surat  $surat
      * @return \Illuminate\Http\Response
      */
-    public function prosesSurat(Request $id, surat $surat)
+    public function prosesSurat($id)
     {
         //update surat
         //update status surat
@@ -125,7 +126,7 @@ class SuratController extends Controller
 
     }
 
-    public function cancelSurat(Request $id)
+    public function cancelSurat($id)
     {
         //menurunkan status surat
         $surat = Surat::find($id);
@@ -141,7 +142,7 @@ class SuratController extends Controller
      * @param  \App\surat  $surat
      * @return \Illuminate\Http\Response
      */
-    public function destroySurat(Request $id)
+    public function destroySurat($id)
     {
         //hapus surat
         $surat = Surat::find($id);

@@ -1,13 +1,6 @@
 @extends('layouts.pimpinan')
 
 @section('content')
-<!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
-    <i class="fa fa-file-text"></i>
-    Surat Masuk
-  </h1>
-</section>
 
 <!-- Main content -->
 <section class="content">
@@ -48,7 +41,7 @@
                   </thead>
                   <tbody>
                     @if($jumlahsuratunggah !== 0)
-                      @foreach($surat)
+                      @foreach($surats as $surat)
                       <!-- kondisi if untuk menentukan surat yang statusnya fresh dan not archived -->
                         @if($surat->status_surat == 1)
                           <tr>
@@ -59,10 +52,10 @@
                             <td>{{$surat->tanggal_pembuatan_surat}}</td>
                             <td>{{$surat->created_at->format('d-m-Y') }}</td>
                             <td>
-                                <a href="{{ url('/surat/tinjau/' . $surat->id) }}">
+                                <a href="{{ url('/surat/proses/' . $surat->surat_id) }}">
                               <button type="button" class="btn btn-sm btn-primary btn-flat">Proses</button>
                               </a>
-                              <a href="{{ url('/surat/detail/' . $surat->id) }}">
+                              <a href="{{ url('/surat/detail/' . $surat->surat_id) }}">
                               <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                               </a>
                             </td>
@@ -112,30 +105,29 @@
                   </thead>
                   <tbody>
                     @if($jumlahsurattinjau !== 0)
-                      @foreach($surat)
+                      @foreach($surats as $surat)
                       <!-- kondisi if untuk menentukan surat yang statusnya review dan not archived -->
                         @if($surat->status_surat == 2)
                           <tr>
                             <td>{{$surat->no_surat}}</td>
-                            <td>{{$surat->sumber_surat}}</td>
+                            <td>{{$surat->pengirim_surat}}</td>
                             <td>{{$surat->tujuan_surat}}</td>
-                            <td>{{$surat->perihal}}</td>
-                            <td>{{$surat->tanggal_dibuat}}</td>
+                            <td>{{$surat->perihal_surat}}</td>
+                            <td>{{$surat->tanggal_pembuatan_surat}}</td>
                             <td>{{$surat->created_at->format('d-m-Y') }}</td>
-                            <!-- <td><span class="label label-info">Fresh</span></td> -->
                             <td>
-                                <a href="{{ url('/surat/diposisi/' . $surat->id) }}">
+                                <a href="{{ url('/surat/diposisi/' . $surat->surat_id) }}">
                                   <button type="button" class="btn btn-sm btn-primary btn-flat">Disposisi</button>
                                 </a>
 
-                                <a href="{{ url('/surat/arsip/' . $surat->id) }}">
+                                <a href="{{ url('/surat/arsip/' . $surat->surat_id) }}">
                                   <button type="button" class="btn btn-sm btn-success btn-flat">Arsip</button>
                                 </a>
 
-                                <a href="{{ url('/surat/detail/' . $surat->id) }}">
+                                <a href="{{ url('/surat/detail/' . $surat->surat_id) }}">
                                   <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                                 </a>
-                                <a href="{{ url('/surat/cancel/' . $surat->id) }}">
+                                <a href="{{ url('/surat/cancel/' . $surat->surat_id) }}">
                                   <button type="button" class="btn btn-sm btn-danger btn-flat">Cancel</button>
                                 </a>
                             </td>

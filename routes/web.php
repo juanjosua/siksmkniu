@@ -44,8 +44,8 @@ Route::post('/unggahSurat/post', 'SuratController@storeSurat');
 Route::get('/surat', 'SuratController@showSurat'); //page surat baru untuk staff atau pimpinan setelah upload
 
 //rute surat
-Route::get('/surat/tinjau/{id}', 'SuratController@prosesSurat'); //status ++
-Route::get('/surat/detail/{id}', 'SuratController@detailSurat'); //status --
+Route::get('/surat/proses/{id}', 'SuratController@prosesSurat'); //status ++
+Route::get('/surat/detail/{id}', 'SuratController@detailSurat'); //detail surat
 Route::get('/surat/cancel/{id}', 'SuratController@cancelSurat'); //surat tidak jadi ditinjau
 Route::get('/surat/edit/{id}', 'SuratController@editSurat');   //buka halaman edit surat
 Route::patch('/surat/edit/update/{id}', 'SuratController@updateSurat'); //menyimpan hasil editing surat

@@ -60,7 +60,7 @@
             <header class="main-header">
 
               <!-- Logo -->
-              <a href="{{ url('/document_approval') }}" class="logo">
+              <a href="{{ url('/unggahSurat') }}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>S</b>K</span>
                 <!-- logo for regular state and mobile devices -->
@@ -165,13 +165,13 @@
                   </li> -->
 
                   <li>
-                    <a href="{{ url('/upload') }}">
+                    <a href="{{ url('/unggahSurat') }}">
                       <i class="fa fa-upload"></i> <span>Unggah Surat</span>
                     </a>
                   </li>
 
                   <li>
-                    <a href="{{ url('/document_approval') }}">
+                    <a href="{{ url('/surat') }}">
                       <i class="fa fa-file-text"></i> <span>Surat Masuk</span>
                     </a>
                   </li>

@@ -3,14 +3,6 @@
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
-  <h1>
-    <i class="fa fa-file-text"></i>
-    Detail Surat
-  </h1>
-  <!-- <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-file-text"></i> Document</a></li>
-    <li class="active">Document Detail</li>
-  </ol> -->
 </section>
 
 <section class="invoice">
@@ -23,16 +15,11 @@
       </div>
       <!-- /.col -->
     </div>
-
-
-    <!-- PDF Preview Start -->
-    <!-- <iframe src="{{ asset('storage/' . $suratt->image) }}" height="100%" width="100%"> </iframe> -->
-    <!-- <object data="{{ asset('storage/' . $suratt->image) }}" type="pdf/html" width="350" height="250"> </object> -->
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div style="clear: both;">
-            <embed src="{{ asset('storage/' . $surat->image) }}" type="application/pdf"   height="700px" width="500px">
+            <embed src="{{ asset('storage/' . $surat->image) }}" type="application/pdf" height="700px" width="500px">
           </div>
         </div>
       </div>
@@ -60,7 +47,6 @@
       <br>
       <address>
         <strong>{{$surat->pengirim_surat}}</strong><br>
-        <strong>Pengirim:</strong> {{$surat->pengirim_surat}}
       </address>
     </div>
     <!-- /.col -->
@@ -69,7 +55,6 @@
       <br>
       <address>
         <strong>{{$surat->tujuan_surat}}</strong><br>
-        <strong>Jenis:</strong> {{$surat->jenis_surat}}<br>
       </address>
     </div>
     <!-- /.col -->
@@ -77,26 +62,16 @@
       Details
       <br>
       <address>
+      <strong>Jenis:</strong> {{$surat->jenis_surat}}<br>
       <strong>Nomor Surat:</strong> {{$surat->no_surat}}<br>
       <strong>Tanggal Pembuatan:</strong> {{$surat->tanggal_pembuatan_surat}}<br>
-      <strong>Pengunggah:</strong> {{$surat->pengunggah->email}}<br>
+      <strong>Pengunggah:</strong> {{$surat->pegawai->nama_pegawai}}<br>
     </address>
     </div>
     <!-- /.col -->
   </div>
   <!-- /.row -->
 
-  <!-- info row -->
-  <div class="row invoice-info">
-    <div class="col-md-12 invoice-col">
-      <b>Perihal :</b>
-      <br>
-      <address>
-        {{$surat->perihal_surat}}
-      </address>
-    </div>
-  </div>
-  <!-- /.row -->
   <hr>
   <!-- Download & Download Button -->
   <div class="row no-print">

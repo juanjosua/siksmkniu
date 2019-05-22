@@ -16,4 +16,8 @@ class Pegawai extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function surat() {
+        return $this->hasMany('App\Surat', 'pengunggah_surat', 'pegawai_id');
+    }
 }
