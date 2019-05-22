@@ -78,11 +78,11 @@
     <div class="col-xs-12">
     <!-- untuk kondisi memunculkan button edit -->
     @if(Session::get('data')->jabatan_pegawai == "pimpinan" && $surat->status_surat == 1 || $surat->status_surat == 2)
-    <a href="{{ url('surat/edit/' . $surat->id) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
+    <a href="{{ url('surat/edit/' . $surat->surat_id) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
     @elseif(Session::get('data')->jabatan_pegawai == "staff" && $surat->status_surat == 3)
     <a class="btn btn-warning pull-left" disabled="disabled"><i class="fa fa-edit"></i> Edit</a>
     @elseif(Session::get('data')->jabatan_pegawai == "pimpinan")
-    <a href="{{ url('surat/edit/' . $surat->id) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
+    <a href="{{ url('surat/edit/' . $surat->surat_id) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
     @else
     <a class="btn btn-dark pull-left" disabled="disabled"><i class="fa fa-edit"></i> Edit</a>
     @endif

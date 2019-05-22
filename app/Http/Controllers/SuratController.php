@@ -83,7 +83,7 @@ class SuratController extends Controller
      * @param  \App\surat  $surat
      * @return \Illuminate\Http\Response
      */
-    public function editSurat(surat $surat)
+    public function editSurat($id)
     {
         //halaman edit surat
         $surat = Surat::find($id);

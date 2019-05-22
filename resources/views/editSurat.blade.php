@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ url('/surat/edit/update/', $surat->id) }}" method="POST">
+<form action="{{ url('/surat/edit/update/' . $surat->surat_id) }}" method="POST">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
     <div class="container">
@@ -15,9 +15,6 @@
 
           <h3>Detail Surat</h3>
           <br>
-
-          <!-- <img src="{{ asset('storage/' . $suratt->image) }}" alt="Pdf Surat"> -->
-
           <div class="form-group">
             <h4>Form Deskripsi Surat</h4>
             <label class="pull-left">No. Surat</label>
