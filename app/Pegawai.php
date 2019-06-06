@@ -5,7 +5,7 @@ namespace App;
 // use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-abstract class Pegawai extends Authenticatable
+class Pegawai extends Authenticatable
 {
     protected $table = 'pegawais';
     protected $primaryKey = 'id_pegawai';
@@ -16,4 +16,8 @@ abstract class Pegawai extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function jabatan(){
+        return $this->morphTo();
+    }
 }
