@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDisposisisTable extends Migration
+class CreateSektorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateDisposisisTable extends Migration
      */
     public function up()
     {
-        Schema::create('disposisis', function (Blueprint $table) {
-            $table->bigIncrements('disposisi_id');
-            $table->string('surat_id');
-            $table->string('pembuat_disposisi');
-            $table->string('penerima_disposisi');
+        Schema::create('sektors', function (Blueprint $table) {
+            $table->increments('id_sektor');
+            $table->string('nama_sektor');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateDisposisisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('disposisis');
+        Schema::dropIfExists('sektors');
     }
 }

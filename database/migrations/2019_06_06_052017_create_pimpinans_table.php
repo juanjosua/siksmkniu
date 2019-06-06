@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArsipsTable extends Migration
+class CreatePimpinansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateArsipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('arsips', function (Blueprint $table) {
-            $table->bigIncrements('arsip_id');
-            $table->string('surat_id');
-            $table->string('pengarsip');
+        Schema::create('pimpinans', function (Blueprint $table) {
+            $table->increments('id_pimpinan');
             $table->timestamps();
+
+            $table->integer('id_admin')->unsigned()->index()->nullable();
+            $table->foreign('id_admin')->references('id_admin')->on('admins');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateArsipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('arsips');
+        Schema::dropIfExists('pimpinans');
     }
 }

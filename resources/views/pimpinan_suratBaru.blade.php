@@ -116,9 +116,34 @@
                             <td>{{$surat->tanggal_pembuatan_surat}}</td>
                             <td>{{$surat->created_at->format('d-m-Y') }}</td>
                             <td>
-                                <a href="{{ url('/surat/diposisi/' . $surat->surat_id) }}">
+                                <a data-target="#myModal" role="button" data-toggle="modal">
                                   <button type="button" class="btn btn-sm btn-primary btn-flat">Disposisi</button>
                                 </a>
+                                      <!-- dropdown disposisi start -->
+                                      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h3 id="myModalLabel">Disposisi ke :</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                    <select>
+                                                        @foreach($pegawais as $pegawai)
+                                                        <option value="{{ $pegawai->nama_pegawai }}">{{ $pegawai->nama_pegawai }}</option>
+                                                        @endforeach
+                                                    </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-sm btn-dark btn-flat" data-dismiss="modal" aria-hidden="true">Close</button>
+                                              <a href="{{ url('/status/approved/' . $surat->id) }}">
+                                                <button class="btn btn-sm btn-primary btn-flat">Save changes</button>
+                                              </a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- dropdown disposisi end -->
 
                                 <a href="{{ url('/surat/arsip/' . $surat->surat_id) }}">
                                   <button type="button" class="btn btn-sm btn-success btn-flat">Arsip</button>
@@ -127,6 +152,7 @@
                                 <a href="{{ url('/surat/detail/' . $surat->surat_id) }}">
                                   <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                                 </a>
+                                
                                 <a href="{{ url('/surat/cancel/' . $surat->surat_id) }}">
                                   <button type="button" class="btn btn-sm btn-danger btn-flat">Cancel</button>
                                 </a>

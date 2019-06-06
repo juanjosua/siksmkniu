@@ -14,13 +14,11 @@ class CreatePegawaisTable extends Migration
     public function up()
     {
         Schema::create('pegawais', function (Blueprint $table) {
-            $table->bigIncrements('pegawai_id');
+            $table->increments('id_pegawai');
             $table->string('nama_pegawai');
             $table->string('nip');
             $table->string('no_telp_pegawai');
             $table->string('email_pegawai');
-            $table->string('foto_pegawai')->nullable();
-            $table->string('jabatan_pegawai')->default('staff');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

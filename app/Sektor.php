@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Instansi extends Model
+class Sektor extends Model
 {
-    protected $table = 'instansis';
-    protected $primaryKey = 'id_instansi';
+    protected $table = 'sektors';
+    protected $primaryKey = 'id_sektor';
     protected $fillable = [
-        'nama_instansi', 'alamat_instansi', 'no_telp_instansi'
+        'nama_sektor'
     ];
 
     public function surats()

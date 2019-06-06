@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Arsip extends Model
 {
     protected $table = 'arsips';
-    protected $primaryKey = 'arsip_id';
+    protected $primaryKey = 'id_arsip';
     protected $fillable = [
-        'surat_id', 'pengarsip'
+        'tanggal_arsip'
     ];
+
+    public function pimpinan()
+    {
+        return $this->belongsTo(Pimpinan::class);
+    }
 }

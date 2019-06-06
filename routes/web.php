@@ -49,3 +49,9 @@ Route::get('/surat/detail/{id}', 'SuratController@detailSurat'); //detail surat
 Route::get('/surat/cancel/{id}', 'SuratController@cancelSurat'); //surat tidak jadi ditinjau
 Route::get('/surat/edit/{id}', 'SuratController@editSurat');   //buka halaman edit surat
 Route::patch('/surat/edit/update/{id}', 'SuratController@updateSurat'); //menyimpan hasil editing surat
+
+//rute disposisis
+Route::get('/disposisi', 'DisposisiController@');
+
+//rute arsip
+Route::get('/arsip', 'ArsipController@');

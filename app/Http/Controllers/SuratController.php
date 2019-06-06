@@ -58,6 +58,7 @@ class SuratController extends Controller
     public function showSurat(surat $surat)
     {
         //view semua daftar surat
+        $pegawais = Pegawai::all();
         $surats = Surat::all();
         $jumlahsuratunggah = $surats->where('status_surat', 1)->count(); //jumlah surat baru diupload
         $jumlahsurattinjau = $surats->where('status_surat', 2)->count(); //jumlah surat sedang ditinjau
@@ -66,7 +67,7 @@ class SuratController extends Controller
         if (Session::get('data')->jabatan_pegawai == 'staff') {
             return view('staff_suratBaru', compact('surats', 'jumlahsuratunggah', 'jumlahsurattinjau', 'jumlahsuratdisposisi'));    
         } else {
-            return view('pimpinan_suratBaru', compact('surats', 'jumlahsuratunggah', 'jumlahsurattinjau', 'jumlahsuratdisposisi'));
+            return view('pimpinan_suratBaru', compact('surats', 'jumlahsuratunggah', 'jumlahsurattinjau', 'jumlahsuratdisposisi', 'pegawais'));
         }
     }
 

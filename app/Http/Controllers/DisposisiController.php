@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\disposisi;
+use App\Disposisi;
+use App\Surat;
+use App\Pegawai;
 use Illuminate\Http\Request;
 
 class DisposisiController extends Controller
@@ -22,9 +24,24 @@ class DisposisiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createDisposisi()
+    public function createDisposisi($id)
     {
-        //
+        //tambah disposisi baru
+        $surat = Surat::find($id);
+        $surat->status_surat++;
+        $surat->save();
+
+        Disposisi::create([
+          'no_surat'                => $request->no_surat,
+          'pengirim_surat'          => $request->pengirim_surat,
+          'tujuan_surat'            => $request->tujuan_surat,
+          'perihal_surat'           => $request->perihal_surat,
+          'jenis_surat'             => $request->jenis_surat,
+          'tanggal_pembuatan_surat' => $request->tanggal_pembuatan_surat,
+          'pengunggah_surat'        => $pengunggah
+        ]);
+
+        return redirect()->back();
     }
 
     /**

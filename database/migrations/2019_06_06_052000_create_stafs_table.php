@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInstansisTable extends Migration
+class CreateStafsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateInstansisTable extends Migration
      */
     public function up()
     {
-        Schema::create('instansis', function (Blueprint $table) {
-            $table->increments('id_instansi');
-            $table->string('nama_instansi');
-            $table->string('alamat_instansi');
-            $table->string('no_telp_instansi');
+        Schema::create('stafs', function (Blueprint $table) {
+            $table->increments('id_staf');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateInstansisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instansis');
+        Schema::dropIfExists('stafs');
     }
 }

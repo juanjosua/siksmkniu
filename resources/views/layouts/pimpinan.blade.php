@@ -157,11 +157,6 @@
                   <ul class="sidebar-menu" data-widget="tree">
 
                     <li class="header">MAIN MENU</li>
-                    <!-- <li>
-                      <a href="{{ url('/dashboard/admin') }}">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                      </a>
-                    </li> -->
 
                     <li>
                       <a href="{{ url('/unggahSurat') }}">
@@ -176,8 +171,14 @@
                     </li>
 
                     <li>
-                      <a href="{{ url('/document_archived') }}">
-                        <i class="fa fa-folder"></i> <span>Disposisi dan Arsip</span>
+                      <a href="{{ url('/disposisiSurat') }}">
+                        <i class="fa fa-folder"></i> <span>Disposisi</span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{{ url('/arsipSurat') }}">
+                        <i class="fa fa-folder"></i> <span>Arsip</span>
                       </a>
                     </li>
 

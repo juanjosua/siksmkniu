@@ -7,8 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Disposisi extends Model
 {
     protected $table = 'disposisis';
-    protected $primaryKey = 'disposisi_id';
+    protected $primaryKey = 'id_disposisi';
     protected $fillable = [
-        'surat_id', 'pembuat_disposisi', 'penerima_disposisi'
+        'tanggal_disposisi', 'pesan_disposisi'
     ];
+
+    public function pimpinan()
+    {
+        return $this->belongsTo(Pimpinan::class);
+    }
+
+    public function staf()
+    {
+        return $this->belongsTo(Staf::class);
+    }
 }

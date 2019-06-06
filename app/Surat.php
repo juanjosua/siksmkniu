@@ -7,13 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 class Surat extends Model
 {
     protected $table = 'surats';
-    protected $primaryKey = 'surat_id';
+    protected $primaryKey = 'id_surat';
     protected $fillable = [
-        'image','no_surat', 'perihal_surat', 'pengirim_surat', 'tujuan_surat', 'tanggal_pembuatan_surat', 'jenis_surat', 'pengunggah_surat', 'status_surat'
+        'image','no_surat', 'perihal_surat', 'tanggal_surat'
     ];
 
-    public function pegawai()
+    public function pimpinan()
     {
-        return $this->belongsTo('App\Pegawai', 'pengunggah_surat');
+        return $this->belongsTo(Pimpinan::class);
+    }
+
+    public function instansi()
+    {
+        return $this->belongsTo(Instansi::class);
+    }
+
+    public function staf()
+    {
+        return $this->belongsTo(Staf::class);
+    }
+
+    public function sektor()
+    {
+        return $this->belongsTo(Sektor::class);
     }
 }

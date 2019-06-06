@@ -8,12 +8,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Admin extends Authenticatable
 {
     protected $table = 'admins';
-    protected $primaryKey = 'admin_id';
+    protected $primaryKey = 'id_admin';
     protected $fillable = [
-        'email_admin', 'password'
+        'username', 'password'
     ];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function pimpinans()
+    {
+       return $this->hasMany(Pimpinan::class);
+    }
 }
