@@ -17,6 +17,7 @@ class CreatePimpinansTable extends Migration
             $table->increments('id_pimpinan');
             $table->timestamps();
 
+            //foreign key admin
             $table->integer('id_admin')->unsigned()->index()->nullable();
             $table->foreign('id_admin')->references('id_admin')->on('admins');
         });

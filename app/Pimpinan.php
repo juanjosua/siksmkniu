@@ -33,8 +33,9 @@ class Pimpinan extends Pegawai
     }
 
     //fungsi inherit pegawai
-    public function pegawai(){
-        return $this->morphOne('Pegawai', 'jabatan');
+    public function pegawais()
+    {
+        return $this->morphMany(Pegawai::class, 'jabatan');
     }
 
 }

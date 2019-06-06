@@ -20,6 +20,7 @@ class CreatePegawaisTable extends Migration
             $table->string('no_telp_pegawai');
             $table->string('email_pegawai');
             $table->string('password');
+            $table->morphs('jabatan'); //polymorph inheritance
             $table->rememberToken();
             $table->timestamps();
         });
