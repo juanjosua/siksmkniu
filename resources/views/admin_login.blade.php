@@ -20,7 +20,7 @@
                         <form action="{{ url('/admin/loginPost') }}" method="POST">
                         	@csrf
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email_admin" placeholder="email" autofocus>
+                                <input type="text" class="form-control" name="username" placeholder="admin" autofocus>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="password">

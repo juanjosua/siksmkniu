@@ -37,7 +37,7 @@
                     <th>No. Telp</th>
                     <th>Email</th>
                     <th>Jabatan</th>
-                    <th></th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -50,21 +50,36 @@
                           <td>{{$pegawai->nip}}</td>
                           <td>{{$pegawai->no_telp_pegawai}}</td>
                           <td>{{$pegawai->email_pegawai}}</td>
-                          <td>{{$pegawai->jabatan_pegawai}}</td>
+                          @if($pegawai->jabatanable_type == 'App\Staf')
+                          <td>Staf</td>
+                          @else
+                          <td>Pimpinan</td>
+                          @endif
                           <td>
-                              @if($pegawai->jabatan_pegawai == 'pimpinan')
-                              <a href="{{ url('/admin_dataPegawai/promotion/' . $pegawai->pegawai_id) }}">
+                            <!-- check pimpinan -->
+                              @if($pegawai->jabatanable_type == 'App\Pimpinan')
+                              <a href="{{ url('/admin_dataPegawai/promotion/' . $pegawai->id_pegawai) }}">
                               <button disabled type="button" class="btn btn-sm btn-primary btn-flat">Pimpinan</button>
                               </a>
                               @else
-                              <a href="{{ url('/admin_dataPegawai/promotion/' . $pegawai->pegawai_id) }}">
+                              <a href="{{ url('/admin_dataPegawai/promotion/' . $pegawai->id_pegawai) }}">
                               <button type="button" class="btn btn-sm btn-primary btn-flat">Pimpinan</button>
                               </a>
                               @endif
-                              <a href="{{ url('/admin_dataPegawai/demotion/' . $pegawai->pegawai_id) }}">
+
+                              <!-- check staf -->
+                              @if($pegawai->jabatanable_type == 'App\Staf')
+                              <a href="{{ url('/admin_dataPegawai/demotion/' . $pegawai->id_pegawai) }}">
+                              <button disabled type="button" class="btn btn-sm btn-primary btn-flat">Staf</button>
+                              </a>
+                              @else
+                              <a href="{{ url('/admin_dataPegawai/demotion/' . $pegawai->id_pegawai) }}">
                               <button type="button" class="btn btn-sm btn-primary btn-flat">Staf</button>
                               </a>
-                              <a href="{{ url('/admin_dataPegawai/delete/' . $pegawai->pegawai_id) }}">
+                              @endif
+
+                              <!-- hapus user -->
+                              <a href="{{ url('/admin_dataPegawai/delete/' . $pegawai->id_pegawai) }}">
                               <button type="button" class="btn btn-sm btn-danger btn-flat">Hapus</button>
                               </a>
                             </td>
