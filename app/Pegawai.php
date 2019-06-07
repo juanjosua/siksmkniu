@@ -4,8 +4,9 @@ namespace App;
 
 // use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Pegawai extends Authenticatable
+class Pegawai extends Model
 {
     protected $table = 'pegawais';
     protected $primaryKey = 'id_pegawai';
@@ -17,7 +18,7 @@ class Pegawai extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function jabatan(){
+    public function jabatanable(){
         return $this->morphTo();
     }
 }

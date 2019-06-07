@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pegawai;
+use App\Staf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -70,14 +71,20 @@ class PegawaiController extends Controller
             'password' => 'required',
             'confirmation' => 'required|same:password',
         ]);
+        $staf = new Staf();
+        $staf->save();
 
-        $data =  new Pegawai();
-        $data->nama_pegawai = $request->nama_pegawai;
-        $data->nip = $request->nip;
-        $data->email_pegawai = $request->email_pegawai;
-        $data->no_telp_pegawai = $request->no_telp_pegawai;
-        $data->password = bcrypt($request->password);
-        $data->save();
+        $pegawai =  new Pegawai();
+        $pegawai->nama_pegawai = $request->nama_pegawai;
+        $pegawai->nip = $request->nip;
+        $pegawai->email_pegawai = $request->email_pegawai;
+        $pegawai->no_telp_pegawai = $request->no_telp_pegawai;
+        $pegawai->password = bcrypt($request->password);
+
+        
+        $pegawai->jabatanable()->associate($staf);
+        $pegawai->save();
+
         return redirect('login')->with('alert-success','Kamu berhasil Register');
     }
 }

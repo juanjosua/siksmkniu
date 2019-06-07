@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         DB::table('admins')->insert([
-            'usernam' => 'admin',
+            'username' => 'admin',
             'password' => bcrypt('admin')
         ]);
 
@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             'no_telp_pegawai' => Str::random(10),
             'email_pegawai' => 'staff@gmail.com',
             'password' => bcrypt('secret'),
+            'jabatan_id' => 1,
+            'jabatan_type' => 'staf',
             'created_at' => '2019-05-15 16:40:53'
         ]);
 
@@ -34,7 +36,17 @@ class DatabaseSeeder extends Seeder
             'no_telp_pegawai' => Str::random(10),
             'email_pegawai' => 'pimpinan@gmail.com',
             'password' => bcrypt('secret'),
+            'jabatan_id' => 1,
+            'jabatan_type' => 'pimpinan',
             'created_at' => '2019-05-15 16:40:53'
+        ]);
+
+        DB::table('pimpinans')->insert([
+            'id_pimpinan' => 1
+        ]);
+
+        DB::table('stafs')->insert([
+            'id_staf' => 1
         ]);
     }
 }
