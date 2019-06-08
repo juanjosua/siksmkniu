@@ -34,7 +34,7 @@ Route::get('/admin_dataSurat', 'AdminController@dataSurat');
 //data pegawai
 Route::get('/admin_dataPegawai/promotion/{id}', 'AdminController@promoteUser');
 Route::get('/admin_dataPegawai/demotion/{id}', 'AdminController@demoteUser');
-Route::delete('/admin_dataPegawai/delete/{id}', 'AdminController@deleteUser');
+Route::delete('/admin_dataPegawai/delete/{id}', 'AdminController@destroyUser');
 
 //main func rout
 Route::get('/unggahSurat', 'SuratController@createSurat');

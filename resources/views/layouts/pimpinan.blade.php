@@ -104,8 +104,8 @@
                             @endif
 
                             <p>
-                              {{Session::get('data')->nama_pegawai}} - {{Session::get('data')->jabatan_pegawai}}
-                              <small>Member since September 28, 2018</small>
+                              {{Session::get('data')->nama_pegawai}} - {{substr(Session::get('data')->jabatanable_type, 4, 10)}}
+                              <small>Member since {{Session::get('data')->created_at->format('d M Y')}}</small>
                             </p>
                           </li>
 

@@ -13,7 +13,6 @@
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#pegawai" data-toggle="tab">Daftar Pegawai</a></li>
-        <!-- <li><a href="#review" data-toggle="tab">Menunggu Tinjauan</a></li> -->
       </ul>
       <div class="tab-content">
 
@@ -37,7 +36,8 @@
                     <th>No. Telp</th>
                     <th>Email</th>
                     <th>Jabatan</th>
-                    <th>Action</th>
+                    <th>Promote/Demote</th>
+                    <th>Hapus</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -77,11 +77,14 @@
                               <button type="button" class="btn btn-sm btn-primary btn-flat">Staf</button>
                               </a>
                               @endif
-
+                          </td>
+                            <td>
                               <!-- hapus user -->
-                              <a href="{{ url('/admin_dataPegawai/delete/' . $pegawai->id_pegawai) }}">
-                              <button type="button" class="btn btn-sm btn-danger btn-flat">Hapus</button>
-                              </a>
+                              <form action="{{ url('/admin_dataPegawai/delete/' . $pegawai->id_pegawai) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                  <button type="submit" class="btn btn-sm btn-danger btn-flat">Hapus</button>
+                              </form>
                             </td>
                         </tr>
                     @endforeach

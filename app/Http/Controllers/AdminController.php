@@ -101,13 +101,21 @@ class AdminController extends Controller
     //menghapus akun user
     public function destroyUser($id)
     {
-        $delete = Surat::find($id);
+        $pegawai = Pegawai::find($id);
+        if ($pegawai->jabatanable_type == 'App\Staf') {
+            $delete = Staf::find($pegawai->jabatanable_id);
+            $delete->delete();
+        } else { 
+            $delete = Pimpinan::find($pegawai->jabatanable_id); 
+            $delete->delete();
+        }  
+        $delete = Pegawai::find($id);
         $delete->delete();
 
         return redirect()->back();
     }
 
-    //menghapus akun user
+    //menghapus surat
     public function destroySurat($id)
     {
         $delete = Surat::find($id);

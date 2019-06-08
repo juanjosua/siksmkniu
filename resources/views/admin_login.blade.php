@@ -20,12 +20,13 @@
                         <form action="{{ url('/admin/loginPost') }}" method="POST">
                         	@csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" name="username" placeholder="admin" autofocus>
+                                <input type="text" class="form-control" name="username" placeholder="username" autofocus>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="password">
                             </div>
-                            <button class="btn btn-primary">login</button>
+                            <button class="btn btn-primary">login</button><br>
+                            <sub><a href="{{ url('/') }}">Back to homepage</a></sub>
                         </form>
                     </div>
                 </div>
