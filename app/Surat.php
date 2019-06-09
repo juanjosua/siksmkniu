@@ -9,7 +9,7 @@ class Surat extends Model
     protected $table = 'surats';
     protected $primaryKey = 'id_surat';
     protected $fillable = [
-        'image','no_surat', 'perihal_surat', 'tanggal_surat'
+        'image','no_surat', 'perihal_surat', 'tanggal_surat', 'id_pimpinan', 'id_sektor', 'id_instansi', 'id_staf'
     ];
 
     public function pimpinan()

@@ -9,7 +9,7 @@ class Instansi extends Model
     protected $table = 'instansis';
     protected $primaryKey = 'id_instansi';
     protected $fillable = [
-        'nama_instansi', 'alamat_instansi', 'no_telp_instansi'
+        'nama_instansi'
     ];
 
     public function surats()

@@ -4,57 +4,69 @@ namespace App\Http\Controllers;
 
 use App\Surat;
 use App\Pegawai;
+use App\Instansi;
+use App\Sektor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class SuratController extends Controller
 {
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //get form surat baru
     public function createSurat()
     {
         //memanggil form untuk buat surat baru
-        return view('unggahSurat');
+        $instansis  = Instansi::all();
+        $sektors    = Sektor::all();
+        return view('unggahSurat', compact('instansis', 'sektors'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    //simpan form surat baru
     public function storeSurat(Request $request)
     {
-        //simpan form surat yang baru dibuat
         //upload gambar
         $image  = $request->file('image')->store('gambar');
-        $pengunggah = Session::get('data')->pegawai_id;
+        //check if instansi already exists
+        $instansi = Instansi::all()->where('nama_instansi', $request->pengirim_surat)->first();
+        //get sektor
+        $sektor = Sektor::all()->where('nama_sektor', $request->tujuan_surat)->first();
+        //check siapa yang mengunggah
+        $jabatan = Session::get('data')->jabatanable_type;
+        $id_jabatan = Session::get('data')->jabatanable_id;
+        //buat instansi baru jika belum ada
+        if (!$instansi) {
+            Instansi::create([
+                'nama_instansi' => $request->pengirim_surat
+            ]);
+        };
+        //foreign key
+        $id_sektor      = $sektor->id_sektor;
+        $id_instansi    = $instansi->id_instansi;
+
+        if ($jabatan == 'App\Staf') {
+            $id_staf = $id_jabatan;
+            $id_pimpinan = NULL;
+        } else { 
+            $id_pimpinan = $id_jabatan;
+            $id_staf = NULL;
+         }
 
         Surat::create([
           'image'                   => $image,
           'no_surat'                => $request->no_surat,
-          'pengirim_surat'          => $request->pengirim_surat,
-          'tujuan_surat'            => $request->tujuan_surat,
           'perihal_surat'           => $request->perihal_surat,
-          'jenis_surat'             => $request->jenis_surat,
-          'tanggal_pembuatan_surat' => $request->tanggal_pembuatan_surat,
-          'pengunggah_surat'        => $pengunggah
+          'tanggal_surat'           => $request->tanggal_surat,
+          'id_sektor'               => $id_sektor,
+          'id_instansi'             => $id_instansi,
+          'id_pimpinan'             => $id_pimpinan,
+          'id_staf'                 => $id_staf
         ]);
 
         //redirect halaman daftar surat masuk
         //redirect ke show surat
-        return redirect('/surat');
+        return redirect('/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\surat  $surat
-     * @return \Illuminate\Http\Response
-     */
+    //show semua surat di database
     public function showSurat(surat $surat)
     {
         //view semua daftar surat
@@ -71,6 +83,7 @@ class SuratController extends Controller
         }
     }
 
+    //get individual surat
     public function detailSurat($id)
     {
         //menampilkan detil informasi setiap surat
@@ -78,12 +91,7 @@ class SuratController extends Controller
         return view('detailSurat', compact('surat'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\surat  $surat
-     * @return \Illuminate\Http\Response
-     */
+    //form edit surat
     public function editSurat($id)
     {
         //halaman edit surat
@@ -92,6 +100,7 @@ class SuratController extends Controller
 
     }
 
+    //save editan surat
     public function updateSurat(Request $request, $id)
     {
         //update suratnya
@@ -108,41 +117,7 @@ class SuratController extends Controller
         return redirect('/surat/detail/' . $id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\surat  $surat
-     * @return \Illuminate\Http\Response
-     */
-    public function prosesSurat($id)
-    {
-        //update surat
-        //update status surat
-        $surat = Surat::find($id);
-        $surat->status_surat++;
-        $surat->save();
-
-        return redirect()->back();
-
-    }
-
-    public function cancelSurat($id)
-    {
-        //menurunkan status surat
-        $surat = Surat::find($id);
-        $surat->status_surat--;
-        $surat->save();
-
-        return redirect()->back();
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\surat  $surat
-     * @return \Illuminate\Http\Response
-     */
+    //hapus surat
     public function destroySurat($id)
     {
         //hapus surat

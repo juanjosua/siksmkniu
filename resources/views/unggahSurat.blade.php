@@ -81,7 +81,12 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                              <input type="text" name="pengirim_surat" class="form-control">
+                                  <input type="text" list="instansis" name="pengirim_surat" class="form-control" placeholder="Masukkan nama instansi" />
+                                  <datalist id="instansis">
+                                    @foreach($instansis as $instansi)
+                                    <option>{{ $instansi->nama_instansi }}</option>
+                                    @endforeach
+                                  </datalist>
                             </div>                     
                         </div>
                       </div>
@@ -94,14 +99,13 @@
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
-                                <select name="tujuan_surat" class="form-control">
-                                  <option value="" disabled selected>Pilih Sektor...</option>
-                                  <option value="education">Education</option>
-                                  <option value="science">Science</option>
-                                  <option value="culture">Culture</option>
-                                  <option value="communication">Communication and Information</option>
-                                </select>
-                            </div>                                    
+                                  <input type="text" list="sektors" name="tujuan_surat" class="form-control" placeholder="Masukkan nama sektor" />
+                                  <datalist id="sektors">
+                                    @foreach($sektors as $sektor)
+                                    <option>{{ $sektor->nama_sektor }}</option>
+                                    @endforeach
+                                  </datalist>
+                            </div>                                
                           </div>
                       </div>
 
@@ -121,57 +125,15 @@
                       <div class="row">
                         <div class="col-md-2">
                           <div class="form-group">
-                            <label class="pull-right">Jenis Surat :</label>
-                          </div>                                    
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                              <select name="jenis_surat" class="form-control">
-                                <option value="" disabled selected>Pilih Jenis Surat...</option>
-                                <option value="keputusan">keputusan</option>
-                                <option value="permohonan">permohonan</option>
-                                <option value="perintah">perintah</option>
-                                <option value="kuasa">kuasa</option>
-                                <option value="panggilan">undangan</option>
-                                <option value="edaran">edaran</option>
-                                <option value="lain">lainnya</option>
-                              </select>
-                          </div>                                    
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-2">
-                          <div class="form-group">
                             <label class="pull-right">Tanggal Pembuatan Surat :</label>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <input type="date" name="tanggal_pembuatan_surat" class="form-control" placeholder="dd/mm/yyyy">
+                            <input type="date" name="tanggal_surat" class="form-control" placeholder="dd/mm/yyyy">
                           </div>
                         </div>
                       </div>
-
-                      <br>
-                      <br>
-                      <br>
-                      <br>
-
-                      <div class="form-group">
-                        <h4>Informasi Pengunggah Surat</h4>
-                        <input disabled="disabled" type="text" name="nama_pegawai" class="form-control" value="{{Session::get('data')->nama_pegawai}}">
-                      </div>
-
-                      <div class="form-group">
-                        <input disabled="disabled" type="number" name="no_telp_pegawai" class="form-control" value="{{Session::get('data')->no_telp_pegawai}}">
-                      </div>
-
-                      <div class="form-group">
-                        <input disabled="disabled" type="email" name="email_pegawai" class="form-control" value="{{Session::get('data')->email_pegawai}}">
-                      </div>
-
-                      <br>
 
                       <!-- Document Description Form End -->
 

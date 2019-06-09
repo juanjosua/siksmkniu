@@ -18,7 +18,7 @@ class CreateSuratsTable extends Migration
             $table->string('image');
             $table->string('no_surat');
             $table->string('perihal_surat');
-            $table->timestamp('tanggal_surat', 0)->nullable();
+            $table->string('tanggal_surat');
 
             //foreign key dari pimpinan
             $table->integer('id_pimpinan')->unsigned()->index()->nullable();
@@ -36,10 +36,7 @@ class CreateSuratsTable extends Migration
             $table->integer('id_instansi')->unsigned()->index()->nullable();
             $table->foreign('id_instansi')->references('id_instansi')->on('instansis');
 
-            //1 = unggah
-            //2 = tinjau
-            //3 = disposisi
-            //4 = arsip
+            $table->timestamps();
         });
     }
 

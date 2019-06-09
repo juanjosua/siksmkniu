@@ -22,6 +22,36 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin')
         ]);
 
+        //seeder instansi 1
+        DB::table('instansis')->insert([
+            'nama_instansi' => 'Kementerian Luar Negeri'
+        ]);
+
+        //seeder instansi 2
+        DB::table('instansis')->insert([
+            'nama_instansi' => 'Kementerian Kesehatan'
+        ]);
+
+        //seeder sektor 1
+        DB::table('sektors')->insert([
+            'nama_sektor' => 'Pendidikan'
+        ]);
+
+        //seeder sektor 2
+        DB::table('sektors')->insert([
+            'nama_sektor' => 'Kebudayaan'
+        ]);
+
+        //seeder sektor 3
+        DB::table('sektors')->insert([
+            'nama_sektor' => 'Ilmu Pengetahuan'
+        ]);
+
+        //seeder sektor 4
+        DB::table('sektors')->insert([
+            'nama_sektor' => 'Komunikasi dan Informasi'
+        ]);
+
         //seeder staf baru
         $staf = new Staf();
         $staf->save();

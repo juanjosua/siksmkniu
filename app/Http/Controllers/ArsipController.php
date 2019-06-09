@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\arsip;
+use App\Arsip;
 use Illuminate\Http\Request;
 
 class ArsipController extends Controller
