@@ -14,7 +14,7 @@ class Pimpinan extends Pegawai
 
     public function admin()
     {
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(Admin::class, 'id_admin');
     }
 
     public function disposisis()

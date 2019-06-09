@@ -14,6 +14,6 @@ class Arsip extends Model
 
     public function pimpinan()
     {
-        return $this->belongsTo(Pimpinan::class);
+        return $this->belongsTo(Pimpinan::class, 'id_pimpinan');
     }
 }

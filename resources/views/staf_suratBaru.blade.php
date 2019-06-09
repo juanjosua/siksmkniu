@@ -1,4 +1,4 @@
-@extends('layouts.staff')
+@extends('layouts.staf')
 
 @section('content')
 
@@ -41,27 +41,27 @@
                   </thead>
                   <tbody>
                   <!-- kondisi jika surat tidak ada di database -->
-                  @if($jumlahsuratunggah !== 0)
+                  @if($jumlahsuratbaru !== 0)
                     <!-- foreach untuk memanggil seluruh surat yang ada di database dan looping -->
                     @foreach($surats as $surat)
                       <!-- kondisi if untuk menentukan surat yang statusnya fresh dan not archived -->
-                      @if($surat->status_surat == 1)
+                      @if($surat->status_surat == 'baru')
                         <tr>
                           <td>{{$surat->no_surat}}</td>
-                          <td>{{$surat->pengirim_surat}}</td>
-                          <td>{{$surat->tujuan_surat}}</td>
+                          <td>{{$surat->instansi->nama_instansi}}</td>
+                          <td>{{$surat->sektor->nama_sektor}}</td>
                           <td>{{$surat->perihal_surat}}</td>
-                          <td>{{$surat->tanggal_pembuatan_surat}}</td>
-                          <td>{{$surat->created_at->format('d-m-Y') }}</td>
+                          <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
+                          <td>{{$surat->created_at->format('d M Y')}}</td>
                           <td>
 
                           	<!-- proses surat untuk di tinjau pimpinan -->
-                            <a href="{{ url('/surat/proses/' . $surat->surat_id) }}">
+                            <a href="{{ url('/surat/proses/' . $surat->id_surat) }}">
                             <button type="button" class="btn btn-sm btn-primary btn-flat">Proses</button>
                             </a>
 
                             <!-- melihat detail surat -->
-                            <a href="{{ url('/surat/detail/' . $surat->surat_id) }}">
+                            <a href="{{ url('/surat/detail/' . $surat->id_surat) }}">
                             <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                             </a>
                       
@@ -115,18 +115,18 @@
                   @if($jumlahsurattinjau !== 0)
                     @foreach($surats as $surat)
                     <!-- kondisi if untuk menentukan surat yang statusnya review dan not archived -->
-                      @if($surat->status_surat == 2)
+                      @if($surat->status_surat == 'tinjau')
                         <tr>
                           <td>{{$surat->no_surat}}</td>
-                          <td>{{$surat->pengirim_surat}}</td>
-                          <td>{{$surat->tujuan_surat}}</td>
+                          <td>{{$surat->instansi->nama_instansi}}</td>
+                          <td>{{$surat->sektor->nama_sektor}}</td>
                           <td>{{$surat->perihal_surat}}</td>
-                          <td>{{$surat->tanggal_pembuatan_surat}}</td>
-                          <td>{{$surat->created_at->format('d-m-Y') }}</td>
+                          <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
+                          <td>{{$surat->created_at->format('d M Y')}}</td>
                           <td>
 
                           	<!-- cancel peninjauan atasan -->
-                            <a href="{{ url('/surat/cancel/' . $surat->surat_id) }}">
+                            <a href="{{ url('/surat/cancel/' . $surat->id_surat) }}">
                             <button type="button" class="btn btn-sm btn-danger btn-flat">Cancel</button>
                             </a>
                           

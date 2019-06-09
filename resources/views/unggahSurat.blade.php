@@ -1,4 +1,4 @@
-@extends(Session::get('data')->jabatanable_type == "App\Staf" ? 'layouts.staff' : 'layouts.pimpinan')
+@extends(Session::get('data')->jabatanable_type == "App\Staf" ? 'layouts.staf' : 'layouts.pimpinan')
 
 @section('content')
 

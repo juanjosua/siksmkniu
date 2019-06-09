@@ -15,7 +15,13 @@
 
             <h2>* Email kamu : {{Session::get('email_pegawai')}}</h2>
             <h2>* Status Login : {{Session::get('login')}}</h2>
-            <h2>  auth test : {{ Session::get('data')->foto_pegawai }}</h2>
+            <h2>@foreach($surats as $surat)
+                    <tr>
+                        <td>{{$surat->instansi->nama_instansi}}</td>
+                        <td>{{  strtotime($surat->tanggal_surat) }}</td>
+                    </tr>
+                @endforeach
+            </h2>
             <a href="/logout" class="btn btn-primary btn-lg">Logout</a>
 
         </div>

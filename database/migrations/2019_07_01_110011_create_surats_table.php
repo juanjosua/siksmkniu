@@ -18,7 +18,8 @@ class CreateSuratsTable extends Migration
             $table->string('image');
             $table->string('no_surat');
             $table->string('perihal_surat');
-            $table->string('tanggal_surat');
+            $table->date('tanggal_surat');
+            $table->string('status_surat')->default('baru');
 
             //foreign key dari pimpinan
             $table->integer('id_pimpinan')->unsigned()->index()->nullable();

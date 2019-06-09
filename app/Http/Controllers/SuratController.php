@@ -6,6 +6,8 @@ use App\Surat;
 use App\Pegawai;
 use App\Instansi;
 use App\Sektor;
+use App\Disposisi;
+use App\Arsip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -63,7 +65,7 @@ class SuratController extends Controller
 
         //redirect halaman daftar surat masuk
         //redirect ke show surat
-        return redirect('/');
+        return redirect('/surat');
     }
 
     //show semua surat di database
@@ -72,15 +74,45 @@ class SuratController extends Controller
         //view semua daftar surat
         $pegawais = Pegawai::all();
         $surats = Surat::all();
-        $jumlahsuratunggah = $surats->where('status_surat', 1)->count(); //jumlah surat baru diupload
-        $jumlahsurattinjau = $surats->where('status_surat', 2)->count(); //jumlah surat sedang ditinjau
-        $jumlahsuratdisposisi = $surats->where('status_surat', 3)->count(); //jumlah surat disposisi
 
-        if (Session::get('data')->jabatan_pegawai == 'staff') {
-            return view('staff_suratBaru', compact('surats', 'jumlahsuratunggah', 'jumlahsurattinjau', 'jumlahsuratdisposisi'));    
+        $jumlahsuratbaru = $surats->where('status_surat', 'baru')->count(); //jumlah surat baru diupload
+        $jumlahsurattinjau = $surats->where('status_surat', 'tinjau')->count(); //jumlah surat sedang ditinjau
+
+        if (Session::get('data')->jabatanable_type == 'App\Staf') {
+            return view('staf_suratBaru', compact('surats', 'jumlahsuratbaru', 'jumlahsurattinjau'));    
         } else {
-            return view('pimpinan_suratBaru', compact('surats', 'jumlahsuratunggah', 'jumlahsurattinjau', 'jumlahsuratdisposisi', 'pegawais'));
+            return view('pimpinan_suratBaru', compact('surats', 'jumlahsuratbaru', 'jumlahsurattinjau', 'pegawais'));
         }
+    }
+
+    // proses surat untuk ditinjau pimpinan
+    public function prosesSurat($id)
+    {
+        //update surat
+        //update status surat
+        $surat = Surat::find($id);
+        $surat->status_surat = 'tinjau';
+        $surat->save();
+
+        return redirect()->back();
+
+    }
+
+    // cancel surat yang sudah mau ditinjau pimpinan
+    public function cancelSurat($id)
+    {
+        //menurunkan status surat
+        $surat = Surat::find($id);
+        $surat->status_surat = 'baru';
+        $surat->save();
+
+        return redirect()->back();
+    }
+
+    // download surat
+    public function downloadSurat($id)
+    {
+        
     }
 
     //get individual surat

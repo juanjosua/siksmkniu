@@ -1,4 +1,4 @@
-@extends(Session::get('data')->jabatan_pegawai == "staff" ? 'layouts.staff' : 'layouts.pimpinan')
+@extends(Session::get('data')->jabatan_pegawai == "staff" ? 'layouts.staf' : 'layouts.pimpinan')
 
 @section('content')
 <!-- Content Header (Page header) -->

@@ -14,11 +14,11 @@ class Disposisi extends Model
 
     public function pimpinan()
     {
-        return $this->belongsTo(Pimpinan::class);
+        return $this->belongsTo(Pimpinan::class, 'id_pimpinan');
     }
 
     public function staf()
     {
-        return $this->belongsTo(Staf::class);
+        return $this->belongsTo(Staf::class, 'id_staf');
     }
 }
