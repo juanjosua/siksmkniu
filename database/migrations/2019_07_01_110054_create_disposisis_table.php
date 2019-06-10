@@ -16,8 +16,7 @@ class CreateDisposisisTable extends Migration
         Schema::create('disposisis', function (Blueprint $table) {
             $table->increments('id_disposisi');
             $table->string('pesan_disposisi');
-            $table->timestamp('tanggal_disposisi', 0)->nullable();
-
+            $table->string('status_disposisi')->default('sedang');
             //foreign key dari pimpinan
             $table->integer('id_pimpinan')->unsigned()->index()->nullable();
             $table->foreign('id_pimpinan')->references('id_pimpinan')->on('pimpinans');
@@ -25,6 +24,12 @@ class CreateDisposisisTable extends Migration
             //foreign key dari staf
             $table->integer('id_staf')->unsigned()->index()->nullable();
             $table->foreign('id_staf')->references('id_staf')->on('stafs');
+
+            //foreign key dari surat
+            $table->integer('id_surat')->unsigned()->index()->nullable();
+            $table->foreign('id_surat')->references('id_surat')->on('surats');
+
+            $table->timestamps();
         });
     }
 

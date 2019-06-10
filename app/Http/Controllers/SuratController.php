@@ -71,8 +71,9 @@ class SuratController extends Controller
     //show semua surat di database
     public function showSurat(surat $surat)
     {
+        //view semua pegawai kecuali yang sedang login
+        $pegawais = Pegawai::all()->except(Session::get('data')->id_pegawai);
         //view semua daftar surat
-        $pegawais = Pegawai::all();
         $surats = Surat::all();
 
         $jumlahsuratbaru = $surats->where('status_surat', 'baru')->count(); //jumlah surat baru diupload

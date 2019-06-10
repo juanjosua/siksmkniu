@@ -6,95 +6,57 @@ use App\Disposisi;
 use App\Surat;
 use App\Pegawai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class DisposisiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function indexDisposisi()
+    //list semua disposisi
+    public function index(disposisi $disposisi)
     {
-        //
+        $disposisis = Disposisi::all();
+        $jumlahdisposisi = Disposisi::all()->count();
+        return view('disposisiSurat', compact('disposisis', 'jumlahdisposisi'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createDisposisi($id)
+    //simpan disposisi baru
+    public function storeDisposisi(Request $request, $id)
     {
-        //tambah disposisi baru
-        $surat = Surat::find($id);
-        $surat->status_surat++;
-        $surat->save();
+        //get id staf tujuan disposisi
+        $id_staf = Pegawai::all()->where('nama_pegawai', $request->nama_pegawai)->first()->jabatanable_id;
 
         Disposisi::create([
-          'no_surat'                => $request->no_surat,
-          'pengirim_surat'          => $request->pengirim_surat,
-          'tujuan_surat'            => $request->tujuan_surat,
-          'perihal_surat'           => $request->perihal_surat,
-          'jenis_surat'             => $request->jenis_surat,
-          'tanggal_pembuatan_surat' => $request->tanggal_pembuatan_surat,
-          'pengunggah_surat'        => $pengunggah
+          'pesan_disposisi'         => $request->pesan_disposisi,
+          'id_pimpinan'             => Session::get('data')->jabatanable_id,
+          'id_staf'                 => $id_staf,
+          'id_surat'                => $id
         ]);
 
         return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function storeDisposisi(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\disposisi  $disposisi
-     * @return \Illuminate\Http\Response
-     */
+    //buka salah satu disposisi (details)
     public function showDisposisi(disposisi $disposisi)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\disposisi  $disposisi
-     * @return \Illuminate\Http\Response
-     */
+    //form ubah disposisi
     public function editDisposisi(disposisi $disposisi)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\disposisi  $disposisi
-     * @return \Illuminate\Http\Response
-     */
-    public function updateDisposisi(Request $request, disposisi $disposisi)
+    //update disposisi sudah selesai
+    public function updateDisposisi($id)
     {
-        //
+        $disposisi = Disposisi::find($id);
+        $disposisi->status_disposisi = 'selesai';
+        $disposisi->save();
+
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\disposisi  $disposisi
-     * @return \Illuminate\Http\Response
-     */
+    //hapus disposisi
     public function destroyDisposisi(disposisi $disposisi)
     {
         //

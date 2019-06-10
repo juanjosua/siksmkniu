@@ -51,7 +51,10 @@ Route::get('/surat/edit/{id}', 'SuratController@editSurat');   //buka halaman ed
 Route::patch('/surat/edit/update/{id}', 'SuratController@updateSurat'); //menyimpan hasil editing surat
 
 //rute disposisis
-Route::get('/disposisi', 'DisposisiController@');
+Route::get('/disposisi', 'DisposisiController@index');
+Route::get('/disposisi/detail/{id}', 'DisposisiController@showDisposisi'); //detail disposisi
+Route::get('/disposisi/selesai/{id}', 'DisposisiController@updateDisposisi'); //selesai salah satu disposisi
+Route::post('/disposisi/baru/{id}', 'DisposisiController@storeDisposisi'); //pimpinan memberikan dispo baru
 
 //rute arsip
 Route::get('/arsip', 'ArsipController@');

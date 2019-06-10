@@ -94,7 +94,7 @@
                       <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
-                              <label class="pull-right">Tujuan Surat :</label>
+                              <label class="pull-right">Tujuan Sektor :</label>
                             </div>                                    
                           </div>
                           <div class="col-md-6">

@@ -30,13 +30,13 @@
                 <table id="example1" class="table no-margin">
                   <thead>
                   <tr>
-                    <th>Nomor</th>
+                    <th>No. Surat</th>
                     <th>Pengirim</th>
                     <th>Tujuan</th>
                     <th>Perihal</th>
-                    <th>Tanggal Pembuatan</th>
+                    <th>Tanggal Surat</th>
                     <th>Tanggal Unggah</th>
-                    <th>Tinjauan</th>
+                    <th>Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -106,7 +106,7 @@
                     <th>Pengirim</th>
                     <th>Tujuan</th>
                     <th>Perihal</th>
-                    <th>Tanggal Pembuatan</th>
+                    <th>Tanggal Surat</th>
                     <th>Tanggal Unggah</th>
                     <th>Aksi</th>
                   </tr>

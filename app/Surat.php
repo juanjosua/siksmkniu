@@ -31,4 +31,9 @@ class Surat extends Model
     {
         return $this->belongsTo(Sektor::class, 'id_sektor');
     }
+
+    public function disposisi()
+    {
+        return $this->hasOne(Disposisi::class, 'id_disposisi');
+    }
 }
