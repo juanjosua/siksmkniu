@@ -54,7 +54,7 @@ Route::patch('/surat/edit/update/{id}', 'SuratController@updateSurat'); //menyim
 Route::get('/disposisi', 'DisposisiController@index');
 Route::get('/disposisi/detail/{id}', 'DisposisiController@showDisposisi'); //detail disposisi
 Route::get('/disposisi/selesai/{id}', 'DisposisiController@updateDisposisi'); //selesai salah satu disposisi
-Route::post('/disposisi/baru/{id}', 'DisposisiController@storeDisposisi'); //pimpinan memberikan dispo baru
+Route::post('/disposisi/baru/', 'DisposisiController@storeDisposisi'); //pimpinan memberikan dispo baru
 
 //rute arsip
 Route::get('/arsip', 'ArsipController@');

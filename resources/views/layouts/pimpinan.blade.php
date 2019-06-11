@@ -272,6 +272,12 @@
               })
             </script>
             <script src="{{ asset('beranda/upload-file.js') }}"></script>
+            <script type="text/javascript">
+              $('#myModal').on('show.bs.modal', function(e) {
+                  var id_surat = $(e.relatedTarget).data('userid');
+                  $(e.currentTarget).find('input[name="id_surat"]').val(id_surat);
+              });
+            </script>
             <!-- Script End -->
 
           </body>

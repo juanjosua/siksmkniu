@@ -19,7 +19,7 @@ class DisposisiController extends Controller
     }
 
     //simpan disposisi baru
-    public function storeDisposisi(Request $request, $id)
+    public function storeDisposisi(Request $request)
     {
         //get id staf tujuan disposisi
         $id_staf = Pegawai::all()->where('nama_pegawai', $request->nama_pegawai)->first()->jabatanable_id;
@@ -28,8 +28,13 @@ class DisposisiController extends Controller
           'pesan_disposisi'         => $request->pesan_disposisi,
           'id_pimpinan'             => Session::get('data')->jabatanable_id,
           'id_staf'                 => $id_staf,
-          'id_surat'                => $id
+          'id_surat'                => $request->id_surat
         ]);
+
+        //update status surat
+        $surat = Surat::find($request->id_surat);
+        $surat->status_surat = 'disposisi';
+        $surat->save();
 
         return redirect()->back();
     }

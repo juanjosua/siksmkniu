@@ -116,7 +116,7 @@
                             <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
                             <td>{{$surat->created_at->format('d M Y')}}</td>
                             <td>
-                                <a data-target="#myModal" role="button" data-toggle="modal">
+                                <a data-target="#myModal" role="button" data-toggle="modal" data-userid="<?php echo $surat->id_surat; ?>">
                                   <button type="button" class="btn btn-sm btn-primary btn-flat">Disposisi</button>
                                 </a>
 
@@ -166,7 +166,7 @@
 @endsection
 
 <!-- dropdown disposisi start -->
-<form action="{{ url('/disposisi/baru/' . $surat->id_surat) }}" method="POST" enctype="multipart/form-data" >
+<form action="{{ url('/disposisi/baru/') }}" method="POST" enctype="multipart/form-data" >
 {{ csrf_field() }}
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -197,6 +197,7 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label class="pull-right">Pesan Disposisi :</label>
+                      <input type="hidden" name="id_surat" value="">
                     </div>                                      
                   </div>
                   <div class="col-md-6">
