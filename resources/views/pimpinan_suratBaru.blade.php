@@ -120,15 +120,15 @@
                                   <button type="button" class="btn btn-sm btn-primary btn-flat">Disposisi</button>
                                 </a>
 
-                                <a href="{{ url('/surat/arsip/' . $surat->surat_id) }}">
+                                <a href="{{ url('/surat/arsip/' . $surat->id_surat) }}">
                                   <button type="button" class="btn btn-sm btn-success btn-flat">Arsip</button>
                                 </a>
 
-                                <a href="{{ url('/surat/detail/' . $surat->surat_id) }}">
+                                <a href="{{ url('/surat/detail/' . $surat->id_surat) }}">
                                   <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                                 </a>
                                 
-                                <a href="{{ url('/surat/cancel/' . $surat->surat_id) }}">
+                                <a href="{{ url('/surat/cancel/' . $surat->id_surat) }}">
                                   <button type="button" class="btn btn-sm btn-danger btn-flat">Cancel</button>
                                 </a>
                             </td>

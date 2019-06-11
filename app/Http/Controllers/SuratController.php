@@ -8,6 +8,7 @@ use App\Instansi;
 use App\Sektor;
 use App\Disposisi;
 use App\Arsip;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -121,30 +122,54 @@ class SuratController extends Controller
     {
         //menampilkan detil informasi setiap surat
         $surat = Surat::find($id);
-        return view('detailSurat', compact('surat'));
+        //get semua pegawai yang pimpinan maupun staf (dipisah karen id pimpinan dan staf bisa sama)
+        $pimpinans = DB::table('pegawais')->where('jabatanable_type', 'App\Pimpinan')->get();
+        $stafs = DB::table('pegawais')->where('jabatanable_type', 'App\Staf')->get();
+        //cocokkan id pegawai dengan id pimpinan atau id staf di surat
+        $pimpinan = $pimpinans->where('jabatanable_id', $surat->id_pimpinan);
+        $staf = $stafs->where('jabatanable_id', $surat->id_staf);
+
+        $id_current_user = Session::get('data')->jabatanable_id;
+        return view('detailSurat', compact('surat', 'staf', 'pimpinan', 'id_current_user'));
     }
 
     //form edit surat
     public function editSurat($id)
     {
         //halaman edit surat
+        $instansis  = Instansi::all();
+        $sektors    = Sektor::all();
         $surat = Surat::find($id);
-        return view('editSurat', compact('surat'));
+        return view('editSurat', compact('surat', 'instansis', 'sektors'));
 
     }
 
     //save editan surat
     public function updateSurat(Request $request, $id)
     {
+        //check if instansi already exists
+        $instansi = Instansi::all()->where('nama_instansi', $request->input('pengirim_surat'))->first();
+        //get sektor
+        $sektor = Sektor::all()->where('nama_sektor', $request->input('tujuan_surat'))->first();
+        //buat instansi baru jika belum ada
+        if (!$instansi) {
+            Instansi::create([
+                'nama_instansi' => $request->input('pengirim_surat')
+            ]);
+        };
+
+        //foreign key
+        $id_sektor      = $sektor->id_sektor;
+        $id_instansi    = $instansi->id_instansi;
+
         //update suratnya
         $surat = Surat::find($id);
         $surat->update([
           'no_surat'                => $request->input('no_surat'),
-          'pengirim_surat'          => $request->input('pengirim_surat'),
-          'tujuan_surat'            => $request->input('tujuan_surat'),
           'perihal_surat'           => $request->input('perihal_surat'),
-          'jenis_surat'             => $request->input('jenis_surat'),
-          'tanggal_pembuatan_surat' => $request->input('tanggal_pembuatan_surat'),
+          'tanggal_surat'           => $request->input('tanggal_surat'),
+          'id_sektor'               => $id_sektor,
+          'id_instansi'             => $id_instansi,
         ]);
 
         return redirect('/surat/detail/' . $id);

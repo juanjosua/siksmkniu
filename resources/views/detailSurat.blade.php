@@ -1,4 +1,4 @@
-@extends(Session::get('data')->jabatan_pegawai == "staff" ? 'layouts.staf' : 'layouts.pimpinan')
+@extends(Session::get('data')->jabatanable_type == "App\Staf" ? 'layouts.staf' : 'layouts.pimpinan')
 
 @section('content')
 <!-- Content Header (Page header) -->
@@ -46,15 +46,15 @@
       From
       <br>
       <address>
-        <strong>{{$surat->pengirim_surat}}</strong><br>
+        <strong>{{$surat->instansi->nama_instansi}}</strong><br>
       </address>
     </div>
     <!-- /.col -->
     <div class="col-sm-3 invoice-col">
-      To
+      To Sektor
       <br>
       <address>
-        <strong>{{$surat->tujuan_surat}}</strong><br>
+        <strong>{{$surat->sektor->nama_sektor}}</strong><br>
       </address>
     </div>
     <!-- /.col -->
@@ -62,10 +62,17 @@
       Details
       <br>
       <address>
-      <strong>Jenis:</strong> {{$surat->jenis_surat}}<br>
-      <strong>Nomor Surat:</strong> {{$surat->no_surat}}<br>
-      <strong>Tanggal Pembuatan:</strong> {{$surat->tanggal_pembuatan_surat}}<br>
-      <strong>Pengunggah:</strong> {{$surat->pegawai->nama_pegawai}}<br>
+      <strong>Nomor Surat :</strong> {{$surat->no_surat}}<br>
+      <strong>Tanggal Surat :</strong> {{$surat->tanggal_surat}}<br>
+      <?php if ($surat->id_pimpinan == NULL): ?>
+        @foreach($staf as $s)
+        <strong>Pengunggah :</strong> {{$s->nama_pegawai}}<br>
+        @endforeach
+      <?php else: ?>
+        @foreach($pimpinan as $p)
+        <strong>Pengunggah :</strong> {{$p->nama_pegawai}}<br>
+        @endforeach
+      <?php endif ?>
     </address>
     </div>
     <!-- /.col -->
@@ -76,17 +83,20 @@
   <!-- Download & Download Button -->
   <div class="row no-print">
     <div class="col-xs-12">
-    <!-- untuk kondisi memunculkan button edit -->
-    @if(Session::get('data')->jabatan_pegawai == "pimpinan" && $surat->status_surat == 1 || $surat->status_surat == 2)
-    <a href="{{ url('surat/edit/' . $surat->surat_id) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
-    @elseif(Session::get('data')->jabatan_pegawai == "staff" && $surat->status_surat == 3)
-    <a class="btn btn-warning pull-left" disabled="disabled"><i class="fa fa-edit"></i> Edit</a>
-    @elseif(Session::get('data')->jabatan_pegawai == "pimpinan")
-    <a href="{{ url('surat/edit/' . $surat->surat_id) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
+
+    <!-- user yang unggah -->
+    @if($id_current_user == $surat->id_staf)
+    <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
+    <!-- pimpinan -->
+    @elseif(Session::get('data')->jabatanable_type == 'App\Pimpinan')
+    <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
+    <!-- bukam ke2nya -->
     @else
     <a class="btn btn-dark pull-left" disabled="disabled"><i class="fa fa-edit"></i> Edit</a>
     @endif
-      <a href="#" target="_blank" class="btn btn-success pull-right"><i class="fa fa-download"></i> Download</a>
+
+    <!-- tombol download -->
+    <a href="{{ url('surat/download/' . $surat->id_surat) }}" target="_blank" class="btn btn-success pull-right"><i class="fa fa-download"></i>Download</a>
     </div>
   </div>
 
