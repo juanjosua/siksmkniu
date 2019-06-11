@@ -9,9 +9,6 @@
 
   <div class="col-md-12">
     <div class="nav-tabs-custom">
-      <ul class="nav nav-tabs">
-        <li><a href="#disposisi" data-toggle="tab">Disposisi</a></li>
-      </ul>
       <div class="tab-content">
 
         <!-- Disposisi Tab Start -->
@@ -44,16 +41,21 @@
                           <tr>
                             <td>{{$disposisi->surat->no_surat}}</td>
                             <td>{{$disposisi->surat->perihal_surat}}</td>
-                            <td>{{$disposisi->surat->created_at}}</td>
+                            <td>{{date('d M Y', strtotime($disposisi->surat->created_at))}}</td>
                             <td>{{$disposisi->surat->sektor->nama_sektor}}</td>
-                            <td>{{$disposisi->pimpinan->pegawais->nama_pegawai}}</td>
+                            <div style="display: none;">
+                            {{ $nama_pimpinan = $pimpinans->where('jabatanable_id', $disposisi->id_pimpinan) }}
+                            </div>
+                            @foreach($nama_pimpinan as $np)
+                            <td>{{$np->nama_pegawai}}</td>
+                            @endforeach
                             <td>{{$disposisi->pesan_disposisi}}</td>
                             <td>
                               <a href="{{ url('/disposisi/detail/' . $disposisi->id_disposisi) }}">
                                 <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                               </a>
                               <a href="{{ url('/disposisi/selesai/' . $disposisi->id_disposisi) }}">
-                                <button type="button" class="btn btn-sm btn-warning btn-flat">Selesai</button>
+                                <button type="button" class="btn btn-sm btn-success btn-flat">Selesai</button>
                               </a>
                             </td>
                           </tr>

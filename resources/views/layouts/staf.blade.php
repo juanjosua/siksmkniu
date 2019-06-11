@@ -172,7 +172,7 @@
                   </li>
 
                   <li>
-                    <a href="{{ url('/disposisiSurat') }}">
+                    <a href="{{ url('/disposisi') }}">
                       <i class="fa fa-folder"></i> <span>Disposisi</span>
                     </a>
                   </li>

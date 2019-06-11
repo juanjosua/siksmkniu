@@ -12,10 +12,22 @@ class DisposisiController extends Controller
 {
     //list semua disposisi
     public function index(disposisi $disposisi)
-    {
-        $disposisis = Disposisi::all();
-        $jumlahdisposisi = Disposisi::all()->count();
-        return view('disposisiSurat', compact('disposisis', 'jumlahdisposisi'));
+    {   
+        //check if staf logged in
+        if (Session::get('data')->jabatanable_type == 'App\Staf') {
+            //get disposisi yang sesuai dengan staf yang sedang lagi
+            $disposisis = Disposisi::all()->where('id_staf', Session::get('data')->jabatanable_id);
+            $jumlahdisposisi = $disposisis->count(); //hitung semua disposisi
+
+        } elseif (Session::get('data')->jabatanable_type == 'App\Pimpinan') {
+            $disposisis = Disposisi::all(); //get semua disposisi
+            $jumlahdisposisi = Disposisi::all()->count(); //hitung semua disposisi
+        } else {
+            $jumlahdisposisi = 0;
+        }
+
+        $pimpinans = Pegawai::all()->where('jabatanable_type', 'App\Pimpinan');
+        return view('disposisiSurat', compact('disposisis', 'jumlahdisposisi', 'pimpinans'));
     }
 
     //simpan disposisi baru
