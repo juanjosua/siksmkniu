@@ -112,7 +112,7 @@
                           <!-- Menu Footer-->
                           <li class="user-footer">
                             <div class="pull-left">
-                              <a href="{{ url('/profile') }}" class="btn btn-default btn-flat">Profile</a>
+                              <a href="{{ url('/profil/edit') }}" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                               <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
@@ -159,7 +159,7 @@
                     <li class="header">MAIN MENU</li>
 
                     <li>
-                      <a href="{{ url('/unggahSurat') }}">
+                      <a href="{{ url('/unggah') }}">
                         <i class="fa fa-upload"></i> <span>Unggah Surat</span>
                       </a>
                     </li>
@@ -177,7 +177,7 @@
                     </li>
 
                     <li>
-                      <a href="{{ url('/arsipSurat') }}">
+                      <a href="{{ url('/arsip') }}">
                         <i class="fa fa-folder"></i> <span>Arsip</span>
                       </a>
                     </li>
@@ -273,10 +273,26 @@
             </script>
             <script src="{{ asset('beranda/upload-file.js') }}"></script>
             <script type="text/javascript">
-              $('#myModal').on('show.bs.modal', function(e) {
+              $('#modal-default').on('show.bs.modal', function(e) {
                   var id_surat = $(e.relatedTarget).data('userid');
                   $(e.currentTarget).find('input[name="id_surat"]').val(id_surat);
               });
+            </script>
+            <script type="text/javascript">
+              $('#modal-danger').on('show.bs.modal', function(e) {
+                  var id_disposisi = $(e.relatedTarget).data('userid');
+                  $(e.currentTarget).find('input[name="id_disposisi"]').val(id_disposisi);
+              });
+            </script>
+            <script type='text/javascript'>
+                function check(input) {
+                    if (input.value != document.getElementById('password').value) {
+                        input.setCustomValidity('Password tidak sama.');
+                    } else {
+                        // input is valid -- reset the error message
+                        input.setCustomValidity('');
+                    }
+                }
             </script>
             <!-- Script End -->
 

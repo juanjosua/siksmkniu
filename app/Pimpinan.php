@@ -9,7 +9,7 @@ class Pimpinan extends Pegawai
     protected $table = 'pimpinans';
     protected $primaryKey = 'id_pimpinan';
     protected $fillable = [
-        
+        'id_admin'
     ];
 
     public function admin()

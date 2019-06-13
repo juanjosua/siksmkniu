@@ -20,7 +20,7 @@
           <div class="row">
             <div class="col-md-12">
 
-              <form action="{{ url('/unggahSurat/post') }}" method="POST" enctype="multipart/form-data" >
+              <form action="{{ url('/unggah/baru') }}" method="POST" enctype="multipart/form-data" >
                 {{ csrf_field() }}
                 <div class="container">
                   <div class="row">

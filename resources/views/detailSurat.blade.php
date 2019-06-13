@@ -34,7 +34,7 @@
     <div class="col-xs-12">
       <h2 class="page-header">
         <i class="fa fa-file-text"></i> {{$surat->perihal_surat}}
-        <small class="pull-right">Date: {{$surat->created_at->format('d-m-Y') }}</small>
+        <small class="pull-right">Tanggal Unggah : {{$surat->created_at->format('d-m-Y') }}</small>
       </h2>
     </div>
     <!-- /.col -->

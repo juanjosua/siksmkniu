@@ -42,9 +42,7 @@
                   <tbody>
                   <!-- kondisi jika surat tidak ada di database -->
                   @if($jumlahsuratbaru !== 0)
-                    <!-- foreach untuk memanggil seluruh surat yang ada di database dan looping -->
                     @foreach($surats as $surat)
-                      <!-- kondisi if untuk menentukan surat yang statusnya fresh dan not archived -->
                       @if($surat->status_surat == 'baru')
                         <tr>
                           <td>{{$surat->no_surat}}</td>
@@ -64,7 +62,9 @@
                             <a href="{{ url('/surat/detail/' . $surat->id_surat) }}">
                             <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                             </a>
-                      
+                            
+                            <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Hapus</button>
+
                           </td>
                         </tr>
                       @endif
@@ -159,6 +159,39 @@
   </div>
 
   <!-- Navigation Tab End -->
+
+@if($jumlahsuratbaru !== 0)
+@foreach($surats as $surat)
+@if($surat->status_surat == 'baru')
+  <!-- Modal Hapus Disposisi Start -->
+<form action="{{ url('/arsip/destroy/' . $arsip->id_arsip) }}" method="POST">
+  {{ csrf_field() }}
+  {{ method_field('DELETE') }}
+  <div class="modal modal-danger fade" id="modal-danger">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><b>Hapus</b> Arsip</h4>
+        </div>
+        <div class="modal-body">
+          <p>Apakah Anda yakin akan <b>Menghapus Permanen</b> Surat ini ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-outline">Ya</button>
+          <button type="button" class="btn btn-outline" data-dismiss="modal">Tidak</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</form>
+  <!-- Modal End -->
+@endif
+@endforeach
+@endif
 
 </section>
 <!-- /.content -->

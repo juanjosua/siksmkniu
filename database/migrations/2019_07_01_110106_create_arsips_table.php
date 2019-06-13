@@ -15,11 +15,16 @@ class CreateArsipsTable extends Migration
     {
         Schema::create('arsips', function (Blueprint $table) {
             $table->increments('id_arsip');
-            $table->timestamp('tanggal_arsip', 0)->nullable();
 
             //foreign key dari pimpinan
             $table->integer('id_pimpinan')->unsigned()->index()->nullable();
             $table->foreign('id_pimpinan')->references('id_pimpinan')->on('pimpinans');
+
+            //foreign key dari surat
+            $table->integer('id_surat')->unsigned()->index()->nullable();
+            $table->foreign('id_surat')->references('id_surat')->on('surats');
+
+            $table->timestamps();
         });
     }
 

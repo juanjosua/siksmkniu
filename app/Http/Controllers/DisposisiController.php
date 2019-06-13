@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Disposisi;
 use App\Surat;
 use App\Pegawai;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -15,15 +16,14 @@ class DisposisiController extends Controller
     {   
         //check if staf logged in
         if (Session::get('data')->jabatanable_type == 'App\Staf') {
-            //get disposisi yang sesuai dengan staf yang sedang lagi
+            //get disposisi yang sesuai dengan staf yang sedang login
             $disposisis = Disposisi::all()->where('id_staf', Session::get('data')->jabatanable_id);
             $jumlahdisposisi = $disposisis->count(); //hitung semua disposisi
-
         } elseif (Session::get('data')->jabatanable_type == 'App\Pimpinan') {
             $disposisis = Disposisi::all(); //get semua disposisi
             $jumlahdisposisi = Disposisi::all()->count(); //hitung semua disposisi
         } else {
-            $jumlahdisposisi = 0;
+            $jumlahdisposisi = 0; //bukan staf yang punya disposisi atau pimpinan
         }
 
         $pimpinans = Pegawai::all()->where('jabatanable_type', 'App\Pimpinan');
@@ -52,12 +52,20 @@ class DisposisiController extends Controller
     }
 
     //buka salah satu disposisi (details)
-    public function showDisposisi(disposisi $disposisi)
+    public function detailDisposisi($id)
     {
-        //
+        $pimpinans = Pegawai::all()->where('jabatanable_type', 'App\Pimpinan');
+        $stafs = Pegawai::all()->where('jabatanable_type', 'App\Staf');
+
+        $id_surat = Disposisi::find($id)->surat->id_surat;
+        //menampilkan detil informasi surat yang didisposisi
+        $surat = Surat::all()->where('id_surat', $id_surat)->first();
+
+        $disposisi = Disposisi::find($id);
+        return view('detailDisposisi', compact('surat', 'disposisi', 'pimpinans', 'stafs'));
     }
 
-    //form ubah disposisi
+    //ubah disposisi
     public function editDisposisi(disposisi $disposisi)
     {
         //
@@ -67,15 +75,26 @@ class DisposisiController extends Controller
     public function updateDisposisi($id)
     {
         $disposisi = Disposisi::find($id);
-        $disposisi->status_disposisi = 'selesai';
-        $disposisi->save();
+        $id_surat = $disposisi->surat->id_surat;
+        $surat = Surat::find($id_surat);
+        $surat->status_surat = 'selesai';
+        $surat->save();
 
         return redirect()->back();
     }
 
     //hapus disposisi
-    public function destroyDisposisi(disposisi $disposisi)
+    public function destroyDisposisi($id)
     {
-        //
+        $disposisi = Disposisi::find($id);
+        $id_surat = $disposisi->surat->id_surat;
+        $surat = Surat::find($id_surat);
+        $surat->status_surat = 'tinjau';
+        $surat->save();
+
+        //hapus disposisi
+        $disposisi->delete();
+
+        return redirect()->back();
     }
 }

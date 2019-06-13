@@ -40,10 +40,12 @@ class SuratController extends Controller
             Instansi::create([
                 'nama_instansi' => $request->pengirim_surat
             ]);
-        };
+            $instansi_baru = Instansi::all()->where('nama_instansi', $request->pengirim_surat)->first();
+            $id_instansi = $instansi_baru->id_instansi;
+        } else { $id_instansi = $instansi->id_instansi; }
+        
         //foreign key
         $id_sektor      = $sektor->id_sektor;
-        $id_instansi    = $instansi->id_instansi;
 
         if ($jabatan == 'App\Staf') {
             $id_staf = $id_jabatan;

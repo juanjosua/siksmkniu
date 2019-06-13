@@ -3,83 +3,73 @@
 namespace App\Http\Controllers;
 
 use App\Arsip;
+use App\Disposisi;
+use App\Surat;
+use App\Pegawai;
+use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ArsipController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function indexArsip()
+    //view semua arsip
+    public function index()
     {
-        //
+        $arsips = Arsip::all();
+        $jumlaharsip = $arsips->count();
+        return view('arsipSurat', compact('arsips', 'jumlaharsip'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createArsip()
+    //arsip baru
+    public function createArsip($id)
     {
-        //
+        //get id surat
+        $disposisi = Disposisi::find($id);
+        $id_surat = $disposisi->surat->id_surat;
+
+        Arsip::create([
+          'id_pimpinan'             => Session::get('data')->jabatanable_id,
+          'id_surat'                => $id_surat
+        ]);
+
+        //update status surat
+        $surat = Surat::find($id_surat);
+        $surat->status_surat = 'arsip';
+        $surat->save();
+
+        //hapus disposisi
+        $disposisi->delete();
+
+        return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function storeArsip(Request $request)
+    //detail arsip
+    public function detailArsip($id)
     {
-        //
+        $pimpinans = Pegawai::all()->where('jabatanable_type', 'App\Pimpinan');
+        $stafs = Pegawai::all()->where('jabatanable_type', 'App\Staf');
+
+        $id_surat = Arsip::find($id)->surat->id_surat;
+        //menampilkan detil informasi surat yang didisposisi
+        $surat = Surat::all()->where('id_surat', $id_surat)->first();
+
+        $disposisi = Disposisi::find($id);
+        $arsip = Arsip::find($id);
+        return view('detailArsip', compact('surat', 'disposisi', 'arsip', 'pimpinans', 'stafs'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\arsip  $arsip
-     * @return \Illuminate\Http\Response
-     */
-    public function showArsip(arsip $arsip)
+    //hapus arsip
+    public function destroyArsip($id)
     {
-        //
-    }
+        $arsip = Arsip::find($id);
+        $id_surat = $arsip->surat->id_surat;
+        $surat = Surat::find($id_surat);
+        $surat->status_surat = 'tinjau';
+        $surat->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\arsip  $arsip
-     * @return \Illuminate\Http\Response
-     */
-    public function editArsip(arsip $arsip)
-    {
-        //
-    }
+        //hapus disposisi
+        $arsip->delete();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\arsip  $arsip
-     * @return \Illuminate\Http\Response
-     */
-    public function updateArsip(Request $request, arsip $arsip)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\arsip  $arsip
-     * @return \Illuminate\Http\Response
-     */
-    public function destroyArsip(arsip $arsip)
-    {
-        //
+        return redirect()->back();
     }
 }

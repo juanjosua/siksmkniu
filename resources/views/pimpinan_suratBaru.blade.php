@@ -42,7 +42,6 @@
                   <tbody>
                     @if($jumlahsuratbaru !== 0)
                       @foreach($surats as $surat)
-                      <!-- kondisi if untuk menentukan surat yang statusnya fresh dan not archived -->
                         @if($surat->status_surat == 'baru')
                           <tr>
                             <td>{{$surat->no_surat}}</td>
@@ -52,12 +51,16 @@
                             <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
                             <td>{{$surat->created_at->format('d M Y')}}</td>
                             <td>
-                                <a href="{{ url('/surat/proses/' . $surat->id_surat) }}">
+                              <a href="{{ url('/surat/proses/' . $surat->id_surat) }}">
                               <button type="button" class="btn btn-sm btn-primary btn-flat">Proses</button>
                               </a>
+
                               <a href="{{ url('/surat/detail/' . $surat->id_surat) }}">
                               <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                               </a>
+
+                              <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Hapus</button>
+
                             </td>
                           </tr>
                         @endif
@@ -106,7 +109,6 @@
                   <tbody>
                     @if($jumlahsurattinjau !== 0)
                       @foreach($surats as $surat)
-                      <!-- kondisi if untuk menentukan surat yang statusnya review dan not archived -->
                         @if($surat->status_surat == 'tinjau')
                           <tr>
                             <td>{{$surat->no_surat}}</td>
@@ -116,11 +118,11 @@
                             <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
                             <td>{{$surat->created_at->format('d M Y')}}</td>
                             <td>
-                                <a data-target="#myModal" role="button" data-toggle="modal" data-userid="<?php echo $surat->id_surat; ?>">
+                                <a data-target="#modal-default" data-toggle="modal" data-userid="<?php echo $surat->id_surat; ?>">
                                   <button type="button" class="btn btn-sm btn-primary btn-flat">Disposisi</button>
                                 </a>
 
-                                <a href="{{ url('/surat/arsip/' . $surat->id_surat) }}">
+                                <a href="{{ url('/arsip/baru/' . $surat->id_surat) }}">
                                   <button type="button" class="btn btn-sm btn-success btn-flat">Arsip</button>
                                 </a>
 
@@ -161,21 +163,23 @@
 
   <!-- Navigation Tab End -->
 
-</section>
-<!-- /.content -->
-@endsection
-
-<!-- dropdown disposisi start -->
+@if($jumlahsurattinjau !== 0)
+@foreach($surats as $surat)
+@if($surat->status_surat == 'tinjau')
+<!-- Modal Start -->
 <form action="{{ url('/disposisi/baru/') }}" method="POST" enctype="multipart/form-data" >
 {{ csrf_field() }}
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 id="myModalLabel">Lembar Disposisi : </h3>
-            </div>
-            <div class="modal-body">
-              <!-- tujuan disposisi -->
+  <div class="modal fade" id="modal-default">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Lembar Disposisi</h4>
+              </div>
+              <div class="modal-body">
+                
+                <!-- tujuan disposisi -->
                 <div class="row">
                   <div class="col-md-2">
                     <div class="form-group">
@@ -197,7 +201,6 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label class="pull-right">Pesan Disposisi :</label>
-                      <input type="hidden" name="id_surat" value="">
                     </div>                                      
                   </div>
                   <div class="col-md-6">
@@ -206,14 +209,57 @@
                     </div>                   
                   </div>
                 </div>
-            </div>
 
-            <div class="modal-footer">
-              <button class="btn btn-sm btn-dark btn-flat" data-dismiss="modal" aria-hidden="true">Close</button>
-              <button type="submit" class="btn btn-sm btn-primary btn-flat">Save changes</button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary">Kirim Disposisi</button>
+              </div>
             </div>
+            <!-- /.modal-content -->
           </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+</form>
+  <!-- Modal End -->
+@endif
+@endforeach
+@endif
+
+@if($jumlahsuratbaru !== 0)
+@foreach($surats as $surat)
+@if($surat->status_surat == 'baru')
+  <!-- Modal Hapus Disposisi Start -->
+<form action="{{ url('/arsip/destroy/' . $arsip->id_arsip) }}" method="POST">
+  {{ csrf_field() }}
+  {{ method_field('DELETE') }}
+  <div class="modal modal-danger fade" id="modal-danger">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><b>Hapus</b> Arsip</h4>
+        </div>
+        <div class="modal-body">
+          <p>Apakah Anda yakin akan <b>Menghapus Permanen</b> Surat ini ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-outline">Ya</button>
+          <button type="button" class="btn btn-outline" data-dismiss="modal">Tidak</button>
+        </div>
       </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
   </div>
 </form>
-<!-- dropdown disposisi end -->
+  <!-- Modal End -->
+@endif
+@endforeach
+@endif
+
+</section>
+<!-- /.content -->
+@endsection
