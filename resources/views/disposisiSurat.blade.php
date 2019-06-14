@@ -7,18 +7,15 @@
 
   <!-- Navigation Tab Start -->
 
-  <div class="col-md-12">
-    <div class="nav-tabs-custom">
-      <div class="tab-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Disposisi</h3>
 
-        <!-- Disposisi Tab Start -->
-
-        <div class="active tab-pane" id="disposisi">
-
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Disposisi</h3>
-            </div>
+          <div class="box-tools pull-right">
+          </div>
+        </div>
             <!-- /.box-header -->
 
             <div class="box-body">
@@ -38,6 +35,9 @@
                   <tbody>
                     @if($jumlahdisposisi !== 0)
                       @foreach($disposisis as $disposisi)
+                      <!-- untuk menampilkan disposisi yang belum selesai saja -->
+                        @if($disposisi->surat->status_surat != 'arsip')
+
                           <tr>
                             <td>{{$disposisi->surat->no_surat}}</td>
                             <td>{{str_limit($disposisi->surat->perihal_surat, 15, '...')}}</td>
@@ -54,22 +54,23 @@
                               <a href="{{ url('/disposisi/detail/' . $disposisi->id_disposisi) }}">
                                 <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                               </a>
+                              <!-- tombol selesai PIMPINAN -->
                             @if(Session::get('data')->jabatanable_type == 'App\Pimpinan')
 
                               @if($disposisi->surat->status_surat != 'selesai')
-                            <!-- tombol selesai pimpinan ketika belum selesai dikerjakan staf -->
+                              <!-- tombol selesai pimpinan ketika belum selesai dikerjakan staf -->
                                 <button type="button" disabled class="btn btn-sm btn-dark btn-flat">Selesai</button>
                               @else
                               <!-- tombol selesai pimpinan ketika sudah selesai dikerjakan staf -->
-                              <a href="{{ url('/arsip/baru/' . $disposisi->id_disposisi) }}">
+                              <a href="{{ url('/arsip/baru/' . $disposisi->surat->id_surat) }}">
                                 <button type="button" class="btn btn-sm btn-success btn-flat">Selesai</button>
                               </a>
                               @endif
 
                             @else
-
+                              <!-- tombol selesai STAF -->
                               @if($disposisi->surat->status_surat != 'selesai')
-                            <!-- tombol selesai staf ketika belum selesai dikerjakan -->
+                              <!-- tombol selesai staf ketika belum selesai dikerjakan -->
                               <a href="{{ url('/disposisi/selesai/' . $disposisi->id_disposisi) }}">
                                 <button type="button" class="btn btn-sm btn-success btn-flat">Selesai</button>
                               </a>
@@ -79,11 +80,17 @@
                               @endif
 
                             @endif
-                            @if(Session::get('data')->jabatanable_type == 'App\Pimpinan')
+                            @if((Session::get('data')->jabatanable_type == 'App\Pimpinan') && ($disposisi->surat->status_surat != 'selesai'))
                                 <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Hapus</button>
+                            @else((Session::get('data')->jabatanable_type == 'App\Pimpinan') && ($disposisi->surat->status_surat == 'selesai'))
+                                <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" disabled>Hapus</button>
                             @endif
                             </td>
                           </tr>
+
+                          @else
+                          <tr><td>Tidak ada disposisi.</td></tr>
+                          @endif
                       @endforeach
                     @else
                       <tr><td>Tidak ada disposisi.</td></tr>
@@ -125,6 +132,7 @@
         </div>
         <div class="modal-body">
           <p>Apakah Anda yakin akan <b>Menghapus Permanen</b> Disposisi ini ?</p>
+          <small>Disposisi yang dihapus akan kembali pada tabel tinjauan.</small>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-outline">Ya</button>

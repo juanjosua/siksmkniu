@@ -23,22 +23,20 @@ class ArsipController extends Controller
     //arsip baru
     public function createArsip($id)
     {
-        //get id surat
-        $disposisi = Disposisi::find($id);
-        $id_surat = $disposisi->surat->id_surat;
-
         Arsip::create([
           'id_pimpinan'             => Session::get('data')->jabatanable_id,
-          'id_surat'                => $id_surat
+          'id_surat'                => $id
         ]);
 
         //update status surat
-        $surat = Surat::find($id_surat);
+        $surat = Surat::find($id);
         $surat->status_surat = 'arsip';
         $surat->save();
 
-        //hapus disposisi
-        $disposisi->delete();
+        //disposisi ga boleh dihapus karena di arsip ada record tentang disposisi
+        // if ($disposisi = Surat::find($id)->disposisi) {
+        //     $disposisi->delete();
+        // }
 
         return redirect()->back();
     }

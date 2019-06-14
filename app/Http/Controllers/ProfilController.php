@@ -9,6 +9,7 @@ use App\Pegawai;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ProfilController extends Controller
 {
@@ -23,35 +24,41 @@ class ProfilController extends Controller
     {
         //Authenticate User yang sedang login
 	    $pegawai = Pegawai::find($id);
-	    //Update
+	    //Update data
 	    $pegawai->update([
 	         'nama_pegawai'         => $request->input('nama_pegawai'),
 	         'email_pegawai'        => $request->input('email_pegawai'),
-	         'no_telp_pegawai'      => $request->input('no_telp_pegawai')
-	         'nip'					=> $request->input('nip');
-	         'password'				=> $request->input('password');
-	     ]);
+	         'no_telp_pegawai'      => $request->input('no_telp_pegawai'),
+	         'nip'					=> $request->input('nip'),
+	         'password'				=> bcrypt($request->input('password'))
+	    ]);
+	    $data = Pegawai::find($id);
+	    Session::put('data', $data);
 
 	    return redirect()->back();
     }
 
     //update avatar
-    public function updateAvatar($id)
+    public function updateAvatar(request $request, $id)
     {
-        //Authenticate User yang sedang login
-	    $user = Auth::User();
-
-	    if($request->User()->avatar) {
-	      Storage::delete($request->User()->avatar);
+    	//current foto
+    	$foto = Session::get('data')->foto_pegawai;
+	    if($foto) {
+	      Storage::delete($foto);
 	    }
 
 	    //upload gambar
-	    $image  = $request->file('avatar')->store('avatars');
+	    $image  = $request->file('foto_pegawai')->store('avatars');
 
+	    //Authenticate User yang sedang login
+	    $pegawai = Pegawai::find($id);
 	    //Update
-	    $user->update([
-	         'avatar'        => $image,
-	     ]);
+	    $pegawai->update([
+	         'foto_pegawai'        => $image
+	    ]);
+
+	    $data = Pegawai::find($id);
+	    Session::put('data', $data);
 
 	    return redirect()->back();
     }

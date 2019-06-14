@@ -27,10 +27,10 @@
 
             <div class="box-body">
               <div class="table-responsive">
-                <table id="example1" class="table no-margin">
+                <table id="example1" class="table no-margin" style="white-space: nowrap;">
                   <thead>
                   <tr>
-                    <th>No. Surat</th>
+                    <th>Nomor</th>
                     <th>Pengirim</th>
                     <th>Tujuan</th>
                     <th>Perihal</th>
@@ -51,6 +51,7 @@
                             <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
                             <td>{{$surat->created_at->format('d M Y')}}</td>
                             <td>
+
                               <a href="{{ url('/surat/proses/' . $surat->id_surat) }}">
                               <button type="button" class="btn btn-sm btn-primary btn-flat">Proses</button>
                               </a>
@@ -163,9 +164,6 @@
 
   <!-- Navigation Tab End -->
 
-@if($jumlahsurattinjau !== 0)
-@foreach($surats as $surat)
-@if($surat->status_surat == 'tinjau')
 <!-- Modal Start -->
 <form action="{{ url('/disposisi/baru/') }}" method="POST" enctype="multipart/form-data" >
 {{ csrf_field() }}
@@ -201,6 +199,7 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label class="pull-right">Pesan Disposisi :</label>
+                      <input style="display: none;" name="id_surat" value="">
                     </div>                                      
                   </div>
                   <div class="col-md-6">
@@ -223,15 +222,12 @@
         <!-- /.modal -->
 </form>
   <!-- Modal End -->
-@endif
-@endforeach
-@endif
 
 @if($jumlahsuratbaru !== 0)
 @foreach($surats as $surat)
 @if($surat->status_surat == 'baru')
   <!-- Modal Hapus Disposisi Start -->
-<form action="{{ url('/arsip/destroy/' . $arsip->id_arsip) }}" method="POST">
+<form action="{{ url('/surat/destroy/' . $surat->id_surat) }}" method="POST">
   {{ csrf_field() }}
   {{ method_field('DELETE') }}
   <div class="modal modal-danger fade" id="modal-danger">
@@ -244,6 +240,7 @@
         </div>
         <div class="modal-body">
           <p>Apakah Anda yakin akan <b>Menghapus Permanen</b> Surat ini ?</p>
+          <small>Surat yang sudah dihapus <b>TIDAK DAPAT</b> dikembalikan.</small>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-outline">Ya</button>

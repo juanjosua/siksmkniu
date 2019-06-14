@@ -27,10 +27,10 @@
 
             <div class="box-body">
               <div class="table-responsive">
-                <table id="example1" class="table no-margin">
+                <table id="example1" class="table no-margin" style="white-space: nowrap;">
                   <thead>
                   <tr>
-                    <th>No. Surat</th>
+                    <th>Nomor</th>
                     <th>Pengirim</th>
                     <th>Tujuan</th>
                     <th>Perihal</th>
@@ -164,7 +164,7 @@
 @foreach($surats as $surat)
 @if($surat->status_surat == 'baru')
   <!-- Modal Hapus Disposisi Start -->
-<form action="{{ url('/arsip/destroy/' . $arsip->id_arsip) }}" method="POST">
+<form action="{{ url('/surat/destroy/' . $surat->id_surat) }}" method="POST">
   {{ csrf_field() }}
   {{ method_field('DELETE') }}
   <div class="modal modal-danger fade" id="modal-danger">

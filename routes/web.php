@@ -48,6 +48,7 @@ Route::get('/surat/cancel/{id}', 'SuratController@cancelSurat'); //surat tidak j
 Route::get('/surat/edit/{id}', 'SuratController@editSurat');   //buka halaman edit surat
 Route::get('/surat/download/{id}', 'SuratController@downloadSurat'); //download surat
 Route::patch('/surat/edit/update/{id}', 'SuratController@updateSurat'); //menyimpan hasil editing surat
+Route::delete('surat/destroy/{id}', 'SuratController@destroySurat'); //hapus surat
 
 //rute disposisis
 Route::get('/disposisi', 'DisposisiController@index');

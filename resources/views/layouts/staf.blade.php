@@ -60,7 +60,7 @@
             <header class="main-header">
 
               <!-- Logo -->
-              <a href="{{ url('/unggahSurat') }}" class="logo">
+              <a href="{{ url('/unggah') }}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>S</b>K</span>
                 <!-- logo for regular state and mobile devices -->
@@ -295,13 +295,17 @@
           <script src="{{ asset('beranda/upload-file.js') }}"></script>
 
           <script type='text/javascript'>
-                function check(input) {
-                    if (input.value != document.getElementById('password').value) {
-                        input.setCustomValidity('Password tidak sama.');
-                    } else {
-                        // input is valid -- reset the error message
-                        input.setCustomValidity('');
-                    }
+                var check = function() {
+                  if (document.getElementById('password').value ==
+                    document.getElementById('confirm_password').value) {
+                    document.getElementById('message').style.color = 'green';
+                    document.getElementById('message').innerHTML = 'matching';
+                    document.getElementById('submit').disabled = false;
+                  } else {
+                    document.getElementById('message').style.color = 'red';
+                    document.getElementById('message').innerHTML = 'not matching';
+                    document.getElementById('submit').disabled = true;
+                  }
                 }
             </script>
           <!-- Script End -->

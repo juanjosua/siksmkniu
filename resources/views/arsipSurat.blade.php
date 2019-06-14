@@ -7,18 +7,15 @@
 
   <!-- Navigation Tab Start -->
 
-  <div class="col-md-12">
-    <div class="nav-tabs-custom">
-      <div class="tab-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Arsip</h3>
 
-        <!-- Disposisi Tab Start -->
-
-        <div class="active tab-pane" id="disposisi">
-
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Arsip</h3>
-            </div>
+          <div class="box-tools pull-right">
+          </div>
+        </div>
             <!-- /.box-header -->
 
             <div class="box-body">
@@ -48,7 +45,7 @@
                             <td>
                             	
                             <!-- detail surat -->
-                            <a href="{{ url('/arsip/detail/' . $arsip->id_surat) }}">
+                            <a href="{{ url('/arsip/detail/' . $arsip->id_arsip) }}">
                             <button type="button" class="btn btn-sm btn-warning btn-flat">Detail</button>
                             </a>
 
@@ -97,6 +94,7 @@
         </div>
         <div class="modal-body">
           <p>Apakah Anda yakin akan <b>Menghapus Permanen</b> Arsip ini ?</p>
+          <small>Arsip yang dihapus akan kembali pada tabel tinjauan.</small>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-outline">Ya</button>

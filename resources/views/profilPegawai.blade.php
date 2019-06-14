@@ -29,20 +29,21 @@
 
           <p class="text-muted text-center"><b>{{Session::get('data')->email_pegawai}}</b></p>
 
-          <p class="text-muted text-center">test</p>
+          <p class="text-muted text-center">{{substr(Session::get('data')->jabatanable_type, 4, 10)}} KNIU</p>
+          
         </div>
         <!-- /.box-body -->
       </div>
       <!-- /.box -->
 
       <!-- About Me Box -->
-      <div class="box box-primary">
+      <div class="box box-primary" style="visibility: hidden;">
         <div class="box-header with-border">
           <!-- <h3 class="box-title">About Me</h3> -->
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+          <strong><i class="fa fa-book margin-r-5"></i> Sektor</strong>
 
           <p class="text-muted">test</p>
 
@@ -76,7 +77,7 @@
                 <label for="nip" class="col-sm-2 control-label">Nomor Induk</label>
 
                 <div class="col-sm-10">
-                  <input type="number" name="nip" class="form-control" id="nip" placeholder="{{Session::get('data')->nip}}">
+                  <input type="number" name="nip" class="form-control" id="nip" placeholder="Nomor Induk" value="{{Session::get('data')->nip}}">
                 </div>
               </div>
 
@@ -84,7 +85,7 @@
                 <label for="nama_pegawai" class="col-sm-2 control-label">Nama</label>
 
                 <div class="col-sm-10">
-                  <input type="text" name="nama_pegawai" class="form-control" id="nama_pegawai" placeholder="{{Session::get('data')->nama_pegawai}}">
+                  <input type="text" name="nama_pegawai" class="form-control" id="nama_pegawai" placeholder="Nama" value="{{Session::get('data')->nama_pegawai}}">
                 </div>
               </div>
 
@@ -92,7 +93,7 @@
                 <label for="email_pegawai" class="col-sm-2 control-label">Email</label>
 
                 <div class="col-sm-10">
-                  <input type="email" name="email_pegawai" class="form-control" id="email_pegawai" placeholder="{{Session::get('data')->email_pegawai}}">
+                  <input type="email" name="email_pegawai" class="form-control" id="email_pegawai" placeholder="Email" value="{{Session::get('data')->email_pegawai}}">
                 </div>
               </div>
 
@@ -100,7 +101,7 @@
                 <label for="no_telp_pegawai" class="col-sm-2 control-label">Nomor Telepon</label>
 
                 <div class="col-sm-10">
-                  <input type="number" name="no_telp_pegawai" class="form-control" id="no_telp_pegawai" placeholder="{{Session::get('data')->no_telp_pegawai}}">
+                  <input type="number" name="no_telp_pegawai" class="form-control" id="no_telp_pegawai" placeholder="Nomor Handphone" value="{{Session::get('data')->no_telp_pegawai}}">
                 </div>
               </div>
 
@@ -108,21 +109,22 @@
                 <label for="password" class="col-sm-2 control-label">Password</label>
 
                 <div class="col-sm-10">
-                  <input type="password" name="password" class="form-control" id="password" placeholder="{{Session::get('data')->no_telp_pegawai}}">
+                  <input type="password" name="password" class="form-control" id="password" onkeyup='check();'>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="ulangi_password" class="col-sm-2 control-label">Ulangi Password</label>
+                <label for="confirm_password" class="col-sm-2 control-label">Ulangi Password</label>
 
                 <div class="col-sm-10">
-                  <input type="password" name="ulangi_password" class="form-control" id="ulangi_password" placeholder="{{Session::get('data')->no_telp_pegawai}}">
+                  <input type="password" name="confirm_password" class="form-control" id="confirm_password" onkeyup='check();'>
+                  <span id='message' name="message"></span>
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-info center-block">Submit</button>
+                  <button type="submit" class="btn btn-info center-block" name="submit" id="submit" disabled>Submit</button>
                 </div>
               </div>
 
