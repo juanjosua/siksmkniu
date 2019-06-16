@@ -15,7 +15,6 @@ class CreateSuratsTable extends Migration
     {
         Schema::create('surats', function (Blueprint $table) {
             $table->increments('id_surat');
-            $table->string('image');
             $table->string('no_surat');
             $table->string('perihal_surat');
             $table->date('tanggal_surat');

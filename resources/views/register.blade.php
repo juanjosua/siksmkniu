@@ -15,6 +15,7 @@
         <!-- Website Theme -->
         <meta id="theme-color" name="theme-color" content="#4AB3B6">
         <link rel="stylesheet" href="{{ asset('beranda/css/login.css') }}" />
+        <link rel="icon" type="image/png" href="https://4erff29jo03b8uhp4b94vxhq-wpengine.netdna-ssl.com/wp-content/uploads/2015/05/caspio-features-illustr_cloud-data_3_2x.png"/>
     </head>
 
     <body>

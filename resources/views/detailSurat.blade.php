@@ -16,12 +16,12 @@
       <!-- /.col -->
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div style="clear: both;">
-            <embed src="{{ asset('storage/' . $surat->image) }}" type="application/pdf" height="700px" width="500px">
+      <div class="row" style="margin-left: -190px; margin-top: -40px; width: 1000px; float: left; overflow-x:scroll; white-space: nowrap; display: flex">
+        @foreach($images as $image)
+          <div style="margin-left: 10px">
+            <embed src="{{ asset('storage/' . $image->image) }}" type="application/pdf" height="700px" width="500px">
           </div>
-        </div>
+        @endforeach
       </div>
     </div>
 </section>

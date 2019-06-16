@@ -138,7 +138,7 @@
               {{method_field('PATCH')}}
 
               <div class="form-group">
-                <label for="inputPhoto" class="col-sm-2 control-label">Foto</label>
+                <label for="foto_pegawai" class="col-sm-2 control-label">Foto</label>
 
                 <div class="col-sm-10">
                   <input type="file" value="" name="foto_pegawai" class="form-control" id="foto_pegawai">

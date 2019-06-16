@@ -85,6 +85,10 @@
                             @else((Session::get('data')->jabatanable_type == 'App\Pimpinan') && ($disposisi->surat->status_surat == 'selesai'))
                                 <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" disabled>Hapus</button>
                             @endif
+
+                            @if(Session::get('data')->jabatanable_type == 'App\Staf')
+                                <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-default"><b>+</b> PDF</button>
+                            @endif
                             </td>
                           </tr>
 
@@ -128,7 +132,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title"><b>Hapus/b> Disposisi</h4>
+          <h4 class="modal-title"><b>Hapus</b> Disposisi</h4>
         </div>
         <div class="modal-body">
           <p>Apakah Anda yakin akan <b>Menghapus Permanen</b> Disposisi ini ?</p>
@@ -149,21 +153,23 @@
 @endif
 
   <!-- Modal Start -->
-
+@foreach($disposisis as $disposisi)
+<form action="{{ url('/disposisi/tambah/surat/' . $disposisi->surat->id_surat) }}" method="POST" enctype="multipart/form-data">
+  {{ csrf_field() }}
   <div class="modal fade" id="modal-default">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Default Modal</h4>
+                <h4 class="modal-title">Tambah Dokumen</h4>
               </div>
               <div class="modal-body">
-                <p>One fine body&hellip;</p>
+                <input type="file" value="" name="image" class="form-control" id="uploadPDF">
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
               </div>
             </div>
             <!-- /.modal-content -->
@@ -173,7 +179,8 @@
         <!-- /.modal -->
 
   <!-- Modal End -->
-
+</form>
+@endforeach
 </section>
 <!-- /.content -->
 @endsection

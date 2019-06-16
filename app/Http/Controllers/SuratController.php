@@ -8,6 +8,7 @@ use App\Instansi;
 use App\Sektor;
 use App\Disposisi;
 use App\Arsip;
+use App\Dokumen;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -55,16 +56,20 @@ class SuratController extends Controller
             $id_staf = NULL;
          }
 
-        Surat::create([
-          'image'                   => $image,
-          'no_surat'                => $request->no_surat,
-          'perihal_surat'           => $request->perihal_surat,
-          'tanggal_surat'           => $request->tanggal_surat,
-          'id_sektor'               => $id_sektor,
-          'id_instansi'             => $id_instansi,
-          'id_pimpinan'             => $id_pimpinan,
-          'id_staf'                 => $id_staf
+        $surat = Surat::create([
+            'no_surat'                => $request->no_surat,
+            'perihal_surat'           => $request->perihal_surat,
+            'tanggal_surat'           => $request->tanggal_surat,
+            'id_sektor'               => $id_sektor,
+            'id_instansi'             => $id_instansi,
+            'id_pimpinan'             => $id_pimpinan,
+            'id_staf'                 => $id_staf
         ]);
+
+        Dokumen::create([
+            'image' => $image,
+            'id_surat' => $surat->id_surat
+        ]); 
 
         //redirect halaman daftar surat masuk
         //redirect ke show surat
@@ -124,6 +129,7 @@ class SuratController extends Controller
     {
         //menampilkan detil informasi setiap surat
         $surat = Surat::find($id);
+        $images = Dokumen::all()->where('id_surat', $id);
         //get semua pegawai yang pimpinan maupun staf (dipisah karen id pimpinan dan staf bisa sama)
         $pimpinans = DB::table('pegawais')->where('jabatanable_type', 'App\Pimpinan')->get();
         $stafs = DB::table('pegawais')->where('jabatanable_type', 'App\Staf')->get();
@@ -132,7 +138,7 @@ class SuratController extends Controller
         $staf = $stafs->where('jabatanable_id', $surat->id_staf);
 
         $id_current_user = Session::get('data')->jabatanable_id;
-        return view('detailSurat', compact('surat', 'staf', 'pimpinan', 'id_current_user'));
+        return view('detailSurat', compact('surat', 'staf', 'pimpinan', 'id_current_user', 'images'));
     }
 
     //form edit surat
