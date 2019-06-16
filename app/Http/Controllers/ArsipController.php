@@ -6,6 +6,7 @@ use App\Arsip;
 use App\Disposisi;
 use App\Surat;
 use App\Pegawai;
+use App\Dokumen;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -53,7 +54,8 @@ class ArsipController extends Controller
 
         $disposisi = Disposisi::find($id);
         $arsip = Arsip::find($id);
-        return view('detailArsip', compact('surat', 'disposisi', 'arsip', 'pimpinans', 'stafs'));
+        $images = Dokumen::all()->where('id_surat', $id_surat);
+        return view('detailArsip', compact('surat', 'disposisi', 'arsip', 'pimpinans', 'stafs', 'images'));
     }
 
     //hapus arsip

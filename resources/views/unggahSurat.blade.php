@@ -30,6 +30,7 @@
                       <div class="dropzone-desc">
                       <i class="glyphicon glyphicon-download-alt"></i>
                       <p>Choose a PDF file or drag it here.</p>
+                      <p style="color: red">Max File Size = 2MB</p>
                       </div>
                       <!-- <input id="uploadPDF" type="file" name="img_logo" class="dropzone"> -->
                       <input id="uploadPDF" type="file" name="image" class="dropzone">

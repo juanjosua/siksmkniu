@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Disposisi;
 use App\Surat;
 use App\Pegawai;
+use App\Dokumen;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -62,7 +63,8 @@ class DisposisiController extends Controller
         $surat = Surat::all()->where('id_surat', $id_surat)->first();
 
         $disposisi = Disposisi::find($id);
-        return view('detailDisposisi', compact('surat', 'disposisi', 'pimpinans', 'stafs'));
+        $images = Dokumen::all()->where('id_surat', $id_surat);
+        return view('detailDisposisi', compact('surat', 'disposisi', 'pimpinans', 'stafs', 'images'));
     }
 
     //ubah disposisi
