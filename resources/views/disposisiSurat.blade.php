@@ -81,7 +81,7 @@
 
                             @endif
                             @if((Session::get('data')->jabatanable_type == 'App\Pimpinan') && ($disposisi->surat->status_surat != 'selesai'))
-                                <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Hapus</button>
+                                <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $disposisi->id_disposisi }}">Hapus</button>
                             @else((Session::get('data')->jabatanable_type == 'App\Pimpinan') && ($disposisi->surat->status_surat == 'selesai'))
                                 <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" disabled>Hapus</button>
                             @endif
@@ -120,10 +120,8 @@
     <!-- /.nav-tabs-custom -->
   </div>
 
-@if($jumlahdisposisi !== 0)
-@foreach($disposisis as $disposisi)
   <!-- Modal Hapus Disposisi Start -->
-<form action="{{ url('/disposisi/destroy/' . $disposisi->id_disposisi) }}" method="POST">
+<form action="{{ url('/disposisi/destroy/')}}" method="POST">
   {{ csrf_field() }}
   {{ method_field('DELETE') }}
   <div class="modal modal-danger fade" id="modal-danger">
@@ -141,6 +139,7 @@
         <div class="modal-footer">
           <button type="submit" class="btn btn-outline">Ya</button>
           <button type="button" class="btn btn-outline" data-dismiss="modal">Tidak</button>
+          <input type="hidden" name="id_disposisi" id="id_disposisi" value=""/>
         </div>
       </div>
       <!-- /.modal-content -->
@@ -149,8 +148,6 @@
   </div>
 </form>
   <!-- Modal End -->
-@endforeach
-@endif
 
   <!-- Modal Start -->
 @foreach($disposisis as $disposisi)

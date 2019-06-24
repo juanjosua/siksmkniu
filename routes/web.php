@@ -55,7 +55,7 @@ Route::get('/disposisi', 'DisposisiController@index');
 Route::get('/disposisi/detail/{id}', 'DisposisiController@detailDisposisi'); //detail disposisi
 Route::get('/disposisi/selesai/{id}', 'DisposisiController@updateDisposisi'); //selesai salah satu disposisi
 Route::post('/disposisi/baru/', 'DisposisiController@storeDisposisi'); //pimpinan memberikan dispo baru
-Route::delete('/disposisi/destroy/{id}', 'DisposisiController@destroyDisposisi');
+Route::delete('/disposisi/destroy', 'DisposisiController@destroyDisposisi');
 
 //rute arsip
 Route::get('/arsip', 'ArsipController@index');

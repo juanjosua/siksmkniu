@@ -86,8 +86,9 @@ class DisposisiController extends Controller
     }
 
     //hapus disposisi
-    public function destroyDisposisi($id)
+    public function destroyDisposisi()
     {
+        $id = $_POST['id_disposisi'];
         $disposisi = Disposisi::find($id);
         $id_surat = $disposisi->surat->id_surat;
         $surat = Surat::find($id_surat);
