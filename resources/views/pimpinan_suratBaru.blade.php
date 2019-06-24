@@ -60,7 +60,7 @@
                               <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                               </a>
 
-                              <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Hapus</button>
+                              <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $surat->id_surat }}">Hapus</button>
 
                             </td>
                           </tr>
@@ -223,11 +223,8 @@
 </form>
   <!-- Modal End -->
 
-@if($jumlahsuratbaru !== 0)
-@foreach($surats as $surat)
-@if($surat->status_surat == 'baru')
-  <!-- Modal Hapus Disposisi Start -->
-<form action="{{ url('/surat/destroy/' . $surat->id_surat) }}" method="POST">
+  <!-- Modal Hapus Surat Start -->
+<form action="{{ url('/surat/destroy/') }}" method="POST">
   {{ csrf_field() }}
   {{ method_field('DELETE') }}
   <div class="modal modal-danger fade" id="modal-danger">
@@ -236,7 +233,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title"><b>Hapus</b> Arsip</h4>
+          <h4 class="modal-title"><b>Hapus</b> Surat</h4>
         </div>
         <div class="modal-body">
           <p>Apakah Anda yakin akan <b>Menghapus Permanen</b> Surat ini ?</p>
@@ -245,6 +242,7 @@
         <div class="modal-footer">
           <button type="submit" class="btn btn-outline">Ya</button>
           <button type="button" class="btn btn-outline" data-dismiss="modal">Tidak</button>
+          <input type="hidden" name="id_surat" id="id_surat" value=""/>
         </div>
       </div>
       <!-- /.modal-content -->
@@ -253,9 +251,6 @@
   </div>
 </form>
   <!-- Modal End -->
-@endif
-@endforeach
-@endif
 
 </section>
 <!-- /.content -->

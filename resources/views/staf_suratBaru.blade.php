@@ -160,7 +160,7 @@
 
   <!-- Navigation Tab End -->
 
-  <!-- Modal Hapus Disposisi Start -->
+  <!-- Modal Hapus Surat Start -->
 <form action="{{ url('/surat/destroy/') }}" method="POST">
   {{ csrf_field() }}
   {{ method_field('DELETE') }}
@@ -170,10 +170,11 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title"><b>Hapus</b> Arsip</h4>
+          <h4 class="modal-title"><b>Hapus</b> Surat</h4>
         </div>
         <div class="modal-body">
           <p>Apakah Anda yakin akan <b>Menghapus Permanen</b> Surat ini ?</p>
+          <small>Surat yang sudah dihapus <b>TIDAK DAPAT</b> dikembalikan.</small>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-outline">Ya</button>
