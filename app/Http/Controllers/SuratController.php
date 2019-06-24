@@ -184,9 +184,10 @@ class SuratController extends Controller
     }
 
     //hapus surat
-    public function destroySurat($id)
+    public function destroySurat()
     {
         //hapus surat
+        $id = $_POST['id_surat'];
         $surat = Surat::find($id);
         $surat->delete();
 

@@ -19,7 +19,7 @@ class CreateDokumensTable extends Migration
 
             //foreign key dari surat
             $table->integer('id_surat')->unsigned()->index()->nullable();
-            $table->foreign('id_surat')->references('id_surat')->on('surats');
+            $table->foreign('id_surat')->references('id_surat')->on('surats')->onDelete('cascade');
             
             $table->timestamps();
         });

@@ -63,7 +63,7 @@
                             <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                             </a>
                             
-                            <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Hapus</button>
+                            <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $surat->id_surat }}">Hapus</button>
 
                           </td>
                         </tr>
@@ -160,11 +160,8 @@
 
   <!-- Navigation Tab End -->
 
-@if($jumlahsuratbaru !== 0)
-@foreach($surats as $surat)
-@if($surat->status_surat == 'baru')
   <!-- Modal Hapus Disposisi Start -->
-<form action="{{ url('/surat/destroy/' . $surat->id_surat) }}" method="POST">
+<form action="{{ url('/surat/destroy/') }}" method="POST">
   {{ csrf_field() }}
   {{ method_field('DELETE') }}
   <div class="modal modal-danger fade" id="modal-danger">
@@ -181,6 +178,7 @@
         <div class="modal-footer">
           <button type="submit" class="btn btn-outline">Ya</button>
           <button type="button" class="btn btn-outline" data-dismiss="modal">Tidak</button>
+          <input type="hidden" name="id_surat" id="id_surat" value=""/>
         </div>
       </div>
       <!-- /.modal-content -->
@@ -189,9 +187,6 @@
   </div>
 </form>
   <!-- Modal End -->
-@endif
-@endforeach
-@endif
 
 </section>
 <!-- /.content -->
