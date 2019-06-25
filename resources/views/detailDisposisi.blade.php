@@ -83,7 +83,7 @@
     <div class="col-xs-12">
 
     <!-- tombol download -->
-    <a href="{{ url('/disposisi') }}" class="btn btn-success pull-right"><i class="fa fa-arrow-left"></i>Kembali</a>
+    <a href="{{ url('/disposisi') }}" class="btn btn-success pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>
     </div>
   </div>
 

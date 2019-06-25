@@ -61,7 +61,7 @@ Route::delete('/disposisi/destroy', 'DisposisiController@destroyDisposisi');
 Route::get('/arsip', 'ArsipController@index');
 Route::get('/arsip/baru/{id}', 'ArsipController@createArsip');
 Route::get('/arsip/detail/{id}', 'ArsipController@detailArsip');
-Route::delete('/arsip/destroy/{id}', 'ArsipController@destroyArsip');
+Route::delete('/arsip/destroy', 'ArsipController@destroyArsip');
 
 //route profile
 Route::get('profil/edit', 'ProfilController@profil'); //halaman edit data profile

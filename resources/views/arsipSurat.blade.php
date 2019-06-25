@@ -50,7 +50,11 @@
                             </a>
 
                             <!-- hapus arsip -->
-                            <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger">Hapus</button>
+                            @if(Session::get('data')->jabatanable_type == "App\Pimpinan")
+                            <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $arsip->id_arsip }}">Hapus</button>
+                            @else
+                            <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" disabled>Hapus</button>
+                            @endif
 
                             </td>
                       @endforeach
@@ -78,10 +82,8 @@
     <!-- /.nav-tabs-custom -->
   </div>
 
-@if($jumlaharsip !== 0)
-@foreach($arsips as $arsip)
-  <!-- Modal Hapus Disposisi Start -->
-<form action="{{ url('/arsip/destroy/' . $arsip->id_arsip) }}" method="POST">
+  <!-- Modal Hapus Arsip Start -->
+<form action="{{ url('/arsip/destroy/') }}" method="POST">
   {{ csrf_field() }}
   {{ method_field('DELETE') }}
   <div class="modal modal-danger fade" id="modal-danger">
@@ -99,6 +101,7 @@
         <div class="modal-footer">
           <button type="submit" class="btn btn-outline">Ya</button>
           <button type="button" class="btn btn-outline" data-dismiss="modal">Tidak</button>
+          <input type="hidden" name="id_arsip" id="id_arsip" value=""/>
         </div>
       </div>
       <!-- /.modal-content -->
@@ -107,8 +110,6 @@
   </div>
 </form>
   <!-- Modal End -->
-@endforeach
-@endif
 
 </section>
 <!-- /.content -->

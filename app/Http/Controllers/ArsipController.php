@@ -52,17 +52,25 @@ class ArsipController extends Controller
         //menampilkan detil informasi surat yang didisposisi
         $surat = Surat::all()->where('id_surat', $id_surat)->first();
 
+        //check apakah surat itu punya disposisi
         $disposisi = Disposisi::find($id);
+        if (Disposisi::where('id_disposisi', $id)->exists()) {
+            $disposisi_stat = 1;
+        } else {
+            $disposisi_stat = 0;
+        }
+
         $arsip = Arsip::find($id);
         $images = Dokumen::all()->where('id_surat', $id_surat);
-        return view('detailArsip', compact('surat', 'disposisi', 'arsip', 'pimpinans', 'stafs', 'images'));
+        return view('detailArsip', compact('surat', 'disposisi', 'arsip', 'pimpinans', 'stafs', 'images', 'disposisi_stat'));
     }
 
     //hapus arsip
-    public function destroyArsip($id)
+    public function destroyArsip()
     {
+        $id = $_POST['id_arsip'];
         $arsip = Arsip::find($id);
-        $id_surat = $arsip->surat->id_surat;
+        $id_surat = $arsip->id_surat;
         $surat = Surat::find($id_surat);
         $surat->status_surat = 'tinjau';
         $surat->save();

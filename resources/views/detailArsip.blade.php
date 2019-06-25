@@ -60,6 +60,8 @@
       Info Disposisi
       <br>
     <address>
+      <?php if ($disposisi_stat == 1): ?>
+        
     <div style="display: none;">
       {{ $nama_pimpinan = $pimpinans->where('jabatanable_id', $disposisi->id_pimpinan) }}
       {{ $nama_staf = $stafs->where('jabatanable_id', $disposisi->id_staf) }}
@@ -72,6 +74,8 @@
     @endforeach
       <strong>Pesan Disposisi :</strong> {{$disposisi->pesan_disposisi}}<br>
       <strong>Tanggal Disposisi :</strong> {{$disposisi->created_at->format('d M Y')}}<br>
+
+      <?php endif ?>
     </address>
     </div>
     <!-- /.col -->
@@ -84,7 +88,7 @@
     <div class="col-xs-12">
 
     <!-- tombol download -->
-    <a href="{{ url('/disposisi') }}" class="btn btn-success pull-right"><i class="fa fa-arrow-left"></i>Kembali</a>
+    <a href="{{ url('/arsip') }}" class="btn btn-success pull-right"><i class="fa fa-arrow-left"></i>Kembali</a>
     </div>
   </div>
 

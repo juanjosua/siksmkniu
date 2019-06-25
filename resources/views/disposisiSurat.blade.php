@@ -54,7 +54,12 @@
                               <a href="{{ url('/disposisi/detail/' . $disposisi->id_disposisi) }}">
                                 <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
                               </a>
-                              <!-- tombol selesai PIMPINAN -->
+
+                            @if(Session::get('data')->jabatanable_type == 'App\Staf')
+                                <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-default"><b>+</b> PDF</button>
+                            @endif
+
+                            <!-- tombol selesai PIMPINAN -->
                             @if(Session::get('data')->jabatanable_type == 'App\Pimpinan')
 
                               @if($disposisi->surat->status_surat != 'selesai')
@@ -80,15 +85,11 @@
                               @endif
 
                             @endif
+
                             @if((Session::get('data')->jabatanable_type == 'App\Pimpinan') && ($disposisi->surat->status_surat != 'selesai'))
                                 <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $disposisi->id_disposisi }}">Hapus</button>
-                            @else((Session::get('data')->jabatanable_type == 'App\Pimpinan') && ($disposisi->surat->status_surat == 'selesai'))
-                                <button type="button" class="btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" disabled>Hapus</button>
                             @endif
 
-                            @if(Session::get('data')->jabatanable_type == 'App\Staf')
-                                <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-default"><b>+</b> PDF</button>
-                            @endif
                             </td>
                           </tr>
 
