@@ -56,7 +56,7 @@
                               </a>
 
                             @if(Session::get('data')->jabatanable_type == 'App\Staf')
-                                <button type="button" class="btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-default"><b>+</b> PDF</button>
+                                <button type="button" class="open-Disposisi btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-default" data-id="{{ $disposisi->surat->id_surat }}"><b>+</b> PDF</button>
                             @endif
 
                             <!-- tombol selesai PIMPINAN -->
@@ -93,9 +93,9 @@
                             </td>
                           </tr>
 
-                          @else
+                        @else
                           <tr><td>Tidak ada disposisi.</td></tr>
-                          @endif
+                        @endif
                       @endforeach
                     @else
                       <tr><td>Tidak ada disposisi.</td></tr>
@@ -150,9 +150,8 @@
 </form>
   <!-- Modal End -->
 
-  <!-- Modal Start -->
-@foreach($disposisis as $disposisi)
-<form action="{{ url('/disposisi/tambah/surat/' . $disposisi->surat->id_surat) }}" method="POST" enctype="multipart/form-data">
+  <!-- Modal PDF Start -->
+<form action="{{ url('/disposisi/tambah/surat/') }}" method="POST" enctype="multipart/form-data">
   {{ csrf_field() }}
   <div class="modal fade" id="modal-default">
           <div class="modal-dialog">
@@ -169,6 +168,7 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
                 <button type="submit" class="btn btn-primary">Simpan</button>
+                <input type="hidden" name="id_surat" id="id_surat" value=""/>
               </div>
             </div>
             <!-- /.modal-content -->
@@ -177,9 +177,8 @@
         </div>
         <!-- /.modal -->
 
-  <!-- Modal End -->
+  <!-- Modal PDF End -->
 </form>
-@endforeach
 </section>
 <!-- /.content -->
 @endsection

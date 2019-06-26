@@ -318,6 +318,15 @@
                    // $('#addBookDialog').modal('show');
               });
             </script>
+            <script type="text/javascript">
+              $(document).on("click", ".open-Disposisi", function () { //target tombol modalnya
+                   var id_disposisi = $(this).data('id'); //masukin id surat di data-id ke variable id_surat
+                   $(".modal-footer #id_surat").val( id_disposisi );  //msk var tadi ke input hidden di dalam class modal-footer dgn id id_surat
+                   // As pointed out in comments, 
+                   // it is unnecessary to have to manually call the modal.
+                   // $('#addBookDialog').modal('show');
+              });
+            </script>
           <!-- Script End -->
 
         </body>

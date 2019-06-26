@@ -69,4 +69,4 @@ Route::patch('profil/update/avatar/{id}', 'ProfilController@updateAvatar');
 Route::patch('profil/update/{id}', 'ProfilController@updateProfil');
 
 //route dokumen baru pada disposisi
-Route::post('disposisi/tambah/surat/{id}', 'DokumenController@addImage');
+Route::post('disposisi/tambah/surat', 'DokumenController@addImage');
