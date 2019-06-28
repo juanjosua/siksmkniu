@@ -11,6 +11,7 @@ use App\Arsip;
 use App\Dokumen;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
 
 class SuratController extends Controller
@@ -121,7 +122,10 @@ class SuratController extends Controller
     // download surat
     public function downloadSurat($id)
     {
-        
+        $dokumens = Dokumen::where('id_surat', $id)->get();
+        foreach ($dokumens as $dokumen) {
+            return response()->download(storage_path("app/public/{$dokumen->image}"));
+        }
     }
 
     //get individual surat

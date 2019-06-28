@@ -96,7 +96,7 @@
     @endif
 
     <!-- tombol download -->
-    <a href="{{ url('surat/download/' . $surat->id_surat) }}" target="_blank" class="btn btn-success pull-right"><i class="fa fa-download"></i>Download</a>
+    <a href="{{ url('surat/download/' . $surat->id_surat) }}" target="_blank" class="btn btn-success pull-right"><i class="fa fa-download"></i> Download</a>
     </div>
   </div>
 
