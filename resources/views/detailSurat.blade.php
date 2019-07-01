@@ -83,20 +83,24 @@
   <!-- Download & Download Button -->
   <div class="row no-print">
     <div class="col-xs-12">
+      <div class="btn-toolbar">
+        <!-- user yang unggah -->
+        @if($id_current_user == $surat->id_staf)
+        <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
+        <!-- pimpinan -->
+        @elseif(Session::get('data')->jabatanable_type == 'App\Pimpinan')
+        <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
+        <!-- bukam ke2nya -->
+        @else
+        <a class="btn btn-dark pull-left" disabled="disabled"><i class="fa fa-edit"></i> Edit</a>
+        @endif
 
-    <!-- user yang unggah -->
-    @if($id_current_user == $surat->id_staf)
-    <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
-    <!-- pimpinan -->
-    @elseif(Session::get('data')->jabatanable_type == 'App\Pimpinan')
-    <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
-    <!-- bukam ke2nya -->
-    @else
-    <a class="btn btn-dark pull-left" disabled="disabled"><i class="fa fa-edit"></i> Edit</a>
-    @endif
+        <!-- tombol download -->
+        <a href="{{ url('surat/download/' . $surat->id_surat) }}" target="_blank" class="btn btn-warning"><i class="fa fa-download"></i> Download</a>
 
-    <!-- tombol download -->
-    <a href="{{ url('surat/download/' . $surat->id_surat) }}" target="_blank" class="btn btn-success pull-right"><i class="fa fa-download"></i> Download</a>
+        <!-- tombol kembali -->
+        <a href="{{ url('/surat') }}" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>
+      </div>
     </div>
   </div>
 

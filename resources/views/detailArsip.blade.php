@@ -88,7 +88,10 @@
     <div class="col-xs-12">
 
     <!-- tombol download -->
-    <a href="{{ url('/arsip') }}" class="btn btn-success pull-right"><i class="fa fa-arrow-left"></i>Kembali</a>
+    <a href="{{ url('surat/download/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-download"></i> Download</a>
+
+    <!-- tombol kembali -->
+    <a href="{{ url('/arsip') }}" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>
     </div>
   </div>
 

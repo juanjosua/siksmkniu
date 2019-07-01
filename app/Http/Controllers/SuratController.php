@@ -10,6 +10,7 @@ use App\Disposisi;
 use App\Arsip;
 use App\Dokumen;
 use DB;
+use ZipArchive;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
@@ -122,10 +123,33 @@ class SuratController extends Controller
     // download surat
     public function downloadSurat($id)
     {
+        // semua gambar pada surat
         $dokumens = Dokumen::where('id_surat', $id)->get();
-        foreach ($dokumens as $dokumen) {
-            return response()->download(storage_path("app/public/{$dokumen->image}"));
+        $storage_dir = storage_path();
+        $surat = Surat::find($id);
+        //zip name
+        $zipFileName = $surat->perihal_surat . '.zip';
+        //create new zip
+        $zip = new ZipArchive;
+        if ($zip->open($storage_dir . '/' . $zipFileName, ZipArchive::CREATE) === TRUE) {
+            //add file
+            foreach ($dokumens as $dokumen) {
+              $zip->addFile(storage_path("app/public/{$dokumen->image}"), $dokumen->id_dokumen . '.pdf');
+            }
+            //close ziparchive
+            $zip->close();
         }
+        // Set Header
+        $headers = array(
+            'Content-Type' => 'application/zip',
+        );
+        $filetopath=$storage_dir.'/'.$zipFileName;
+        // Create Download Response
+        if(file_exists($filetopath)){
+                return response()->download($filetopath,$zipFileName,$headers);
+        }
+
+        // return response()->download(storage_path("app/public/{$dokumen->image}"));
     }
 
     //get individual surat
