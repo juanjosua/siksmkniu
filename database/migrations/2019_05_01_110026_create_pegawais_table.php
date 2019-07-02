@@ -17,8 +17,8 @@ class CreatePegawaisTable extends Migration
             $table->increments('id_pegawai');
             $table->string('foto_pegawai')->nullable();
             $table->string('nama_pegawai');
-            $table->string('nip');
-            $table->string('no_telp_pegawai');
+            $table->string('nip')->nullable();
+            $table->string('no_telp_pegawai')->nullable();
             $table->string('email_pegawai');
             $table->string('password');
             $table->morphs('jabatanable'); //polymorph inheritance

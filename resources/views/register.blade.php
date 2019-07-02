@@ -51,17 +51,17 @@
                         <br>
                         <input name="nama_pegawai" type="text" autofocus>
 
-                        <label for="nip" ><b>NIP</b></label>
+                        <!-- <label for="nip" ><b>NIP</b></label>
                         <br>
-                        <input name="nip" type="number">
+                        <input name="nip" type="number"> -->
 
                         <label for="email_pegawai" ><b>Email</b></label>
                         <br>
                         <input name="email_pegawai" type="email">
 
-                        <label for="no_telp_pegawai" ><b>No.Handphone</b></label>
+                        <!-- <label for="no_telp_pegawai" ><b>No.Handphone</b></label>
                         <br>
-                        <input name="no_telp_pegawai" type="number">
+                        <input name="no_telp_pegawai" type="number"> -->
 
                         <label for="password" ><b>Password</b></label>
                         <br>

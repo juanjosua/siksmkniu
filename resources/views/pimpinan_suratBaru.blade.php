@@ -40,7 +40,6 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <!-- kondisi jika surat tidak ada di database -->
                   @if($jumlahsuratbaru !== 0)
                     @foreach($surats as $surat)
                       @if($surat->status_surat == 'baru')

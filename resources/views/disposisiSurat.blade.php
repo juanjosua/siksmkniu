@@ -163,7 +163,7 @@
               </div>
               <div class="modal-body">
                 <input type="file" value="" name="image" class="form-control" id="uploadPDF">
-                <small style="color: red">Max File Size = 2MB</small>
+                <!-- <small style="color: red">Max File Size = 2MB</small> -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
