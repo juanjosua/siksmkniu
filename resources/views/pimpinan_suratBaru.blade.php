@@ -40,35 +40,39 @@
                   </tr>
                   </thead>
                   <tbody>
-                    @if($jumlahsuratbaru !== 0)
-                      @foreach($surats as $surat)
-                        @if($surat->status_surat == 'baru')
-                          <tr>
-                            <td>{{$surat->no_surat}}</td>
-                            <td>{{$surat->instansi->nama_instansi}}</td>
-                            <td>{{$surat->sektor->nama_sektor}}</td>
-                            <td>{{$surat->perihal_surat}}</td>
-                            <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
-                            <td>{{$surat->created_at->format('d M Y')}}</td>
-                            <td>
+                  <!-- kondisi jika surat tidak ada di database -->
+                  @if($jumlahsuratbaru !== 0)
+                    @foreach($surats as $surat)
+                      @if($surat->status_surat == 'baru')
+                        <tr>
+                          <td>{{$surat->no_surat}}</td>
+                          <td>{{$surat->instansi->nama_instansi}}</td>
+                          <td>{{$surat->sektor->nama_sektor}}</td>
+                          <td>{{$surat->perihal_surat}}</td>
+                          <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
+                          <td>{{$surat->created_at->format('d M Y')}}</td>
+                          <td>
 
-                              <a href="{{ url('/surat/proses/' . $surat->id_surat) }}">
-                              <button type="button" class="btn btn-sm btn-primary btn-flat">Proses</button>
-                              </a>
+                            <!-- proses surat untuk di tinjau pimpinan -->
+                            <a href="{{ url('/surat/proses/' . $surat->id_surat) }}">
+                            <button type="button" class="btn btn-sm btn-primary btn-flat">Proses</button>
+                            </a>
 
-                              <a href="{{ url('/surat/detail/' . $surat->id_surat) }}">
-                              <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
-                              </a>
+                            <!-- melihat detail surat -->
+                            <a href="{{ url('/surat/detail/' . $surat->id_surat) }}">
+                            <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
+                            </a>
+                            
+                            <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $surat->id_surat }}">Hapus</button>
 
-                              <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $surat->id_surat }}">Hapus</button>
-
-                            </td>
-                          </tr>
-                        @endif
-                      @endforeach
-                    @else
-                      <tr><td>Tidak ada surat masuk</td></tr>
-                    @endif
+                          </td>
+                        </tr>
+                      @endif
+                    @endforeach
+                  @else
+                    <tr><td>Tidak ada surat masuk</td></tr>
+                  @endif
+                  </tbody>
                 </table>
               </div>
               <!-- /.table-responsive -->
