@@ -63,7 +63,7 @@ class PegawaiController extends Controller
     public function registerPost(Request $request){
         $this->validate($request, [
             'nama_pegawai' => 'required|min:4',
-            'nip' => 'required|unique:pegawais',
+            // 'nip' => 'required|unique:pegawais',
             'email_pegawai' => 'required|min:4|email|unique:pegawais',
             'password' => 'required',
             'confirmation' => 'required|same:password',
@@ -73,9 +73,9 @@ class PegawaiController extends Controller
 
         $pegawai =  new Pegawai();
         $pegawai->nama_pegawai = $request->nama_pegawai;
-        $pegawai->nip = $request->nip;
+        // $pegawai->nip = $request->nip;
         $pegawai->email_pegawai = $request->email_pegawai;
-        $pegawai->no_telp_pegawai = $request->no_telp_pegawai;
+        // $pegawai->no_telp_pegawai = $request->no_telp_pegawai;
         $pegawai->password = bcrypt($request->password);
 
         
