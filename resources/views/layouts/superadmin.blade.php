@@ -103,7 +103,7 @@
                           <!-- Menu Footer-->
                           <li class="user-footer">
                             <div class="pull-right">
-                              <a href="{{ url('/superadmin/logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                              <a href="{{ url('/superadmin/logout') }}" class="btn btn-default btn-flat">Keluar</a>
                             </div>
                           </li>
                         </ul>
@@ -138,7 +138,7 @@
 
                   <ul class="sidebar-menu" data-widget="tree">
 
-                    <li class="header">MAIN MENU</li>
+                    <li class="header">MENU UTAMA</li>
 
                     <li>
                       <a href="{{ url('/superadmin_dataPegawai') }}">

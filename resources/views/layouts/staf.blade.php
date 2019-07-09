@@ -107,17 +107,17 @@
 
                           <p>
                             {{Session::get('data')->nama_pegawai}} - {{substr(Session::get('data')->jabatanable_type, 4, 10)}}
-                            <small>Member since {{Session::get('data')->created_at->format('d M Y')}}</small>
+                            <small>Bergabung sejak {{Session::get('data')->created_at->format('d M Y')}}</small>
                           </p>
                         </li>
 
                         <!-- Menu Footer-->
                         <li class="user-footer">
                           <div class="pull-left">
-                            <a href="{{ url('/profil/edit') }}" class="btn btn-default btn-flat">Profile</a>
+                            <a href="{{ url('/profil/edit') }}" class="btn btn-default btn-flat">Profil</a>
                           </div>
                           <div class="pull-right">
-                            <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                            <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Keluar</a>
                           </div>
                         </li>
                       </ul>
@@ -158,7 +158,7 @@
 
                 <ul class="sidebar-menu" data-widget="tree">
 
-                  <li class="header">MAIN MENU</li>
+                  <li class="header">MENU UTAMA</li>
 
                   <li>
                     <a href="{{ url('/disposisi') }}">
