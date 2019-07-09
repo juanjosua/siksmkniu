@@ -30,14 +30,14 @@ class SuperadminController extends Controller
         $username = $request->username;
         $password = $request->password;
 
-        $data = Superadmin::where('username',$username)->first();
-        if($data){ //apakah email tersebut ada atau tidak
-            if(Hash::check($password,$data->password)){
-                Session::put('username',$data->username);
-                Session::put('login',TRUE);
+        $data = Superadmin::where('username', $username)->first();
+        if($data){ //apakah username tersebut ada atau tidak
+            if(Hash::check($password, $data->password)){
+                Session::put('username', $data->username);
+                Session::put('login', TRUE);
                 return redirect('superadmin_dataPegawai');
             }
-            else{
+            else {
                 return redirect('superadmin')->with('alert','Password atau Email, Salah !');
             }
         }

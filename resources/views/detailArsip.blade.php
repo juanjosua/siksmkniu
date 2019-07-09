@@ -45,7 +45,7 @@
   <div class="row invoice-info">
     <!-- /.col Info Surat -->
     <div class="col-sm-3 invoice-col">
-      Info Surat
+      Rincian Surat
       <br>
     <address>
       <strong>Nomor Surat :</strong> {{$surat->no_surat}}<br>
@@ -58,7 +58,7 @@
     <!-- /.col -->
     <!-- /.col Info Disposisi -->
     <div class="col-sm-6 invoice-col">
-      Info Disposisi
+      Rincian Disposisi
       <br>
     <address>
       <?php if ($disposisi_stat == 1): ?>
@@ -89,7 +89,7 @@
     <div class="col-xs-12">
 
     <!-- tombol download -->
-    <a href="{{ url('surat/download/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-download"></i> Download</a>
+    <a href="{{ url('surat/download/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-download"></i> Unduh</a>
 
     <!-- tombol kembali -->
     <a href="{{ url('/arsip') }}" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>

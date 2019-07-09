@@ -36,9 +36,7 @@ Route::get('/superadmin_dataPegawai/setpimpinan/{id}', 'SuperadminController@set
 Route::get('/superadmin_dataPegawai/setstaf/{id}', 'SuperadminController@setStaf');
 Route::delete('/superadmin_dataPegawai/delete/{id}', 'SuperadminController@destroyUser');
 
-//route admin
-
-//rute unggah
+//route admin unggah surat
 Route::get('/unggah', 'SuratController@createSurat');
 Route::post('/unggah/baru', 'SuratController@storeSurat');
 

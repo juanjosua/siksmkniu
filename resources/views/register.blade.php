@@ -9,7 +9,7 @@
         <meta name="mobile-web-app-capable" content="yes">
 
         <title>
-            Register | Arsip Surat
+            Daftar | SIKSM KNIU
         </title>
 
         <!-- Website Theme -->
@@ -51,27 +51,19 @@
                         <br>
                         <input name="nama_pegawai" type="text" autofocus>
 
-                        <!-- <label for="nip" ><b>NIP</b></label>
-                        <br>
-                        <input name="nip" type="number"> -->
-
-                        <label for="email_pegawai" ><b>Email</b></label>
+                        <label for="email_pegawai" ><b>Surel</b></label>
                         <br>
                         <input name="email_pegawai" type="email">
 
-                        <!-- <label for="no_telp_pegawai" ><b>No.Handphone</b></label>
-                        <br>
-                        <input name="no_telp_pegawai" type="number"> -->
-
-                        <label for="password" ><b>Password</b></label>
+                        <label for="password" ><b>Sandi</b></label>
                         <br>
                         <input name="password" type="password">
 
-                        <label for="confirmation" ><b>Confirm Password</b></label>
+                        <label for="confirmation" ><b>Konfirmasi Sandi</b></label>
                         <br>
                         <input name="confirmation" type="password">
                     </div>
-                    <button class="button">Register</button>
+                    <button class="button">Daftar</button>
                 </form>
 
             </div>

@@ -44,7 +44,7 @@
   <!-- info row -->
   <div class="row invoice-info">
     <div class="col-sm-3 invoice-col">
-      From
+      Pengirim Surat
       <br>
       <address>
         <strong>{{$surat->instansi->nama_instansi}}</strong><br>
@@ -52,7 +52,7 @@
     </div>
     <!-- /.col -->
     <div class="col-sm-3 invoice-col">
-      To Sektor
+      Tujuan Sektor
       <br>
       <address>
         <strong>{{$surat->sektor->nama_sektor}}</strong><br>
@@ -60,12 +60,14 @@
     </div>
     <!-- /.col -->
     <div class="col-sm-3 invoice-col">
-      Details
+      Rincian Surat
       <br>
       <address>
         <strong>Nomor Surat :</strong> {{$surat->no_surat}}<br>
         <strong>Tanggal Surat :</strong> {{$surat->tanggal_surat}}<br>
-        <strong>Pengunggah :</strong> {{$admin->pegawais->nama_pegawai}}<br>
+        @foreach($pegawai as $p)
+        <strong>Pengunggah :</strong> {{$p->nama_pegawai}}<br>
+        @endforeach      
       </address>
     </div>
     <!-- /.col -->
@@ -78,18 +80,14 @@
     <div class="col-xs-12">
       <div class="btn-toolbar">
         <!-- user yang unggah -->
-        @if($id_current_user == $surat->id_staf)
-        <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
-        <!-- pimpinan -->
-        @elseif(Session::get('data')->jabatanable_type == 'App\Pimpinan')
-        <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Edit</a>
-        <!-- bukam ke2nya -->
+        @if($id_current_user == $surat->id_admin)
+        <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Ubah</a>
         @else
-        <a class="btn btn-dark pull-left" disabled="disabled"><i class="fa fa-edit"></i> Edit</a>
+        <a class="btn btn-dark pull-left" disabled="disabled"><i class="fa fa-edit"></i> Ubah</a>
         @endif
 
         <!-- tombol download -->
-        <a href="{{ url('surat/download/' . $surat->id_surat) }}" target="_blank" class="btn btn-warning"><i class="fa fa-download"></i> Download</a>
+        <a href="{{ url('surat/download/' . $surat->id_surat) }}" target="_blank" class="btn btn-warning"><i class="fa fa-download"></i> Unduh</a>
 
         <!-- tombol kembali -->
         <a href="{{ url('/surat') }}" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>

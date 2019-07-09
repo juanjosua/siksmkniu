@@ -60,7 +60,7 @@
 
                             <!-- melihat detail surat -->
                             <a href="{{ url('/surat/detail/' . $surat->id_surat) }}">
-                            <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
+                            <button type="button" class="btn btn-sm btn-warning btn-flat">Rincian</button>
                             </a>
                             
                             <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $surat->id_surat }}">Hapus</button>
@@ -93,7 +93,7 @@
 
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">On Progress</h3>
+              <h3 class="box-title">Dalam Proses</h3>
             </div>
             <!-- /.box-header -->
 
@@ -127,7 +127,7 @@
 
                           	<!-- cancel peninjauan atasan -->
                             <a href="{{ url('/surat/cancel/' . $surat->id_surat) }}">
-                            <button type="button" class="btn btn-sm btn-danger btn-flat">Cancel</button>
+                            <button type="button" class="btn btn-sm btn-danger btn-flat">Batal</button>
                             </a>
                           
                           </td>

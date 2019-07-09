@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin SIKSM KNIU</title>
+	<title>Super Admin SIKSM KNIU</title>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -25,8 +25,8 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="password">
                             </div>
-                            <button class="btn btn-primary">login</button><br>
-                            <sub><a href="{{ url('/') }}">Back to homepage</a></sub>
+                            <button class="btn btn-primary">Masuk</button><br>
+                            <sub><a href="{{ url('/') }}">Kembali ke halaman utama</a></sub>
                         </form>
                     </div>
                 </div>

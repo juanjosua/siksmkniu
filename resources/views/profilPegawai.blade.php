@@ -91,7 +91,7 @@
               </div>
 
               <div class="form-group">
-                <label for="email_pegawai" class="col-sm-2 control-label">Email</label>
+                <label for="email_pegawai" class="col-sm-2 control-label">Surel</label>
 
                 <div class="col-sm-10">
                   <input type="email" name="email_pegawai" class="form-control" id="email_pegawai" placeholder="Email" value="{{Session::get('data')->email_pegawai}}">
@@ -107,7 +107,7 @@
               </div>
 
               <div class="form-group">
-                <label for="password" class="col-sm-2 control-label">Password</label>
+                <label for="password" class="col-sm-2 control-label">Ubah Sandi</label>
 
                 <div class="col-sm-10">
                   <input type="password" name="password" class="form-control" id="password" onkeyup='check();'>
@@ -115,7 +115,7 @@
               </div>
 
               <div class="form-group">
-                <label for="confirm_password" class="col-sm-2 control-label">Ulangi Password</label>
+                <label for="confirm_password" class="col-sm-2 control-label">Ulangi Sandi</label>
 
                 <div class="col-sm-10">
                   <input type="password" name="confirm_password" class="form-control" id="confirm_password" onkeyup='check();'>
@@ -148,7 +148,7 @@
 
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-info center-block">Submit</button>
+                  <button type="submit" class="btn btn-info center-block">Kirim</button>
                 </div>
               </div>
 

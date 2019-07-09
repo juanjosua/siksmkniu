@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Surat;
+use App\Admin;
 use App\Pegawai;
 use App\Instansi;
 use App\Sektor;
@@ -156,8 +157,9 @@ class SuratController extends Controller
         //pengunggah
         $id_admin = $surat->id_admin;
         $admin = Admin::find($id_admin);
+        $pegawai = $admin->pegawais;
 
-        return view('detailSurat', compact('surat', 'admin', 'id_current_user', 'images'));
+        return view('detailSurat', compact('surat', 'admin', 'id_current_user', 'images', 'pegawai'));
     }
 
     //form edit surat

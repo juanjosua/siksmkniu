@@ -53,11 +53,11 @@
                             <td>{{str_limit($disposisi->pesan_disposisi, 35, '...')}}</td>
                             <td>
                               <a href="{{ url('/disposisi/detail/' . $disposisi->id_disposisi) }}">
-                                <button type="button" class="btn btn-sm btn-warning btn-flat">Details</button>
+                                <button type="button" class="btn btn-sm btn-warning btn-flat">Rincian</button>
                               </a>
 
                             @if(Session::get('data')->jabatanable_type == 'App\Staf')
-                                <button type="button" class="open-Disposisi btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-default" data-id="{{ $disposisi->surat->id_surat }}"><b>+</b> PDF</button>
+                                <button type="button" class="open-Disposisi btn btn-sm btn-primary btn-flat" data-toggle="modal" data-target="#modal-default" data-id="{{ $disposisi->surat->id_surat }}"><b>+</b> Dokumen</button>
                             @endif
 
                             <!-- tombol selesai PIMPINAN -->

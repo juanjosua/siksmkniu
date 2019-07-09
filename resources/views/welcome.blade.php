@@ -23,9 +23,9 @@
 
         <div class="container-head">
             <img class="icon" href="{{ url('/') }}" src="{{ asset('beranda/icon/unesco.png') }}" alt="Login-icon">
-            <a class="login" href="{{ url('/register') }}">Register</a>
+            <a class="login" href="{{ url('/register') }}">Daftar</a>
             <a> &nbsp;/&nbsp; </a>
-            <a class="login" href="{{ url('/login') }}">Login</a>
+            <a class="login" href="{{ url('/login') }}">Masuk</a>
         </div>
 
         <div class="container-body">

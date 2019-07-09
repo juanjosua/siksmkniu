@@ -29,16 +29,15 @@
                     <div class="dropzone-wrapper">
                       <div class="dropzone-desc">
                       <i class="glyphicon glyphicon-download-alt"></i>
-                      <p>Choose a PDF file or drag it here.</p>
+                      <p>Pilih berkas PDF atau seret berkas ke sini.</p>
                       </div>
-                      <!-- <input id="uploadPDF" type="file" name="img_logo" class="dropzone"> -->
                       <input id="uploadPDF" type="file" name="image" class="dropzone">
                     </div>
 
                     <div class="preview-zone hidden">
                       <div class="box box-solid">
                       <div class="with-border">
-                        <h2>File Preview</h2>
+                        <h2>Pratinjau Berkas</h2>
                       </div>
 
                       <!-- PDF Preview Start -->

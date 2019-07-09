@@ -1,22 +1,3 @@
-    <!-- BUAT NAMPILIN ERROR -->
-
-    <!-- @if ($message = Session::get('error'))
-       <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-       </div>
-    @endif
-
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif -->
-
 <html>
     <head>
 
@@ -28,7 +9,7 @@
         <meta name="mobile-web-app-capable" content="yes">
 
         <title>
-            Login | Arsip Surat
+            Masuk | SIKSM KNIU
         </title>
 
         <!-- Website Theme -->
@@ -50,7 +31,7 @@
                 <p>&nbsp;</p>
                 <div class="login-header">
                     <img class="icon" src="{{ asset('beranda/icon/login.png') }}" alt="Login-icon">
-                    <h2>Login</h2>
+                    <h2>Masuk</h2>
                 </div>
 
                 <!-- login error -->
@@ -69,16 +50,16 @@
                 <form action="{{ url('/loginPost') }}" method="POST">
                   @csrf
                     <div>
-                        <label for="email_pegawai" ><b>Email</b></label>
+                        <label for="email_pegawai" ><b>Surel</b></label>
                         <br>
                         <input name="email_pegawai" type="email" autofocus>
                     </div>
                     <div>
-                        <label for="password" ><b>Password</b></label>
+                        <label for="password" ><b>Sandi</b></label>
                         <br>
                         <input name="password" type="password">
                     </div>
-                    <button class="button">Login</button>
+                    <button class="button">Masuk</button>
                 </form>
 
             </div>

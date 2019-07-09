@@ -87,7 +87,7 @@
                       <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                           <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="user-image" alt="User Image">
-                          <span class="hidden-xs">SuperAdmin</span>
+                          <span class="hidden-xs">Super Admin</span>
                         </a>
                         <ul class="dropdown-menu">
                           <!-- User image -->
@@ -96,14 +96,14 @@
                             <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
                             <p>
                               
-                              <small>SuperAdmin</small>
+                              <small>Super Admin</small>
                             </p>
                           </li>
 
                           <!-- Menu Footer-->
                           <li class="user-footer">
                             <div class="pull-right">
-                              <a href="{{ url('/admin/logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                              <a href="{{ url('/superadmin/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                           </li>
                         </ul>

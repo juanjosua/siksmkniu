@@ -14,7 +14,7 @@
 
           <!-- Document Description Form Start -->
 
-          <h3>Detail Surat</h3>
+          <h3>Rincian Surat</h3>
           <br>
           <div class="form-group">
             <h4>Form Deskripsi Surat</h4>
@@ -61,7 +61,7 @@
       </div>
       <div class="row">
       <div class="col-md-12">
-        <button type="submit" class="btn btn-primary center-block">Update</button>
+        <button type="submit" class="btn btn-primary center-block">Perbarui</button>
       </div>
       </div>
     </div>
