@@ -17,7 +17,7 @@
             <div class="col-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ url('/admin/loginPost') }}" method="POST">
+                        <form action="{{ url('/superadmin/loginPost') }}" method="POST">
                         	@csrf
                             <div class="form-group">
                                 <input type="text" class="form-control" name="username" placeholder="username" autofocus>

@@ -2,23 +2,27 @@
 
 namespace App;
 
-// use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Authenticatable
+class Admin extends Pegawai
 {
     protected $table = 'admins';
     protected $primaryKey = 'id_admin';
     protected $fillable = [
-        'username', 'password'
+        'id_superadmin'
     ];
 
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    public function pimpinans()
+    public function superadmin()
     {
-       return $this->hasMany(Pimpinan::class);
+        return $this->belongsTo(Superadmin::class, 'id_superadmin');
     }
+
+
+
+    //fungsi inherit pegawai
+    public function pegawais()
+    {
+        return $this->morphMany('App\Pegawai', 'jabatanable');
+    }
+
 }

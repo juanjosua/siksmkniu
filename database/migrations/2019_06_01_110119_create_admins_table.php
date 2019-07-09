@@ -15,10 +15,11 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id_admin');
-            $table->string('username');
-            $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
+
+            //foreign key admin
+            $table->integer('id_superadmin')->unsigned()->index()->nullable();
+            $table->foreign('id_superadmin')->references('id_superadmin')->on('superadmins');
         });
     }
 

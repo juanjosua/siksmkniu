@@ -7,6 +7,11 @@ use App\Pegawai;
 use App\Pimpinan;
 use App\Staf;
 use App\Surat;
+use App\Dokumen;
+use App\Instansi;
+use App\Sektor;
+use App\Arsip;
+use App\Disposisi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -58,8 +63,9 @@ class AdminController extends Controller
     public function dataSurat()
     {
         //send all surat data
-        $dataSurat = Surat::all();
-        return view('admin_dataSurat', compact('dataSurat'));
+        $surats = Surat::all();
+        $jumlahsurat = Surat::all()->count();
+        return view('admin_dataSurat', compact('surats', 'jumlahsurat'));
     }
 
     //menjadikan staf pimpinan
@@ -115,13 +121,31 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    //menghapus surat
-    public function destroySurat($id)
+    //hapus surat
+    public function destroySurat()
     {
-        $delete = Surat::find($id);
-        $delete->delete();
+        $id = $_POST['id_surat'];
+        $surat = Surat::find($id);
+        $surat->delete();
 
         return redirect()->back();
+    }
+
+    //detail surat
+    public function detailSurat($id)
+    {
+        //menampilkan detil informasi setiap surat
+        $surat = Surat::find($id);
+        $images = Dokumen::all()->where('id_surat', $id);
+        //get semua pegawai yang pimpinan maupun staf (dipisah karen id pimpinan dan staf bisa sama)
+        $pimpinans = DB::table('pegawais')->where('jabatanable_type', 'App\Pimpinan')->get();
+        $stafs = DB::table('pegawais')->where('jabatanable_type', 'App\Staf')->get();
+        //cocokkan id pegawai dengan id pimpinan atau id staf di surat
+        $pimpinan = $pimpinans->where('jabatanable_id', $surat->id_pimpinan);
+        $staf = $stafs->where('jabatanable_id', $surat->id_staf);
+
+        $id_current_user = Session::get('data')->jabatanable_id;
+        return view('detailSurat', compact('surat', 'staf', 'pimpinan', 'id_current_user', 'images'));
     }
 
 }

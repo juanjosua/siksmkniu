@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>SIKSM KNIU</title>
+      <title>Super Admin SIKSM KNIU</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -46,7 +46,7 @@
   <link rel="icon" type="image/png" href="https://4erff29jo03b8uhp4b94vxhq-wpengine.netdna-ssl.com/wp-content/uploads/2015/05/caspio-features-illustr_cloud-data_3_2x.png"/>
 </head>
 
-            <body class="hold-transition skin-red sidebar-mini">
+            <body class="hold-transition skin-yellow sidebar-mini">
 
               <!-- <div class="se-pre-con"></div> -->
 
@@ -60,11 +60,11 @@
               <header class="main-header">
 
                 <!-- Logo -->
-                <a href="{{ url('/unggah') }}" class="logo">
+                <a href="{{ url('/superadmin/loginPost') }}" class="logo">
                   <!-- mini logo for sidebar mini 50x50 pixels -->
-                  <span class="logo-mini"><b>S</b>K</span>
+                  <span class="logo-mini"><b>S</b>S</span>
                   <!-- logo for regular state and mobile devices -->
-                  <span class="logo-lg"><b>SIKSM</b>KNIU</span>
+                  <span class="logo-lg"><b>SA</b>SIKSM</span>
                 </a>
 
                 <!-- Header Navbar: style can be found in header.less -->
@@ -81,42 +81,29 @@
                   <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
 
-                      <!-- tempat notif -->
+                      
 
                       <!-- User Account: style can be found in dropdown.less -->
                       <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          <!-- profile picture default & update-->
-                          @if(Session::get('data')->foto_pegawai)
-                          <img src="{{ asset('storage/' . Session::get('data')->foto_pegawai) }}" class="user-image" alt="User Image">
-                          @else
                           <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="user-image" alt="User Image">
-                          @endif
-                          <span class="hidden-xs">{{Session::get('data')->nama_pegawai}}</span>
+                          <span class="hidden-xs">SuperAdmin</span>
                         </a>
                         <ul class="dropdown-menu">
                           <!-- User image -->
                           <li class="user-header">
-                            <!-- profile picture default & update-->
-                            @if(Session::get('data')->foto_pegawai)
-                            <img src="{{ asset('storage/' . Session::get('data')->foto_pegawai) }}" class="img-circle" alt="User Image">
-                            @else
+                            
                             <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
-                            @endif
-
                             <p>
-                              {{Session::get('data')->nama_pegawai}} - {{substr(Session::get('data')->jabatanable_type, 4, 10)}}
-                              <small>Member since {{Session::get('data')->created_at->format('d M Y')}}</small>
+                              
+                              <small>SuperAdmin</small>
                             </p>
                           </li>
 
                           <!-- Menu Footer-->
                           <li class="user-footer">
-                            <div class="pull-left">
-                              <a href="{{ url('/profil/edit') }}" class="btn btn-default btn-flat">Profile</a>
-                            </div>
                             <div class="pull-right">
-                              <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                              <a href="{{ url('/admin/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                           </li>
                         </ul>
@@ -140,16 +127,10 @@
                   <!-- Sidebar user panel -->
                   <div class="user-panel">
                     <div class="pull-left image">
-                      <!-- profile picture default & update-->
-                      @if(Session::get('data')->foto_pegawai)
-                      <img src="{{ asset('storage/' . Session::get('data')->foto_pegawai) }}" class="img-circle" alt="User Image">
-                      @else
-                      <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
-                      @endif
+                      
                     </div>
                     <div class="pull-left info">
-                      <br>
-                      <p>{{Session::get('data')->nama_pegawai}}</p>
+                      
                     </div>
                   </div>
 
@@ -160,20 +141,8 @@
                     <li class="header">MAIN MENU</li>
 
                     <li>
-                      <a href="{{ url('/surat') }}">
-                        <i class="fa fa-file-text"></i> <span>Surat Masuk</span>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="{{ url('/disposisi') }}">
-                        <i class="fa fa-folder"></i> <span>Disposisi</span>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="{{ url('/arsip') }}">
-                        <i class="fa fa-folder"></i> <span>Arsip</span>
+                      <a href="{{ url('/superadmin_dataPegawai') }}">
+                        <i class="fa fa-file-text"></i> <span>Data Pegawai</span>
                       </a>
                     </li>
 
@@ -261,33 +230,7 @@
               })
             </script>
             <script src="{{ asset('beranda/upload-file.js') }}"></script>
-            <script type="text/javascript">
-              $('#modal-default').on('show.bs.modal', function(e) {
-                  var id_surat = $(e.relatedTarget).data('userid');
-                  $(e.currentTarget).find('input[name="id_surat"]').val(id_surat);
-              });
-            </script>
-            <script type="text/javascript">
-              $('#modal-danger').on('show.bs.modal', function(e) {
-                  var id_disposisi = $(e.relatedTarget).data('userid');
-                  $(e.currentTarget).find('input[name="id_disposisi"]').val(id_disposisi);
-              });
-            </script>
-            <script type='text/javascript'>
-                var check = function() {
-                  if (document.getElementById('password').value ==
-                    document.getElementById('confirm_password').value) {
-                    document.getElementById('message').style.color = 'green';
-                    document.getElementById('message').innerHTML = 'matching';
-                    document.getElementById('submit').disabled = false;
-                  } else {
-                    document.getElementById('message').style.color = 'red';
-                    document.getElementById('message').innerHTML = 'not matching';
-                    document.getElementById('submit').disabled = true;
-                  }
-                }
-            </script>
-            <!-- HAPUS SURAT -->
+            <!-- HAPUS ARSIP -->
             <script type="text/javascript">
               $(document).on("click", ".open-HapusModal", function () { //target tombol modalnya
                    var id_surat = $(this).data('id'); //masukin id surat di data-id ke variable id_surat
@@ -297,27 +240,8 @@
                    // $('#addBookDialog').modal('show');
               });
             </script>
-            <!-- HAPUS DISPOSISI -->
-            <script type="text/javascript">
-              $(document).on("click", ".open-HapusModal", function () { //target tombol modalnya
-                   var id_disposisi = $(this).data('id'); //masukin id surat di data-id ke variable id_surat
-                   $(".modal-footer #id_disposisi").val( id_disposisi );  //msk var tadi ke input hidden di dalam class modal-footer dgn id id_surat
-                   // As pointed out in comments, 
-                   // it is unnecessary to have to manually call the modal.
-                   // $('#addBookDialog').modal('show');
-              });
-            </script>
-            <!-- HAPUS ARSIP -->
-            <script type="text/javascript">
-              $(document).on("click", ".open-HapusModal", function () { //target tombol modalnya
-                   var id_arsip = $(this).data('id'); //masukin id surat di data-id ke variable id_surat
-                   $(".modal-footer #id_arsip").val( id_arsip );  //msk var tadi ke input hidden di dalam class modal-footer dgn id id_surat
-                   // As pointed out in comments, 
-                   // it is unnecessary to have to manually call the modal.
-                   // $('#addBookDialog').modal('show');
-              });
-            </script>
             <!-- Script End -->
 
           </body>
           </html>
+

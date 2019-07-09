@@ -9,12 +9,12 @@ class Pimpinan extends Pegawai
     protected $table = 'pimpinans';
     protected $primaryKey = 'id_pimpinan';
     protected $fillable = [
-        'id_admin'
+        'id_superadmin'
     ];
 
-    public function admin()
+    public function superadmin()
     {
-        return $this->belongsTo(Admin::class, 'id_admin');
+        return $this->belongsTo(Superadmin::class, 'id_superadmin');
     }
 
     public function disposisis()

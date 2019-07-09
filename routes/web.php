@@ -24,17 +24,19 @@ Route::get('/register', 'PegawaiController@register');
 Route::post('/registerPost', 'PegawaiController@registerPost');
 Route::get('/logout', 'PegawaiController@logout');
 
-//login admin
-Route::get('/admin', 'AdminController@login');
-Route::post('/admin/loginPost', 'AdminController@loginPost');
-Route::get('/admin/logout', 'AdminController@logout');
-Route::get('/admin_dataPegawai', 'AdminController@dataPegawai');
-Route::get('/admin_dataSurat', 'AdminController@dataSurat');
+//login super admin
+Route::get('/superadmin', 'SuperadminController@login');
+Route::post('/superadmin/loginPost', 'SuperadminController@loginPost');
+Route::get('/superadmin/logout', 'SuperadminController@logout');
+Route::get('/superadmin_dataPegawai', 'SuperadminController@dataPegawai');
 
-//data pegawai
-Route::get('/admin_dataPegawai/promotion/{id}', 'AdminController@promoteUser');
-Route::get('/admin_dataPegawai/demotion/{id}', 'AdminController@demoteUser');
-Route::delete('/admin_dataPegawai/delete/{id}', 'AdminController@destroyUser');
+//data pegawai superadmin
+Route::get('/superadmin_dataPegawai/setadmin/{id}', 'SuperadminController@setAdmin');
+Route::get('/superadmin_dataPegawai/setpimpinan/{id}', 'SuperadminController@setPimpinan');
+Route::get('/superadmin_dataPegawai/setstaf/{id}', 'SuperadminController@setStaf');
+Route::delete('/superadmin_dataPegawai/delete/{id}', 'SuperadminController@destroyUser');
+
+//route admin
 
 //rute unggah
 Route::get('/unggah', 'SuratController@createSurat');

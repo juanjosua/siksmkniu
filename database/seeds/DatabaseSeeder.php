@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //seeder admin
-        DB::table('admins')->insert([
-            'username' => 'admin',
-            'password' => bcrypt('admin')
+        DB::table('superadmins')->insert([
+            'username' => 'superadmin',
+            'password' => bcrypt('superadmin')
         ]);
 
         //seeder instansi 1
@@ -86,6 +86,18 @@ class DatabaseSeeder extends Seeder
         $pegawai->no_telp_pegawai = '0821123447595';
         $pegawai->password = bcrypt('secret');
         $pegawai->jabatanable()->associate($staf);
+        $pegawai->save();
+
+        //seeder admin baru
+        $admin = new Admin();
+        $admin->save();
+        $pegawai =  new Pegawai();
+        $pegawai->nama_pegawai = 'Karna';
+        $pegawai->nip = '3275051101870015';
+        $pegawai->email_pegawai = 'karna@gmail.com';
+        $pegawai->no_telp_pegawai = '082112999987';
+        $pegawai->password = bcrypt('secret');
+        $pegawai->jabatanable()->associate($admin);
         $pegawai->save();
 
         //seeder pimpinan baru

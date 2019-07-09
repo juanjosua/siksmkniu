@@ -161,18 +161,6 @@
                   <li class="header">MAIN MENU</li>
 
                   <li>
-                    <a href="{{ url('/unggah') }}">
-                      <i class="fa fa-upload"></i> <span>Unggah Surat</span>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="{{ url('/surat') }}">
-                      <i class="fa fa-file-text"></i> <span>Surat Masuk</span>
-                    </a>
-                  </li>
-
-                  <li>
                     <a href="{{ url('/disposisi') }}">
                       <i class="fa fa-folder"></i> <span>Disposisi</span>
                     </a>
@@ -183,12 +171,6 @@
                       <i class="fa fa-folder"></i> <span>Arsip</span>
                     </a>
                   </li>
-
-                  <!-- <li>
-                      <a href="{{ url('/recent_activity') }}">
-                        <i class="fa fa-exchange"></i> <span>Recent Activity</span>
-                      </a>
-                    </li> -->
 
                 </ul>
 
