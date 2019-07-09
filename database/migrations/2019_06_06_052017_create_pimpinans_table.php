@@ -20,7 +20,7 @@ class CreatePimpinansTable extends Migration
             //foreign key admin
             $table->integer('id_superadmin')->unsigned()->index()->nullable();
             $table->foreign('id_superadmin')->references('id_superadmin')->on('superadmins');
-        };
+        });
     }
 
     /**
