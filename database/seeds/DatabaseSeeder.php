@@ -3,6 +3,7 @@
 use App\Pegawai;
 use App\Staf;
 use App\Pimpinan;
+use App\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
