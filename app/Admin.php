@@ -17,7 +17,10 @@ class Admin extends Pegawai
         return $this->belongsTo(Superadmin::class, 'id_superadmin');
     }
 
-
+    public function surats()
+    {
+       return $this->hasMany(Surat::class);
+    }
 
     //fungsi inherit pegawai
     public function pegawais()

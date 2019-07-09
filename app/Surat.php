@@ -9,22 +9,17 @@ class Surat extends Model
     protected $table = 'surats';
     protected $primaryKey = 'id_surat';
     protected $fillable = [
-        'no_surat', 'perihal_surat', 'tanggal_surat', 'id_pimpinan', 'id_sektor', 'id_instansi', 'id_staf'
+        'no_surat', 'perihal_surat', 'tanggal_surat', 'id_sektor', 'id_instansi', 'id_admin'
     ];
-
-    public function pimpinan()
-    {
-        return $this->belongsTo(Pimpinan::class, 'id_pimpinan');
-    }
 
     public function instansi()
     {
         return $this->belongsTo(Instansi::class, 'id_instansi');
     }
 
-    public function staf()
+    public function admin()
     {
-        return $this->belongsTo(Staf::class, 'id_staf');
+        return $this->belongsTo(Admin::class, 'id_admin');
     }
 
     public function sektor()

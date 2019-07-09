@@ -27,11 +27,6 @@ class Pimpinan extends Pegawai
         return $this->hasMany(Arsip::class);
     }
 
-    public function surats()
-    {
-        return $this->hasMany(Surat::class);
-    }
-
     //fungsi inherit pegawai
     public function pegawais()
     {

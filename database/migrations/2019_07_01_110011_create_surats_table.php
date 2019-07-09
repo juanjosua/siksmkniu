@@ -20,13 +20,9 @@ class CreateSuratsTable extends Migration
             $table->date('tanggal_surat');
             $table->string('status_surat')->default('baru');
 
-            //foreign key dari pimpinan
-            $table->integer('id_pimpinan')->unsigned()->index()->nullable();
-            $table->foreign('id_pimpinan')->references('id_pimpinan')->on('pimpinans');
-
             //foreign key dari staf
-            $table->integer('id_staf')->unsigned()->index()->nullable();
-            $table->foreign('id_staf')->references('id_staf')->on('stafs');
+            $table->integer('id_admin')->unsigned()->index()->nullable();
+            $table->foreign('id_admin')->references('id_admin')->on('admins');
 
             //foreign key dari sektor
             $table->integer('id_sektor')->unsigned()->index()->nullable();

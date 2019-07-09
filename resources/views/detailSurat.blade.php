@@ -1,4 +1,5 @@
-@extends(Session::get('data')->jabatanable_type == "App\Staf" ? 'layouts.staf' : 'layouts.pimpinan')
+@extends(Session::get('data')->jabatanable_type == "App\Staf" ? 'layouts.staf' : 
+        (Session::get('data')->jabatanable_type == "App\Pimpinan" ? 'layouts.pimpinan' : 'layouts.admin'))
 
 @section('content')
 <!-- Content Header (Page header) -->
@@ -62,18 +63,10 @@
       Details
       <br>
       <address>
-      <strong>Nomor Surat :</strong> {{$surat->no_surat}}<br>
-      <strong>Tanggal Surat :</strong> {{$surat->tanggal_surat}}<br>
-      <?php if ($surat->id_pimpinan == NULL): ?>
-        @foreach($staf as $s)
-        <strong>Pengunggah :</strong> {{$s->nama_pegawai}}<br>
-        @endforeach
-      <?php else: ?>
-        @foreach($pimpinan as $p)
-        <strong>Pengunggah :</strong> {{$p->nama_pegawai}}<br>
-        @endforeach
-      <?php endif ?>
-    </address>
+        <strong>Nomor Surat :</strong> {{$surat->no_surat}}<br>
+        <strong>Tanggal Surat :</strong> {{$surat->tanggal_surat}}<br>
+        <strong>Pengunggah :</strong> {{$admin->pegawais->nama_pegawai}}<br>
+      </address>
     </div>
     <!-- /.col -->
   </div>

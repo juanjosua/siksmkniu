@@ -49,14 +49,7 @@ class SuratController extends Controller
         
         //foreign key
         $id_sektor      = $sektor->id_sektor;
-
-        if ($jabatan == 'App\Staf') {
-            $id_staf = $id_jabatan;
-            $id_pimpinan = NULL;
-        } else { 
-            $id_pimpinan = $id_jabatan;
-            $id_staf = NULL;
-         }
+        $id_admin = $id_jabatan;
 
         $surat = Surat::create([
             'no_surat'                => $request->no_surat,
@@ -64,8 +57,7 @@ class SuratController extends Controller
             'tanggal_surat'           => $request->tanggal_surat,
             'id_sektor'               => $id_sektor,
             'id_instansi'             => $id_instansi,
-            'id_pimpinan'             => $id_pimpinan,
-            'id_staf'                 => $id_staf
+            'id_admin'                => $id_admin
         ]);
 
         Dokumen::create([
@@ -91,8 +83,8 @@ class SuratController extends Controller
         $jumlahsuratbaru = $surats->where('status_surat', 'baru')->count(); //jumlah surat baru diupload
         $jumlahsurattinjau = $surats->where('status_surat', 'tinjau')->count(); //jumlah surat sedang ditinjau
 
-        if (Session::get('data')->jabatanable_type == 'App\Staf') {
-            return view('staf_suratBaru', compact('surats', 'jumlahsuratbaru', 'jumlahsurattinjau'));    
+        if (Session::get('data')->jabatanable_type == 'App\Admin') {
+            return view('admin_suratBaru', compact('surats', 'jumlahsuratbaru', 'jumlahsurattinjau'));    
         } else {
             return view('pimpinan_suratBaru', compact('surats', 'jumlahsuratbaru', 'jumlahsurattinjau', 'pegawais'));
         }
@@ -160,15 +152,12 @@ class SuratController extends Controller
         //menampilkan detil informasi setiap surat
         $surat = Surat::find($id);
         $images = Dokumen::all()->where('id_surat', $id);
-        //get semua pegawai yang pimpinan maupun staf (dipisah karen id pimpinan dan staf bisa sama)
-        $pimpinans = DB::table('pegawais')->where('jabatanable_type', 'App\Pimpinan')->get();
-        $stafs = DB::table('pegawais')->where('jabatanable_type', 'App\Staf')->get();
-        //cocokkan id pegawai dengan id pimpinan atau id staf di surat
-        $pimpinan = $pimpinans->where('jabatanable_id', $surat->id_pimpinan);
-        $staf = $stafs->where('jabatanable_id', $surat->id_staf);
-
         $id_current_user = Session::get('data')->jabatanable_id;
-        return view('detailSurat', compact('surat', 'staf', 'pimpinan', 'id_current_user', 'images'));
+        //pengunggah
+        $id_admin = $surat->id_admin;
+        $admin = Admin::find($id_admin);
+
+        return view('detailSurat', compact('surat', 'admin', 'id_current_user', 'images'));
     }
 
     //form edit surat

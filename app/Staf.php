@@ -17,11 +17,6 @@ class Staf extends Pegawai
        return $this->hasMany(Disposisi::class);
     }
 
-    public function surats()
-    {
-       return $this->hasMany(Surat::class);
-    }
-
     //fungsi inherit pegawai
     public function pegawais()
     {
