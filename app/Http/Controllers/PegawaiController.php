@@ -37,10 +37,10 @@ class PegawaiController extends Controller
             if(Hash::check($password,$data->password)){
                 //put all user data into 1 session variable
                 Session::put('data', $data);
-                return redirect('unggah');
+                return redirect('unggah')->with('alert','Berhasil login!');
             }
             else{
-                return redirect('login')->with('alert','Password atau Email, Salah !');
+                return redirect('login')->with('alert','Password atau Email, Salah!');
             }
         }
         else{
