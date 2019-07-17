@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Pegawai;
+use App\Staf;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
@@ -28,7 +31,13 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        $email = Auth::user()->email_pegawai;
+        $data = Pegawai::where('email_pegawai', $email)->first();
+        Session::put('data', $data);
+        return '/home';
+    }
 
     /**
      * Create a new controller instance.
@@ -49,8 +58,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nama_pegawai' => ['required', 'string', 'max:255'],
+            'email_pegawai' => ['required', 'string', 'email', 'max:255', 'unique:pegawais'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -63,10 +72,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $staf = new Staf();
+        $staf->save();
+
+        $pegawai =  new Pegawai();
+        $pegawai->nama_pegawai = $data['nama_pegawai'];
+        $pegawai->email_pegawai = $data['email_pegawai'];
+        $pegawai->password = bcrypt($data['password']);
+        $pegawai->jabatanable()->associate($staf);
+        $pegawai->save();
+
+        return $pegawai;
     }
 }

@@ -13,13 +13,23 @@
             <h1>Anak IT -  Tutorial Login, Register, Validasi dengan Laravel 5.4</h1>
             <p>Hallo, {{Session::get('nama_pegawai')}}. Apakabar?</p>
 
-            <h2>* Email kamu : {{Session::get('email_pegawai')}}</h2>
-            <h2>* Status Login : {{Session::get('login')}}</h2>
+            <h2>* Email kamu : {{Auth::user()->email_pegawai}}</h2>
+            <h2>* Session status : {{Session::get('data')}} </h2>
             
-            <h2>{{$staf}}</h2>
-            <h2>{{$pimpinan}}</h2>
+            <h2></h2>
+            <h2></h2>
             
-            <a href="/logout" class="btn btn-primary btn-lg">Logout</a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
 
         </div>
         <!-- /.content -->

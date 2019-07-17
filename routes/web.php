@@ -13,16 +13,18 @@
 
 //default route adalah login page
 Route::get('/', function () {
-    return view('welcome');
+    return view('Auth.login');
 });
 
+Auth::routes();
+
 //login and register route
-Route::get('/home', 'PegawaiController@index');
-Route::get('/login', 'PegawaiController@login');
-Route::post('/loginPost', 'PegawaiController@loginPost');
-Route::get('/register', 'PegawaiController@register');
-Route::post('/registerPost', 'PegawaiController@registerPost');
-Route::get('/logout', 'PegawaiController@logout');
+// Route::get('/home', 'PegawaiController@index');
+// Route::get('/login', 'PegawaiController@login');
+// Route::post('/loginPost', 'PegawaiController@loginPost');
+// Route::get('/register', 'PegawaiController@register');
+// Route::post('/registerPost', 'PegawaiController@registerPost');
+// Route::get('/logout', 'PegawaiController@logout');
 
 //login super admin
 Route::get('/superadmin', 'SuperadminController@login');
@@ -70,3 +72,7 @@ Route::patch('profil/update/{id}', 'ProfilController@updateProfil');
 
 //route dokumen baru pada disposisi
 Route::post('disposisi/tambah/surat', 'DokumenController@addImage');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

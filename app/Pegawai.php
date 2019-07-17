@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
-class Pegawai extends Model
+class Pegawai extends Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'pegawais';
     protected $primaryKey = 'id_pegawai';
     protected $fillable = [
@@ -16,6 +18,11 @@ class Pegawai extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
 
     public function jabatanable(){
         return $this->morphTo();
