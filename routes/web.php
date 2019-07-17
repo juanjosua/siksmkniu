@@ -13,7 +13,7 @@
 
 //default route adalah login page
 Route::get('/', function () {
-    return view('login');
+    return view('auth.login');
 });
 
 Auth::routes();
