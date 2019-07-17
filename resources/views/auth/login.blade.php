@@ -1,53 +1,53 @@
-@extends('layouts.regform')
+@extends('layouts.majestic')
 
 @section('content')
-<!-- Sing in  Form -->
-        <section class="sign-in" style="margin-bottom: 0px;">
-            <div class="container">
-                <div class="signin-content">
-                    <div class="signin-image">
-                        <figure><img src="{{ asset('regform/images/signin-image.jpg') }}" alt="sign in image"></figure>
-                        <a href="{{ route('register') }}" class="signup-image-link">Buat akun</a>
-                    </div>
 
-                    <div class="signin-form">
-                        <h2 class="form-title">Masuk</h2>
-                        <form method="POST" class="login-form" id="login-form" action="{{ route('login') }}">
-                            @csrf
-                            <div class="form-group">
-                                <label for="email_pegawai"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="email" name="email_pegawai" id="email_pegawai" placeholder="Surel anda" class="form-control @error('email_pegawai') is-invalid @enderror" value="{{ old('email_pegawai') }}" required autocomplete="email_pegawai" autofocus/>
+<h4>Selamat Datang!</h4>
+<h6 class="font-weight-light">Silakan masuk.</h6>
+<form method="POST" class="pt-3" action="{{ route('login') }}">
+	@csrf
+	<!-- input email -->
+	<div class="form-group">
+ 		<input type="email" name="email_pegawai" id="email_pegawai" placeholder="Surel anda" class="form-control form-control-lg @error('email_pegawai') is-invalid @enderror" value="{{ old('email_pegawai') }}" required autocomplete="email_pegawai" autofocus/>
 
-                                @error('email_pegawai')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="password" id="password" placeholder="kata sandi" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"/>
+        @error('email_pegawai')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+	</div>
+	<!-- input password -->
+	<div class="form-group">
+    	<input type="password" name="password" id="password" placeholder="kata sandi" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"/>
                                 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" value="Masuk"/>
-                            </div>
-                        </form>
-                        <div class="social-login">
-                            <span class="social-label">Or login with</span>
-                            <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+	</div>
+	<!-- tombol masuk -->
+	<div class="mt-3">
+		<input type="submit" name="signin" id="signin" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="MASUK"/>
+	</div>
+	<div class="my-2 d-flex justify-content-between align-items-center">
+     	<div class="form-check">
+			<label class="form-check-label text-muted">
+          	<input type="checkbox" class="form-check-input">
+                Tetap masuk
+            </label>
+		</div>
+		<!-- lupa password -->
+		<a href="{{ route('password.request') }}" class="auth-link text-black">Lupa kata sandi?</a>
+    </div>
+	<div class="mb-2">
+		<button type="button" class="btn btn-block btn-facebook auth-form-btn">
+            <i class="mdi mdi-facebook mr-2"></i>Connect using facebook
+        </button>
+	</div>
+	<div class="text-center mt-4 font-weight-light">
+        Belum memiliki akun? <a href="{{ route('register') }}" class="text-primary">Buat</a>
+	</div>
+</form>
+
 @endsection

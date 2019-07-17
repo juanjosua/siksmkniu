@@ -22,6 +22,7 @@ class CreatePegawaisTable extends Migration
             $table->string('email_pegawai');
             $table->string('password');
             $table->morphs('jabatanable'); //polymorph inheritance
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

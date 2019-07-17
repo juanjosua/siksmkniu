@@ -117,7 +117,14 @@
                             <a href="{{ url('/profil/edit') }}" class="btn btn-default btn-flat">Profil</a>
                           </div>
                           <div class="pull-right">
-                            <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Keluar</a>
+                            <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
+                                onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Keluar') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                            </form>
                           </div>
                         </li>
                       </ul>

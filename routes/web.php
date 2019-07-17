@@ -17,9 +17,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+ 
+//verifikasi email user
+Auth::routes(['verify' => true]);
 
 //login and register route
-// Route::get('/home', 'PegawaiController@index');
+Route::get('/home', 'PegawaiController@index');
 // Route::get('/login', 'PegawaiController@login');
 // Route::post('/loginPost', 'PegawaiController@loginPost');
 // Route::get('/register', 'PegawaiController@register');
@@ -72,7 +75,3 @@ Route::patch('profil/update/{id}', 'ProfilController@updateProfil');
 
 //route dokumen baru pada disposisi
 Route::post('disposisi/tambah/surat', 'DokumenController@addImage');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
