@@ -40,11 +40,11 @@
 		<!-- lupa password -->
 		<a href="{{ route('password.request') }}" class="auth-link text-black">Lupa kata sandi?</a>
     </div>
-	<div class="mb-2">
+	<!-- <div class="mb-2">
 		<button type="button" class="btn btn-block btn-facebook auth-form-btn">
             <i class="mdi mdi-facebook mr-2"></i>Connect using facebook
         </button>
-	</div>
+	</div> -->
 	<div class="text-center mt-4 font-weight-light">
         Belum memiliki akun? <a href="{{ route('register') }}" class="text-primary">Buat</a>
 	</div>
