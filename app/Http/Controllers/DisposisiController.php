@@ -28,7 +28,7 @@ class DisposisiController extends Controller
         }
 
         $pimpinans = Pegawai::all()->where('jabatanable_type', 'App\Pimpinan');
-        return view('disposisiSurat', compact('disposisis', 'jumlahdisposisi', 'pimpinans'));
+        return view('disposisiSurat1', compact('disposisis', 'jumlahdisposisi', 'pimpinans'));
     }
 
     //simpan disposisi baru

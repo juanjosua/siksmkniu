@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Auth;
+use App\Pegawai;
+use Illuminate\Support\Facades\Session;
 
 class ResetPasswordController extends Controller
 {
@@ -25,7 +28,13 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        $email = Auth::user()->email_pegawai;
+        $data = Pegawai::where('email_pegawai', $email)->first();
+        Session::put('data', $data);
+        return '/home';
+    }
 
     /**
      * Create a new controller instance.

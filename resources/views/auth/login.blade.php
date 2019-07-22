@@ -33,8 +33,8 @@
 	<div class="my-2 d-flex justify-content-between align-items-center">
      	<div class="form-check">
 			<label class="form-check-label text-muted">
-          	<input type="checkbox" class="form-check-input">
-                Tetap masuk
+          	<!-- <input type="checkbox" class="form-check-input"> -->
+                <!-- Tetap masuk -->
             </label>
 		</div>
 		<!-- lupa password -->

@@ -41,14 +41,14 @@
       <input type="password" name="password_confirmation" id="password-confirm" class="form-control form-control-lg" placeholder="Ulangi kata sandi" required autocomplete="new-password"/>
     </div>
 
-    <div class="mb-4">
+    <!-- <div class="mb-4">
       <div class="form-check">
         <label class="form-check-label text-muted">
           <input type="checkbox" class="form-check-input">
 	          I agree to all Terms & Conditions
         </label>
       </div>
-	</div>
+	</div> -->
     <div class="mt-3">
       <input type="submit" name="signup" id="signup" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="DAFTAR"/>
     </div>

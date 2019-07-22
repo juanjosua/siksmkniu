@@ -15,7 +15,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('majestic/css/style.css') }}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="{{ asset('majestic/images/favicon.png') }}" />
+  <link rel="shortcut icon" href="{{ asset('majestic/images/favicon2.jpg') }}" />
 </head>
 
 <body>

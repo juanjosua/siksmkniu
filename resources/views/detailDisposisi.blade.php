@@ -1,96 +1,86 @@
-@extends(Session::get('data')->jabatanable_type == "App\Staf" ? 'layouts.staf' : 
-        (Session::get('data')->jabatanable_type == "App\Pimpinan" ? 'layouts.pimpinan' : 'layouts.admin'))
+@extends('layouts.majestic_dash')
 
 @section('content')
-<!-- Content Header (Page header) -->
-<section class="content-header">
-</section>
 
-<section class="invoice">
-
-    <div class="row">
-      <div class="col-xs-12">
-        <h2 class="page-header">
-          <i class="fa fa-file-text"></i> Gambar
-        </h2>
-      </div>
-      <!-- /.col -->
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      	<div class="card">
+            <div class="card-body">
+              	<p class="card-title">Tampilan surat</p>
+                <p class="mb-4">Berikut merupakan tampilan PDF, serta informasi mengenai detil surat.
+                @foreach($images as $image)
+                 	<iframe 
+					    src="http://docs.google.com/gview?url={{ asset('storage/' . $image->image) }}&embedded=true" 
+					    style="width:600px; height:500px;" 
+					    frameborder="0">
+					</iframe>
+				@endforeach
+            </div>
+        </div>
     </div>
-    <div class="container">
-      <div class="row" style="margin-left: -190px; margin-top: -40px; width: 1000px; float: left; overflow-x:scroll; white-space: nowrap; display: flex">
-        @foreach($images as $image)
-          <div style="margin-left: 10px">
-            <embed src="{{ asset('storage/' . $image->image) }}" type="application/pdf" height="700px" width="500px">
-          </div>
-        @endforeach
-      </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      	<div class="card">
+            <div class="card-body dashboard-tabs p-0">
+                <ul class="nav nav-tabs px-4" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Detil</a>
+                    </li>
+                  </ul>
+	            <div class="tab-content py-0 px-0">
+	                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+	                  	<div class="d-flex flex-wrap justify-content-xl-between">
+	                        <div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+	                        <i class="mdi mdi-calendar-heart icon-lg mr-3 text-primary"></i>
+	                          	<div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Start date</small>
+		                            <div class="dropdown">
+		                              	<a class="btn btn-secondary dropdown-toggle p-0 bg-transparent border-0 text-dark shadow-none font-weight-medium" href="#" role="button" id="dropdownMenuLinkA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                                <h5 class="mb-0 d-inline-block">26 Jul 2018</h5>
+		                              	</a>
+		                             	<div class="dropdown-menu" aria-labelledby="dropdownMenuLinkA">
+			                                <a class="dropdown-item" href="#">12 Aug 2018</a>
+			                                <a class="dropdown-item" href="#">22 Sep 2018</a>
+			                                <a class="dropdown-item" href="#">21 Oct 2018</a>
+		                              	</div>
+		                            </div>
+	                          	</div>
+	                        </div>
+	                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+	                          	<i class="mdi mdi-currency-usd mr-3 icon-lg text-danger"></i>
+	                          	<div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Revenue</small>
+	                            	<h5 class="mr-2 mb-0">$577545</h5>
+	                          	</div>
+	                        </div>
+	                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+	                          	<i class="mdi mdi-eye mr-3 icon-lg text-success"></i>
+	                          	<div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Total views</small>
+	                            <h5 class="mr-2 mb-0">9833550</h5>
+	                        	</div>
+	                        </div>
+	                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+	                          	<i class="mdi mdi-download mr-3 icon-lg text-warning"></i>
+	                          	<div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Downloads</small>
+	                            <h5 class="mr-2 mb-0">2233783</h5>
+	                          	</div>
+	                        </div>
+	                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+	                          	<i class="mdi mdi-flag mr-3 icon-lg text-danger"></i>
+	                          	<div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Flagged</small>
+	                            <h5 class="mr-2 mb-0">3497843</h5>
+	                          	</div>
+	                        </div>
+	                    </div>
+	                </div>
+            	</div>
+            </div>
+        </div>
     </div>
-</section>
-
-<!-- Main content -->
-<section class="invoice">
-
-  <!-- title row -->
-  <div class="row">
-    <div class="col-xs-12">
-      <h2 class="page-header">
-        <i class="fa fa-file-text"></i> {{$surat->perihal_surat}}
-        <small class="pull-right">Tanggal Disposisi : {{$disposisi->created_at->format('d-m-Y') }}</small>
-      </h2>
-    </div>
-    <!-- /.col -->
-  </div>
-
-  <!-- info row -->
-  <div class="row invoice-info">
-    <!-- /.col Info Surat -->
-    <div class="col-sm-3 invoice-col">
-      Rincian Surat
-      <br>
-    <address>
-      <strong>Nomor Surat :</strong> {{$surat->no_surat}}<br>
-      <strong>Perihal Surat :</strong> {{$surat->tanggal_surat}}<br>
-      <strong>Instansi :</strong> {{$surat->instansi->nama_instansi}}<br>
-      <strong>Sektor :</strong> {{$surat->sektor->nama_sektor}}<br>
-      <strong>Tanggal Surat :</strong> {{date('d M Y', strtotime($surat->tanggal_surat))}}<br>
-    </address>
-    </div>
-    <!-- /.col -->
-    <!-- /.col Info Disposisi -->
-    <div class="col-sm-6 invoice-col">
-      Rincian Disposisi
-      <br>
-    <address>
-    <div style="display: none;">
-      {{ $nama_pimpinan = $pimpinans->where('jabatanable_id', $disposisi->id_pimpinan) }}
-      {{ $nama_staf = $stafs->where('jabatanable_id', $disposisi->id_staf) }}
-    </div>
-    @foreach($nama_pimpinan as $np)
-      <strong>Pemberi Disposisi :</strong> {{$np->nama_pegawai}}<br>
-    @endforeach
-    @foreach($nama_staf as $ns)
-      <strong>Penerima Disposisi :</strong> {{$ns->nama_pegawai}}<br>
-    @endforeach
-      <strong>Pesan Disposisi :</strong> {{$disposisi->pesan_disposisi}}<br>
-    </address>
-    </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-
-  <hr>
-  <!-- Download & Download Button -->
-  <div class="row no-print">
-    <div class="col-xs-12">
-
-    <!-- tombol download -->
-    <a href="{{ url('surat/download/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-download"></i> Unduh</a>
-
-    <!-- tombol download -->
-    <a href="{{ url('/disposisi') }}" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>
-    </div>
-  </div>
-
-</section>
-<!-- /.content -->
+</div>
 @endsection

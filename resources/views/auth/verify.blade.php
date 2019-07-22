@@ -1,24 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.majestic_dash')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
 
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
                 <div class="card-body">
-                    @if (session('resent'))
+                  <h4 class="card-title">Verifikasi email anda!</h4>
+                  
+                  	@if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                            {{ __('Tautan verifikasi email telah terkirim ke surel anda.') }}
                         </div>
                     @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+                    {{ __('Sebelum melanjutkan, mohon periksa surel anda.') }}
+                    {{ __('Jika anda tidak menerima email') }}, <a href="{{ route('verification.resend') }}">{{ __('klik disini untuk menerima tautan baru') }}</a>.
+
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-</div>
+
 @endsection

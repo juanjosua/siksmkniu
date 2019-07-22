@@ -30,7 +30,7 @@ class PegawaiController extends Controller
         } elseif (Auth::user()->jabatanable_type == 'App\Pimpinan') {
             return view('pimpinan_suratBaru');
         } else {
-            return view('unggahSurat');
+            return redirect('/unggah');
         }
         
     }

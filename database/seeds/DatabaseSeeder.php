@@ -53,6 +53,11 @@ class DatabaseSeeder extends Seeder
             'nama_sektor' => 'Komunikasi dan Informasi'
         ]);
 
+        //seeder sektor 5
+        DB::table('sektors')->insert([
+            'nama_sektor' => 'Lainnya'
+        ]);
+
         //seeder staf baru
         $staf = new Staf();
         $staf->save();

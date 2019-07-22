@@ -78,8 +78,6 @@ class SuratController extends Controller
         $pegawais = Pegawai::all()->except(Session::get('data')->id_pegawai);
         //view semua daftar surat
         $surats = Surat::all();
-        //jabatan yang sedang login
-        $user = Session::get('data')->jabatanable_type;
 
         $jumlahsuratbaru = $surats->where('status_surat', 'baru')->count(); //jumlah surat baru diupload
         $jumlahsurattinjau = $surats->where('status_surat', 'tinjau')->count(); //jumlah surat sedang ditinjau

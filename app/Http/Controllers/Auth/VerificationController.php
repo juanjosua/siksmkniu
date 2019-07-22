@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use App\Pegawai;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Support\Facades\Session;
 
 class VerificationController extends Controller
 {
@@ -25,7 +28,13 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        $email = Auth::user()->email_pegawai;
+        $data = Pegawai::where('email_pegawai', $email)->first();
+        Session::put('data', $data);
+        return '/home';
+    }
 
     /**
      * Create a new controller instance.
