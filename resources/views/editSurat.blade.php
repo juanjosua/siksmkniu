@@ -7,7 +7,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Ubah Surat</h4>
                   <p class="card-description">
-                    Form Edit Surat
+                    Form ubah surat
                   </p>
                   <form class="forms-sample">
                     <div class="form-group">
