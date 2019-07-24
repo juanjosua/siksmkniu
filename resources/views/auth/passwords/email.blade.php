@@ -1,4 +1,4 @@
-@extends('layouts.majestic_dash')
+@extends('layouts.staf')
 
 @section('content')
 

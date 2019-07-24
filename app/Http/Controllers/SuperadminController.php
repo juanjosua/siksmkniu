@@ -21,7 +21,7 @@ class SuperadminController extends Controller
 {
     //halaman login
     public function login(){
-        return view('superadmin_login1');
+        return view('superadmin_login');
     }
 
     //setelah pencet tombol login
@@ -57,7 +57,7 @@ class SuperadminController extends Controller
     {
         //send all user data to data pegawai page
         $dataPegawai = Pegawai::all();
-        return view('superadmin_dataPegawai1', compact('dataPegawai'));
+        return view('superadmin_dataPegawai', compact('dataPegawai'));
     }
 
     //menjadikan admin

@@ -1,40 +1,69 @@
-@extends('layouts.majestic_dash')
+@extends(Session::get('data')->jabatanable_type == "App\Staf" ? 'layouts.staf' : 
+        (Session::get('data')->jabatanable_type == "App\Pimpinan" ? 'layouts.pimpinan' : 'layouts.admin'))
 
 @section('content')
 
-<div class="col-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Ubah Surat</h4>
-                  <p class="card-description">
-                    Form ubah surat
-                  </p>
-                  <form class="forms-sample">
-                    <div class="form-group">
-                      <label for="exampleInputName1">Nomor</label>
-                      <input type="text" class="form-control" id="exampleInputName1" name="no_surat" placeholder="No. Surat" value="{{$surat->no_surat}}">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail3">Instansi</label>
-                      <input type="text" class="form-control" id="exampleInputEmail3" name="pengirim_surat" placeholder="Instansi Pengirim" value="{{$surat->instansi->nama_instansi}}">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword4">Bidang</label>
-                      <input type="text" class="form-control" id="exampleInputPassword4" name="tujuan_surat" placeholder="Bidang" value="{{$surat->sektor->nama_sektor}}">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleSelectGender">Perihal</label>
-                        <input type="text" class="form-control" id="exampleSelectGender" name="perihal_surat" placeholder="Perihal" value="{{$surat->perihal_surat}}">
-                      </div>
-                    <div class="form-group">
-                      <label for="exampleInputCity1">Tanggal Surat</label>
-                      <input type="date" class="form-control" id="exampleInputCity1" name="tanggal_surat" placeholder="dd/mm/yyyy" value="{{date('d M Y', strtotime($surat->tanggal_surat))}}">
-                    </div>
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </form>
-                </div>
-              </div>
-            </div>
+<form action="{{ url('/surat/edit/update/' . $surat->id_surat) }}" method="POST">
+    {{ csrf_field() }}
+    {{ method_field('PATCH') }}
+    <div class="container">
+      <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+        <div class="preview-zone">
 
+          <!-- Document Description Form Start -->
+
+          <h3>Rincian Surat</h3>
+          <br>
+          <div class="form-group">
+            <h4>Form Deskripsi Surat</h4>
+            <label class="pull-left">No. Surat</label>
+            <input type="text" name="no_surat" class="form-control" placeholder="{{$surat->no_surat}}" value="{{$surat->no_surat}}">
+          </div>
+
+          <div class="form-group">
+            <label class="pull-left">Pengirim Surat</label>
+            <input type="text" list="instansis" name="pengirim_surat" class="form-control" placeholder="{{$surat->instansi->nama_instansi}}" value="{{$surat->instansi->nama_instansi}}">
+                <datalist id="instansis">
+                    @foreach($instansis as $instansi)
+                        <option>{{ $instansi->nama_instansi }}</option>
+                    @endforeach
+                </datalist>
+          </div>
+
+          <div class="form-group">
+            <label class="pull-left">Tujuan Sektor</label>
+            <input type="text" list="sektors" name="tujuan_surat" class="form-control" placeholder="{{$surat->sektor->nama_sektor}}" value="{{$surat->sektor->nama_sektor}}">
+                <datalist id="sektors">
+                    @foreach($sektors as $sektor)
+                        <option>{{ $sektor->nama_sektor }}</option>
+                    @endforeach
+                </datalist>
+          </div>
+
+          <div class="form-group">
+            <label class="pull-left">Perihal Surat</label>
+            <input type="text" name="perihal_surat" class="form-control" placeholder="{{$surat->perihal_surat}}" value="{{$surat->perihal_surat}}">
+          </div>
+
+           <div class="form-group">
+            <label class="pull-left">Tanggal Surat</label>
+            <input type="date" name="tanggal_surat" class="form-control" placeholder="{{date('d M Y', strtotime($surat->tanggal_surat))}}" value="{{$surat->tanggal_surat}}">
+          </div>
+
+          <!-- Document Description Form End -->
+
+        </div>
+
+        </div>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary center-block">Perbarui</button>
+      </div>
+      </div>
+    </div>
+  </form>
 @endsection

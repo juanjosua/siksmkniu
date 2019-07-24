@@ -1,100 +1,100 @@
-@extends(Session::get('data')->jabatanable_type == "App\Staf" ? 'layouts.staf' : 
-        (Session::get('data')->jabatanable_type == "App\Pimpinan" ? 'layouts.pimpinan' : 'layouts.admin'))
+@extends('layouts.majestic_dash')
 
 @section('content')
-<!-- Content Header (Page header) -->
-<section class="content-header">
-</section>
 
-<section class="invoice">
-
-    <div class="row">
-      <div class="col-xs-12">
-        <h2 class="page-header">
-          <i class="fa fa-file-text"></i> Gambar
-        </h2>
-      </div>
-      <!-- /.col -->
-    </div>
-    <div class="container">
-      <div class="row" style="margin-left: -190px; margin-top: -40px; width: 1000px; float: left; overflow-x:scroll; white-space: nowrap; display: flex">
-        @foreach($images as $image)
-          <div style="margin-left: 10px">
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      	<div class="card">
+            <div class="card-body">
+              	<p class="card-title">Rincian surat</p>
+                <p class="mb-4">Berikut merupakan tampilan PDF, serta informasi mengenai detil surat.
+                @foreach($images as $image)
+                 	<div>
             <embed src="{{ asset('storage/' . $image->image) }}" type="application/pdf" height="600px" width="100%">
           </div>
-        @endforeach
-      </div>
+				@endforeach
+            </div>
+        </div>
     </div>
-</section>
+</div>
 
-<!-- Main content -->
-<section class="invoice">
-
-  <!-- title row -->
-  <div class="row">
-    <div class="col-xs-12">
-      <h2 class="page-header">
-        <i class="fa fa-file-text"></i> {{$surat->perihal_surat}}
-        <small class="pull-right">Tanggal Unggah : {{$surat->created_at->format('d-m-Y') }}</small>
-      </h2>
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      	<div class="card">
+            <div class="card-body dashboard-tabs p-0">
+                <ul class="nav nav-tabs px-4" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Surat</a>
+                    </li>
+                </ul>
+	            <div class="tab-content py-0 px-0">
+	                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+	                  	<div class="d-flex flex-wrap justify-content-xl-between">
+	                        <div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+	                        <i class="mdi mdi-information-variant icon-lg mr-3 text-primary"></i>
+	                          	<!-- <div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Perihal Surat</small>
+		                            <div class="dropdown">
+		                              	<a class="btn btn-secondary dropdown-toggle p-0 bg-transparent border-0 text-dark shadow-none font-weight-medium" href="#" role="button" id="dropdownMenuLinkA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                                <h5 class="mb-0 d-inline-block">tanggal</h5>
+		                              	</a>
+		                             	<div class="dropdown-menu" aria-labelledby="dropdownMenuLinkA">
+			                                <p class="dropdown-item">tanggal</a>
+		                              	</div>
+		                            </div>
+	                          	</div> -->
+	                          	<div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Perihal Surat</small>
+	                            	<h5 class="mr-2 mb-0">{{$surat->perihal_surat}}</h5>
+	                          	</div>
+	                        </div>
+	                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+	                          	<i class="mdi mdi-counter mr-3 icon-lg text-danger"></i>
+	                          	<div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Nomor Surat</small>
+	                            	<h5 class="mr-2 mb-0">{{$surat->no_surat}}</h5>
+	                          	</div>
+	                        </div>
+	                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+	                          	<i class="mdi mdi-home mr-3 icon-lg text-success"></i>
+	                          	<div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Instansi Pengirim</small>
+	                            <h5 class="mr-2 mb-0">{{$surat->instansi->nama_instansi}}</h5>
+	                        	</div>
+	                        </div>
+	                        <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+	                          	<i class="mdi mdi-buffer mr-3 icon-lg text-warning"></i>
+	                          	<div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Bidang</small>
+	                            <h5 class="mr-2 mb-0">{{$surat->sektor->nama_sektor}}</h5>
+	                          	</div>
+	                        </div>
+	                        <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+	                          	<i class="mdi mdi-calendar mr-3 icon-lg text-danger"></i>
+	                          	<div class="d-flex flex-column justify-content-around">
+	                            	<small class="mb-1 text-muted">Tanggal Surat</small>
+	                            <h5 class="mr-2 mb-0">{{date('d M Y', strtotime($surat->tanggal_surat))}}</h5>
+	                          	</div>
+	                        </div>
+	                    </div>
+	                </div>
+            	</div>
+            </div>
+        </div>
     </div>
-    <!-- /.col -->
-  </div>
-
-  <!-- info row -->
-  <div class="row invoice-info">
-    <div class="col-sm-3 invoice-col">
-      Pengirim Surat
-      <br>
-      <address>
-        <strong>{{$surat->instansi->nama_instansi}}</strong><br>
-      </address>
+</div>
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      	<div class="card">
+            <div class="card-body">
+            	@if($id_current_user == $surat->id_admin)
+		        <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning mr-2">Ubah</a>
+		        @else
+		        <a href="" class="btn btn-dark mr-2" disabled>Ubah</a>
+		        @endif
+            	<a href="" class="btn btn-info mr-2">Unduh</a>
+            </div>
+        </div>
     </div>
-    <!-- /.col -->
-    <div class="col-sm-3 invoice-col">
-      Tujuan Sektor
-      <br>
-      <address>
-        <strong>{{$surat->sektor->nama_sektor}}</strong><br>
-      </address>
-    </div>
-    <!-- /.col -->
-    <div class="col-sm-3 invoice-col">
-      Rincian Surat
-      <br>
-      <address>
-        <strong>Nomor Surat :</strong> {{$surat->no_surat}}<br>
-        <strong>Tanggal Surat :</strong> {{$surat->tanggal_surat}}<br>
-        @foreach($pegawai as $p)
-        <strong>Pengunggah :</strong> {{$p->nama_pegawai}}<br>
-        @endforeach      
-      </address>
-    </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-
-  <hr>
-  <!-- Download & Download Button -->
-  <div class="row no-print">
-    <div class="col-xs-12">
-      <div class="btn-toolbar">
-        <!-- user yang unggah -->
-        @if($id_current_user == $surat->id_admin)
-        <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Ubah</a>
-        @else
-        <a class="btn btn-dark pull-left" disabled="disabled"><i class="fa fa-edit"></i> Ubah</a>
-        @endif
-
-        <!-- tombol download -->
-        <a href="{{ url('surat/download/' . $surat->id_surat) }}" target="_blank" class="btn btn-warning"><i class="fa fa-download"></i> Unduh</a>
-
-        <!-- tombol kembali -->
-        <a href="{{ url('/surat') }}" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>
-      </div>
-    </div>
-  </div>
-
-</section>
-<!-- /.content -->
+</div>        
 @endsection

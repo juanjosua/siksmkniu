@@ -1,53 +1,86 @@
-@extends('layouts.majestic')
+<html>
+    <head>
 
-@section('content')
+        <meta name="description" content="Ancient Archieve is a website to Archieve and store your Docs" />
+        <meta name="author" content="The Unsung Heroes">
 
-<h4>Selamat Datang!</h4>
-<h6 class="font-weight-light">Silakan masuk.</h6>
-<form method="POST" class="pt-3" action="{{ route('login') }}">
-	@csrf
-	<!-- input email -->
-	<div class="form-group">
- 		<input type="email" name="email_pegawai" id="email_pegawai" placeholder="Surel anda" class="form-control form-control-lg @error('email_pegawai') is-invalid @enderror" value="{{ old('email_pegawai') }}" required autocomplete="email_pegawai" autofocus/>
+        <!-- Mobile Webs -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+        <meta name="mobile-web-app-capable" content="yes">
 
-        @error('email_pegawai')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-	</div>
-	<!-- input password -->
-	<div class="form-group">
-    	<input type="password" name="password" id="password" placeholder="kata sandi" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"/>
-                                
-        @error('password')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-	</div>
-	<!-- tombol masuk -->
-	<div class="mt-3">
-		<input type="submit" name="signin" id="signin" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="MASUK"/>
-	</div>
-	<div class="my-2 d-flex justify-content-between align-items-center">
-     	<div class="form-check">
-			<label class="form-check-label text-muted">
-          	<!-- <input type="checkbox" class="form-check-input"> -->
-                <!-- Tetap masuk -->
-            </label>
-		</div>
-		<!-- lupa password -->
-		<a href="{{ route('password.request') }}" class="auth-link text-black">Lupa kata sandi?</a>
-    </div>
-	<!-- <div class="mb-2">
-		<button type="button" class="btn btn-block btn-facebook auth-form-btn">
-            <i class="mdi mdi-facebook mr-2"></i>Connect using facebook
-        </button>
-	</div> -->
-	<div class="text-center mt-4 font-weight-light">
-        Belum memiliki akun? <a href="{{ route('register') }}" class="text-primary">Buat</a>
-	</div>
-</form>
+        <title>
+            Masuk | SIKSM KNIU
+        </title>
 
-@endsection
+        <!-- Website Theme -->
+        <meta id="theme-color" name="theme-color" content="#1869a0">
+        <link rel="stylesheet" href="{{ asset('beranda/css/login.css') }}" />
+        <link rel="icon" type="image/png" href="https://4erff29jo03b8uhp4b94vxhq-wpengine.netdna-ssl.com/wp-content/uploads/2015/05/caspio-features-illustr_cloud-data_3_2x.png"/>
+    </head>
+
+    <body>
+        <div class="se-pre-con"></div>
+
+        <div class="container-head">
+            <img class="icon" href="{{ url('/') }}" src="{{ asset('beranda/icon/unesco.png') }}" alt="Login-icon">
+        </div>
+
+        <div class="container-body">
+
+            <div class="container-card">
+                <p>&nbsp;</p>
+                <div class="login-header">
+                    <img class="icon" src="{{ asset('beranda/icon/login.png') }}" alt="Login-icon">
+                    <h2>Masuk</h2>
+                </div>
+
+                <!-- login error -->
+                @if(\Session::has('alert'))
+                <div class="alert alert-danger">
+                    <div>{{Session::get('alert')}}</div>
+                </div>
+                @endif
+                <!-- login berhasil -->
+                @if(\Session::has('alert-success'))
+                    <div class="alert alert-success">
+                        <div>{{Session::get('alert-success')}}</div>
+                    </div>
+                @endif
+
+                <form action="{{ route('login') }}" method="POST">
+                  @csrf
+                    <div>
+                        <label for="email_pegawai" ><b>Surel</b></label>
+                        <br>
+                        <input name="email_pegawai" type="email" autofocus>
+                    </div>
+                    <div>
+                        <label for="password" ><b>Sandi</b></label>
+                        <br>
+                        <input name="password" type="password">
+                    </div>
+                    <button class="button">Masuk</button>
+                    <a href="{{ route('password.request') }}" class="auth-link text-black">Lupa kata sandi?</a>
+                    <br>
+                    Belum memiliki akun? <a href="{{ route('register') }}" class="text-primary">Buat</a>
+                </form>
+
+            </div>
+
+            <h1>Arsip Surat <br> KNIU.</h1>
+            <p>Make Your Archive More Secure!</p>
+        </div>
+
+
+        <!-- JQuery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+        <script>
+            $(window).load(function() {
+                $(".se-pre-con").fadeOut("slow");;
+            });
+        </script>
+
+    </body>
+</html>
