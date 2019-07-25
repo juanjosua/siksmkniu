@@ -20,9 +20,9 @@
           <div class="row">
             <div class="col-md-12">
 
-              <form action="{{ url('/unggah/baru') }}" method="POST" enctype="multipart/form-data" >
+              <form action="{{ url('/unggah/baru') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <div class="container">
+                <div class="container" style="padding-left: 20px; padding-right: 100px;">
                   <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -36,33 +36,35 @@
 
                     <div class="preview-zone hidden">
                       <div class="box box-solid">
-                      <div class="with-border">
-                        <h2>Pratinjau Berkas</h2>
-                      </div>
+                        <div class="with-border">
+                          <h2>Pratinjau Berkas</h2>
+                        </div>
 
-                      <!-- PDF Preview Start -->
+                        <!-- PDF Preview Start -->
 
-                      <input class="btn btn-primary center-block" name="image" type="button" value="Preview" onclick="PreviewImage();">
-                      <br>
+                        <input class="btn btn-primary center-block" name="image" type="button" value="Preview" onclick="PreviewImage();">
+                        <br>
 
-                      <div style="clear:both">
-                        <iframe target="_blank" id="viewer" frameborder="0" scrolling="no" width="100%" height="500"></iframe>
-                      </div>
+                        <div id="preview" style="clear:both; display: none;">
+                          <iframe target="_blank" id="viewer" frameborder="0" scrolling="no" width="100%" height="500"></iframe>
+                        </div>
 
-                      <!-- PDF Preview End -->
+                        <!-- PDF Preview End -->
 
-                      <div class="box-body"></div>
+                        <!-- nama berkas -->
+                        <div class="box-body"></div> 
+
                       </div>
 
                       <!-- Document Description Form Start -->
 
-                      <h3>Form Deskripsi Surat</h3>
+                      <!-- <h3>Form Deskripsi Surat</h3> -->
                       <br>
 
                       <div class="row">
                         <div class="col-md-2">
                           <div class="form-group">
-                            <label class="pull-right">No. Surat :</label>
+                            <label class="pull-left">No. Surat :</label>
                           </div>                                      
                         </div>
                         <div class="col-md-6">
@@ -75,12 +77,12 @@
                       <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
-                              <label class="pull-right">Pengirim Surat :</label>
+                              <label class="pull-left">Pengirim Surat :</label>
                             </div>                     
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                  <input type="text" list="instansis" name="pengirim_surat" class="form-control" placeholder="Masukkan nama instansi" />
+                                  <input type="text" list="instansis" name="pengirim_surat" class="form-control" placeholder="Ketikkan nama Instansi"/>
                                   <datalist id="instansis">
                                     @foreach($instansis as $instansi)
                                     <option>{{ $instansi->nama_instansi }}</option>
@@ -93,17 +95,15 @@
                       <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
-                              <label class="pull-right">Tujuan Sektor :</label>
+                              <label class="pull-left">Tujuan Sektor :</label>
                             </div>                                    
                           </div>
                           <div class="col-md-6">
-                            <div class="form-group">
-                                  <input type="text" list="sektors" name="tujuan_surat" class="form-control" placeholder="Masukkan nama sektor" />
-                                  <datalist id="sektors">
-                                    @foreach($sektors as $sektor)
-                                    <option>{{ $sektor->nama_sektor }}</option>
-                                    @endforeach
-                                  </datalist>
+                            <div class="form-group" style="text-align: left;">
+                              @foreach($sektors as $sektor)
+                                  <input name="tujuan_surat" type="checkbox" value="{{ $sektor->nama_sektor }}">
+                                  {{ $sektor->nama_sektor }}<br>
+                              @endforeach
                             </div>                                
                           </div>
                       </div>
@@ -111,7 +111,7 @@
                       <div class="row">
                         <div class="col-md-2">
                           <div class="form-group">
-                            <label class="pull-right">Perihal Surat :</label>
+                            <label class="pull-left">Perihal Surat :</label>
                           </div>
                         </div>
                         <div class="col-md-8">
@@ -124,7 +124,7 @@
                       <div class="row">
                         <div class="col-md-2">
                           <div class="form-group">
-                            <label class="pull-right">Tanggal Surat :</label>
+                            <label class="pull-left">Tanggal Surat :</label>
                           </div>
                         </div>
                         <div class="col-md-4">
@@ -136,16 +136,18 @@
 
                       <!-- Document Description Form End -->
 
+                      <div class="row">
+                    <div class="col-md-12">
+                      <button type="submit" class="btn btn-primary center-block">Unggah</button>
+                    </div>
+                  </div>
+
                     </div>
 
                     </div>
                   </div>
                   </div>
-                  <div class="row">
-                  <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary center-block">Unggah</button>
-                  </div>
-                  </div>
+                  
                 </div>
               </form>
 

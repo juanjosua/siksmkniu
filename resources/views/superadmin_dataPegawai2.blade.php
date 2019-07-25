@@ -69,7 +69,7 @@
 			                            <form action="{{ url('/superadmin_dataPegawai/delete/' . $pegawai->id_pegawai) }}" method="POST">
 			                                {{ csrf_field() }}
 			                                {{ method_field('DELETE') }}
-			                                  <button type="submit" class="btn btn-sm btn-danger btn-flat">Hapus</button>
+			                                  <button type="submit" class="btn btn-sm btn-danger btn-flat">Non-aktif</button>
 			                            </form>
 		                          	</td>
 		                        </tr>

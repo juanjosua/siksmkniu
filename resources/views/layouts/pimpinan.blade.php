@@ -46,7 +46,7 @@
   <link rel="icon" type="image/png" href="https://4erff29jo03b8uhp4b94vxhq-wpengine.netdna-ssl.com/wp-content/uploads/2015/05/caspio-features-illustr_cloud-data_3_2x.png"/>
 </head>
 
-            <body class="hold-transition skin-red sidebar-mini">
+            <body class="hold-transition skin-purple sidebar-mini">
 
               <!-- <div class="se-pre-con"></div> -->
 
@@ -116,7 +116,11 @@
                               <a href="{{ url('/profil/edit') }}" class="btn btn-default btn-flat">Profil</a>
                             </div>
                             <div class="pull-right">
-                              <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Keluar</a>
+                              <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                  @csrf
+                              </form>
                             </div>
                           </li>
                         </ul>

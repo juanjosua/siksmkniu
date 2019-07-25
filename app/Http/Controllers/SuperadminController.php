@@ -162,22 +162,54 @@ class SuperadminController extends Controller
         return redirect()->back();
     }
 
-    //menghapus akun user
-    public function destroyUser($id)
+    //menonaktifkan akun user
+    public function activateUser($id)
     {
         $pegawai = Pegawai::find($id);
-        if ($pegawai->jabatanable_type == 'App\Staf') {
-            $delete = Staf::find($pegawai->jabatanable_id);
-            $delete->delete();
-        } elseif ($pegawai->jabatanable_type == 'App\Pimpinan') { 
-            $delete = Pimpinan::find($pegawai->jabatanable_id); 
-            $delete->delete();
-        } else {
-        	$delete = Admin::find($pegawai->jabatanable_id); 
-            $delete->delete();
-        }
-        $delete = Pegawai::find($id);
-        $delete->delete();
+        // hapus pegawai dari db staf/pimpinan/admin
+        // if ($pegawai->jabatanable_type == 'App\Staf') {
+        //     $delete = Staf::find($pegawai->jabatanable_id);
+        //     $delete->delete();
+        // } elseif ($pegawai->jabatanable_type == 'App\Pimpinan') { 
+        //     $delete = Pimpinan::find($pegawai->jabatanable_id); 
+        //     $delete->delete();
+        // } else {
+        // 	$delete = Admin::find($pegawai->jabatanable_id); 
+        //     $delete->delete();
+        // }
+        // untuk hapus pegawai
+        // $delete = Pegawai::find($id);
+        // $delete->delete();
+
+        // ubah status pegawai jadi tidak aktif
+        $pegawai->status_pegawai = 'aktif';
+        $pegawai->save();
+
+        return redirect()->back();
+    }
+
+    //menonaktifkan akun user
+    public function deactivateUser($id)
+    {
+        $pegawai = Pegawai::find($id);
+        // hapus pegawai dari db staf/pimpinan/admin
+        // if ($pegawai->jabatanable_type == 'App\Staf') {
+        //     $delete = Staf::find($pegawai->jabatanable_id);
+        //     $delete->delete();
+        // } elseif ($pegawai->jabatanable_type == 'App\Pimpinan') { 
+        //     $delete = Pimpinan::find($pegawai->jabatanable_id); 
+        //     $delete->delete();
+        // } else {
+        //     $delete = Admin::find($pegawai->jabatanable_id); 
+        //     $delete->delete();
+        // }
+        // untuk hapus pegawai
+        // $delete = Pegawai::find($id);
+        // $delete->delete();
+
+        // ubah status pegawai jadi tidak aktif
+        $pegawai->status_pegawai = 'nonaktif';
+        $pegawai->save();
 
         return redirect()->back();
     }

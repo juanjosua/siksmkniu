@@ -10,81 +10,9 @@
   <div class="col-md-12">
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li><a href="#unggah" data-toggle="tab">Unggahan</a></li>
-        <li class="active"><a href="#tinjau" data-toggle="tab">Perlu Tinjauan</a></li>
+        <li class="active"><a href="#tinjau" data-toggle="tab">Unggahan</a></li>
       </ul>
       <div class="tab-content">
-
-        <!-- Baru diunggah Tab Start -->
-
-        <div class="tab-pane" id="unggah">
-
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Surat Baru</h3>
-            </div>
-            <!-- /.box-header -->
-
-            <div class="box-body">
-              <div class="table-responsive">
-                <table id="example1" class="table no-margin" style="white-space: nowrap;">
-                  <thead>
-                  <tr>
-                    <th>Nomor</th>
-                    <th>Pengirim</th>
-                    <th>Tujuan</th>
-                    <th>Perihal</th>
-                    <th>Tanggal Surat</th>
-                    <th>Tanggal Unggah</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  @if($jumlahsuratbaru !== 0)
-                    @foreach($surats as $surat)
-                      @if($surat->status_surat == 'baru')
-                        <tr>
-                          <td>{{$surat->no_surat}}</td>
-                          <td>{{$surat->instansi->nama_instansi}}</td>
-                          <td>{{$surat->sektor->nama_sektor}}</td>
-                          <td>{{$surat->perihal_surat}}</td>
-                          <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
-                          <td>{{$surat->created_at->format('d M Y')}}</td>
-                          <td>
-
-                            <!-- proses surat untuk di tinjau pimpinan -->
-                            <a href="{{ url('/surat/proses/' . $surat->id_surat) }}">
-                            <button type="button" class="btn btn-sm btn-primary btn-flat">Proses</button>
-                            </a>
-
-                            <!-- melihat detail surat -->
-                            <a href="{{ url('/surat/detail/' . $surat->id_surat) }}">
-                            <button type="button" class="btn btn-sm btn-warning btn-flat">Rincian</button>
-                            </a>
-                            
-                            <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $surat->id_surat }}">Hapus</button>
-
-                          </td>
-                        </tr>
-                      @endif
-                    @endforeach
-                  @else
-                    <tr><td>Tidak ada surat masuk</td></tr>
-                  @endif
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.table-responsive -->
-            </div>
-
-          </div>
-
-          <!-- TABLE : Document End -->
-
-        </div>
-        <!-- /.tab-pane -->
-
-        <!-- Baru diunggah Tab End -->
 
         <!-- Tinjau Tab Start -->
 
@@ -102,48 +30,46 @@
                   <thead>
                   <tr>
                     <th>Nomor</th>
-                    <th>Pengirim</th>
-                    <th>Tujuan</th>
+                    <th>Instansi</th>
+                    <th>Bidang</th>
                     <th>Perihal</th>
                     <th>Tanggal Surat</th>
-                    <th>Tanggal Unggah</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @if($jumlahsurattinjau !== 0)
-                      @foreach($surats as $surat)
-                        @if($surat->status_surat == 'tinjau')
-                          <tr>
-                            <td>{{$surat->no_surat}}</td>
-                            <td>{{$surat->instansi->nama_instansi}}</td>
-                            <td>{{$surat->sektor->nama_sektor}}</td>
-                            <td>{{$surat->perihal_surat}}</td>
-                            <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
-                            <td>{{$surat->created_at->format('d M Y')}}</td>
-                            <td>
-                                <a data-target="#modal-default" data-toggle="modal" data-userid="<?php echo $surat->id_surat; ?>">
+                    @if($jumlahsuratbaru !== 0)
+                          @foreach($surats as $surat)
+                            @if($surat->status_surat == 'baru')
+                            <tr>
+                                <td>{{$surat->no_surat}}</td>
+                                <td>{{$surat->instansi->nama_instansi}}</td>
+                                <td>{{$surat->sektor->nama_sektor}}</td>
+                                <td>{{$surat->perihal_surat}}</td>
+                                <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
+                                <td>
+                                  <a data-target="#modal-default" data-toggle="modal" data-userid="<?php echo $surat->id_surat; ?>">
                                   <button type="button" class="btn btn-sm btn-primary btn-flat">Disposisi</button>
-                                </a>
+                                  </a>
 
-                                <a href="{{ url('/arsip/baru/' . $surat->id_surat) }}">
-                                  <button type="button" class="btn btn-sm btn-success btn-flat">Arsip</button>
-                                </a>
+                                  <a href="{{ url('/arsip/baru/' . $surat->id_surat) }}">
+                                    <button type="button" class="btn btn-sm btn-success btn-flat">Arsip</button>
+                                  </a>
 
-                                <a href="{{ url('/surat/detail/' . $surat->id_surat) }}">
-                                  <button type="button" class="btn btn-sm btn-warning btn-flat">Rincian</button>
-                                </a>
-                                
-                                <a href="{{ url('/surat/cancel/' . $surat->id_surat) }}">
-                                  <button type="button" class="btn btn-sm btn-danger btn-flat">Batal</button>
-                                </a>
-                            </td>
-                          </tr>
+                                  <a href="{{ url('/surat/detail/' . $surat->id_surat) }}">
+                                    <button type="button" class="btn btn-sm btn-warning btn-flat">Rincian</button>
+                                  </a>
+                                  
+                                  <a href="{{ url('/surat/cancel/' . $surat->id_surat) }}">
+                                    <button type="button" class="btn btn-sm btn-danger btn-flat">Batal</button>
+                                  </a>
+                                </td>
+                            </tr>
+                            @endif
+                          @endforeach
+                        @else
+                          <tr><td>Tidak ada surat masuk</td></tr>
                         @endif
-                      @endforeach
-                    @else
-                      <tr><td>Tidak ada surat masuk</td></tr>
-                    @endif
                   </tbody>
                 </table>
               </div>

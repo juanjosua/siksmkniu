@@ -21,6 +21,7 @@ class CreatePegawaisTable extends Migration
             $table->string('no_telp_pegawai')->nullable();
             $table->string('email_pegawai');
             $table->string('password');
+            $table->string('status_pegawai')->default('aktif'); //status keaktifan pegawai
             $table->morphs('jabatanable'); //polymorph inheritance
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

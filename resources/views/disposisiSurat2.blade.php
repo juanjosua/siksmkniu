@@ -10,24 +10,12 @@
                     <table class="table table-striped">
                       	<thead>
 	                        <tr>
-		                        <th>
-	                            	Pimpinan
-	                          	</th>
-	                          	<th>
-	                            	Perihal
-	                          	</th>
-	                          	<th>
-	                            	Bidang
-	                          	</th>
-	                          	<th>
-	                            	Pesan
-	                          	</th>
-	                          	<th>
-	                           		Tanggal Unggah
-	                          	</th>
-	                          	<th>
-	                            	Aksi
-	                          	</th>
+		                        <th>Pimpinan</th>
+	                          	<th>Perihal</th>
+	                          	<th>Bidang</th>
+	                          	<th>Pesan</th>
+	                          	<th>Tanggal Unggah</th>
+	                          	<th>Aksi</th>
                         	</tr>
                       	</thead>
                       	<tbody>

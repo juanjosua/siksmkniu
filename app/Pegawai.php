@@ -13,7 +13,7 @@ class Pegawai extends Authenticatable implements MustVerifyEmail
     protected $table = 'pegawais';
     protected $primaryKey = 'id_pegawai';
     protected $fillable = [
-        'foto_pegawai', 'nama_pegawai', 'nip', 'no_telp_pegawai', 'email_pegawai', 'password'
+        'foto_pegawai', 'nama_pegawai', 'nip', 'no_telp_pegawai', 'email_pegawai', 'password', 'status_pegawai'
     ];
 
     protected $hidden = [

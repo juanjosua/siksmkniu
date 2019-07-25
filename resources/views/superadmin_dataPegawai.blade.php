@@ -37,7 +37,7 @@
                     <th>Email</th>
                     <th>Jabatan</th>
                     <th>Promote/Demote</th>
-                    <th>Hapus</th>
+                    <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -45,7 +45,16 @@
                   @if($dataPegawai !== 0)
                     <!-- foreach untuk memanggil seluruh surat yang ada di database dan looping -->
                     @foreach($dataPegawai as $pegawai)
-                        <tr>
+                      @if($pegawai->status_pegawai == 'nonaktif')
+                      <tr>
+                        <td>{{$pegawai->nama_pegawai}}</td>
+                        <td>{{$pegawai->nip}}</td>
+                        <td>{{$pegawai->no_telp_pegawai}}</td>
+                        <td>{{$pegawai->email_pegawai}}</td>
+                        <td></td>
+                        <td></td>
+                      @else
+                      <tr>
                           <td>{{$pegawai->nama_pegawai}}</td>
                           <td>{{$pegawai->nip}}</td>
                           <td>{{$pegawai->no_telp_pegawai}}</td>
@@ -85,14 +94,26 @@
                               </a>
                               @endif
                           </td>
-                            <td>
-                              <!-- hapus user -->
-                              <form action="{{ url('/superadmin_dataPegawai/delete/' . $pegawai->id_pegawai) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                  <button type="submit" class="btn btn-sm btn-danger btn-flat">Hapus</button>
-                              </form>
-                            </td>
+                      @endif
+                          <td>
+                            <!-- hapus user -->
+                            <!-- <form action="{{ url('/superadmin_dataPegawai/delete/' . $pegawai->id_pegawai) }}" method="POST">
+                              {{ csrf_field() }}
+                              {{ method_field('DELETE') }}
+                                <button type="submit" class="btn btn-sm btn-danger btn-flat">Hapus</button>
+                            </form> -->
+
+                            <!-- check  -->
+                            @if($pegawai->status_pegawai == 'aktif')
+                            <a href="{{ url('/superadmin_dataPegawai/deactivate/' . $pegawai->id_pegawai) }}">
+                            <button type="button" class="btn btn-sm btn-danger btn-flat">Nonaktifkan</button>
+                            </a>
+                            @else
+                            <a href="{{ url('/superadmin_dataPegawai/activate/' . $pegawai->id_pegawai) }}">
+                            <button type="button" class="btn btn-sm btn-success btn-flat">Aktifkan</button>
+                            </a>
+                            @endif
+                          </td>
                         </tr>
                     @endforeach
                   @else
