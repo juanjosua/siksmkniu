@@ -9,7 +9,7 @@ class Disposisi extends Model
     protected $table = 'disposisis';
     protected $primaryKey = 'id_disposisi';
     protected $fillable = [
-        'tanggal_disposisi', 'pesan_disposisi', 'status_disposisi', 'id_pimpinan', 'id_staf', 'id_surat'
+        'tanggal_disposisi', 'pesan_disposisi', 'status_disposisi', 'id_pimpinan', 'id_staf', 'id_surat', 'tanggal_diterima'
     ];
 
     public function pimpinan()

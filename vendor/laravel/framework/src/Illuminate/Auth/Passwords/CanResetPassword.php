@@ -13,7 +13,7 @@ trait CanResetPassword
      */
     public function getEmailForPasswordReset()
     {
-        return $this->email_pegawai;
+        return $this->email;
     }
 
     /**

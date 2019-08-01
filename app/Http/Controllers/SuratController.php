@@ -15,6 +15,9 @@ use ZipArchive;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
+use Smalot\PdfParser\Parser;
+use thiagoalessio\TesseractOCR\TesseractOCR;
+use Spatie\PdfToImage\Pdf;
 
 class SuratController extends Controller
 {
@@ -47,18 +50,40 @@ class SuratController extends Controller
             $instansi_baru = Instansi::all()->where('nama_instansi', $request->pengirim_surat)->first();
             $id_instansi = $instansi_baru->id_instansi;
         } else { $id_instansi = $instansi->id_instansi; }
-        
+
+        //pdf to images
+        $tmp_loc = storage_path('tmp.png');
+        $img = new Pdf(storage_path("app/public/{$image}"));
+        $img->saveImage($tmp_loc);
+
+        //tesseract ocr
+        $pdf = new TesseractOCR(storage_path('tmp.png'));
+        $pdf->lang('ind');
+        $text = $pdf->run();
+
+        //trim text perihal
+        $after_perihal = substr(strstr($text, 'Perihal'), 9); //hapus tulisan sebelum perihal dan sampai tulisan perihal
+        $explode_perihal = explode("\n", $after_perihal); //bagi text ke dalam array yang dipisahkan newline
+        $str_perihal = $explode_perihal[0]; //ambil text pertama setelah perihal sebelum newline
+
+        //trim text nomor surat
+        $after_nomor = substr(strstr($text, 'Nomor'), 7); //hapus tulisan sebelum perihal dan sampai tulisan perihal
+        $explode_nomor = explode("\n", $after_nomor); //bagi text ke dalam array yang dipisahkan newline
+        $str_nomor = $explode_nomor[0]; //ambil text pertama setelah perihal sebelum newline
+
         //foreign key
         $id_sektor      = $sektor->id_sektor;
         $id_admin = $id_jabatan;
 
         $surat = Surat::create([
-            'no_surat'                => $request->no_surat,
-            'perihal_surat'           => $request->perihal_surat,
-            'tanggal_surat'           => $request->tanggal_surat,
-            'id_sektor'               => $id_sektor,
-            'id_instansi'             => $id_instansi,
-            'id_admin'                => $id_admin
+            'no_surat'                  => $str_nomor,
+            // 'no_surat'               => $request->no_surat,
+            // 'perihal_surat'          => $request->perihal_surat,
+            'perihal_surat'             => $str_perihal,
+            'tanggal_surat'             => $request->tanggal_surat,
+            'id_sektor'                 => $id_sektor,
+            'id_instansi'               => $id_instansi,
+            'id_admin'                  => $id_admin
         ]);
 
         Dokumen::create([

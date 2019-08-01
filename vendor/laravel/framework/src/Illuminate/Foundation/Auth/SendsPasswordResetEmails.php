@@ -47,7 +47,7 @@ trait SendsPasswordResetEmails
      */
     protected function validateEmail(Request $request)
     {
-        $request->validate(['email_pegawai' => 'required|email']);
+        $request->validate(['email' => 'required|email']);
     }
 
     /**
@@ -58,7 +58,7 @@ trait SendsPasswordResetEmails
      */
     protected function credentials(Request $request)
     {
-        return $request->only('email_pegawai');
+        return $request->only('email');
     }
 
     /**
@@ -83,8 +83,8 @@ trait SendsPasswordResetEmails
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
         return back()
-                ->withInput($request->only('email_pegawai'))
-                ->withErrors(['email_pegawai' => trans($response)]);
+                ->withInput($request->only('email'))
+                ->withErrors(['email' => trans($response)]);
     }
 
     /**

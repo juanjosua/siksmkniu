@@ -52,12 +52,12 @@
                     <div>
                         <label for="email_pegawai" ><b>Surel</b></label>
                         <br>
-                        <input name="email_pegawai" type="email" autofocus>
+                        <input name="email_pegawai" type="email" id="email_pegawai" autofocus>
                     </div>
                     <div>
                         <label for="password" ><b>Sandi</b></label>
                         <br>
-                        <input name="password" type="password">
+                        <input name="password" type="password" id="password">
                     </div>
                     <button class="button">Masuk</button>
                     <a href="{{ route('password.request') }}" class="auth-link text-black">Lupa kata sandi?</a>

@@ -9,6 +9,7 @@ use App\Dokumen;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Carbon\Carbon;
 
 class DisposisiController extends Controller
 {
@@ -63,6 +64,13 @@ class DisposisiController extends Controller
         $surat = Surat::all()->where('id_surat', $id_surat)->first();
 
         $disposisi = Disposisi::find($id);
+        //buat tanggal disposisis diterima
+        if (Session::get('data')->jabatanable_type == 'App\Staf') {
+            if ($disposisi->tanggal_diterima == null) {
+                $disposisi->tanggal_diterima = now();
+                $disposisi->save();
+            }
+        }
         $images = Dokumen::all()->where('id_surat', $id_surat);
         return view('detailDisposisi', compact('surat', 'disposisi', 'pimpinans', 'stafs', 'images'));
     }

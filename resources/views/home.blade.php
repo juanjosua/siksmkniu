@@ -15,7 +15,10 @@
 
             <h2>* Email kamu : {{Auth::user()->email_pegawai}}</h2>
             <h2>* Session status : {{Session::get('data')}} </h2>
-            
+
+            <!-- bikin newline terbaca sama blade -->
+            <div>{!! nl2br(e($after)) !!}</div> 
+
             <h2></h2>
             <h2></h2>
             

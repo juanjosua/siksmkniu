@@ -61,7 +61,7 @@
                       <!-- <h3>Form Deskripsi Surat</h3> -->
                       <br>
 
-                      <div class="row">
+                      <!-- <div class="row">
                         <div class="col-md-2">
                           <div class="form-group">
                             <label class="pull-left">No. Surat :</label>
@@ -72,7 +72,7 @@
                             <input type="text" name="no_surat" class="form-control">
                           </div>                                      
                         </div>
-                      </div>
+                      </div> -->
 
                       <div class="row">
                         <div class="col-md-2">
@@ -101,14 +101,14 @@
                           <div class="col-md-6">
                             <div class="form-group" style="text-align: left;">
                               @foreach($sektors as $sektor)
-                                  <input name="tujuan_surat" type="checkbox" value="{{ $sektor->nama_sektor }}">
-                                  {{ $sektor->nama_sektor }}<br>
+                                  <input name="tujuan_surat" id="{{ $sektor->nama_sektor }}" type="radio" value="{{ $sektor->nama_sektor }}">
+                                  <label for="{{ $sektor->nama_sektor }}">{{ $sektor->nama_sektor }}</label><br>
                               @endforeach
                             </div>                                
                           </div>
                       </div>
 
-                      <div class="row">
+                      <!-- <div class="row">
                         <div class="col-md-2">
                           <div class="form-group">
                             <label class="pull-left">Perihal Surat :</label>
@@ -119,7 +119,7 @@
                             <input type="text" name="perihal_surat" class="form-control">
                           </div>
                         </div>
-                      </div>
+                      </div> -->
 
                       <div class="row">
                         <div class="col-md-2">

@@ -90,7 +90,7 @@
                                   @endif
 
                                   @if((Session::get('data')->jabatanable_type == 'App\Pimpinan') && ($disposisi->surat->status_surat != 'selesai'))
-                                      <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $disposisi->id_disposisi }}">Hapus</button>
+                                      <button type="button" class="open-HapusModal btn btn-sm btn-danger btn-flat" data-toggle="modal" data-target="#modal-danger" data-id="{{ $disposisi->id_disposisi }}">Batal</button>
                                   @endif
                                 </td>
                             </tr>
@@ -133,10 +133,10 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title"><b>Hapus</b> Disposisi</h4>
+          <h4 class="modal-title"><b>Batal</b> Disposisi</h4>
         </div>
         <div class="modal-body">
-          <p>Apakah Anda yakin akan <b>Menghapus Permanen</b> Disposisi ini ?</p>
+          <p>Apakah Anda yakin akan <b>membatalkan</b> disposisi ini ?</p>
           <small>Disposisi yang dihapus akan kembali pada tabel tinjauan.</small>
         </div>
         <div class="modal-footer">

@@ -35,7 +35,6 @@
     <div class="col-xs-12">
       <h2 class="page-header">
         <i class="fa fa-file-text"></i> {{$surat->perihal_surat}}
-        <small class="pull-right">Tanggal Disposisi : {{$disposisi->created_at->format('d-m-Y') }}</small>
       </h2>
     </div>
     <!-- /.col -->
@@ -72,6 +71,8 @@
       <strong>Penerima Disposisi :</strong> {{$ns->nama_pegawai}}<br>
     @endforeach
       <strong>Pesan Disposisi :</strong> {{$disposisi->pesan_disposisi}}<br>
+      <strong>Tanggal Disposisi :</strong> {{$disposisi->created_at->format('d-M-Y H:i:s') }}<br>
+      <strong>Tanggal Diterima :</strong> {{date('d-M-Y H:i:s', strtotime($disposisi->tanggal_diterima))}}<br>
     </address>
     </div>
     <!-- /.col -->

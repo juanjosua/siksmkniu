@@ -27,6 +27,28 @@
             <div class="box-body">
               <div class="table-responsive">
                 <table id="example1" class="table no-margin" style="white-space: nowrap;">
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="dataTables_length" id="example1_length">
+                        <label>Show 
+                          <select name="example1_length" aria-controls="example1" class="form-control input-sm">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                          </select> entries
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div id="example1_filter" class="dataTables_filter">
+                        <label>Search:
+                          <input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
+                        </div>
+                      </div>
+                  </div>
+                  
                   <thead>
                   <tr>
                     <th>Nomor</th>
@@ -40,7 +62,7 @@
                   <tbody>
                   <!-- kondisi jika surat tidak ada di database -->
                   @if($jumlahsuratbaru !== 0 || $jumlahsurattinjau !== 0)
-                          @foreach($surats as $surat)
+                          @foreach($surats->sortByDesc('created_at') as $surat)
                             <tr>
                                 <td>{{str_limit($surat->no_surat, 11, '...')}}</td>
                                 <td>{{str_limit($surat->instansi->nama_instansi, 21, '...')}}</td>

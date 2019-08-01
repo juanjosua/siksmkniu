@@ -38,9 +38,8 @@
                   </tr>
                   </thead>
                   <tbody>
-                    @if($jumlahsuratbaru !== 0)
-                          @foreach($surats as $surat)
-                            @if($surat->status_surat == 'baru')
+                    @if($jumlahsurattinjau !== 0)
+                          @foreach($surats->sortByDesc('created_at') as $surat)
                             <tr>
                                 <td>{{$surat->no_surat}}</td>
                                 <td>{{$surat->instansi->nama_instansi}}</td>
@@ -65,7 +64,6 @@
                                   </a>
                                 </td>
                             </tr>
-                            @endif
                           @endforeach
                         @else
                           <tr><td>Tidak ada surat masuk</td></tr>
