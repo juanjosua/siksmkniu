@@ -10,14 +10,15 @@
         <!-- Add Your Content Inside -->
         <div class="content">
             <!-- Remove This Before You Start -->
-            <h1>Anak IT -  Tutorial Login, Register, Validasi dengan Laravel 5.4</h1>
+            <h1>Function test page</h1>
             <p>Hallo, {{Session::get('nama_pegawai')}}. Apakabar?</p>
 
             <h2>* Email kamu : {{Auth::user()->email_pegawai}}</h2>
             <h2>* Session status : {{Session::get('data')}} </h2>
 
             <!-- bikin newline terbaca sama blade -->
-            <div>{!! nl2br(e($after)) !!}</div> 
+            <div>{!! nl2br(e($text)) !!}</div> 
+            <div>{{ dd($text) }}</div>
 
             <h2></h2>
             <h2></h2>

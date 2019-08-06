@@ -65,7 +65,7 @@
       <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#settings" data-toggle="tab">Pengaturan Profile</a></li>
-          <li><a href="#avatar" data-toggle="tab">Foto</a></li>
+          <!-- <li><a href="#avatar" data-toggle="tab">Foto</a></li> -->
         </ul>
         <div class="tab-content">
 
@@ -73,6 +73,14 @@
             <form class="form-horizontal" action="{{ url('profil/update/' . Session::get('data')->id_pegawai) }}" method="POST" enctype="multipart/form-data">
               {{ csrf_field() }}
               {{method_field('PATCH')}}
+
+              <div class="form-group">
+                <label for="foto_pegawai" class="col-sm-2 control-label">Foto</label>
+
+                <div class="col-sm-10">
+                  <input type="file" value="" name="foto_pegawai" class="form-control" id="foto_pegawai">
+                </div>
+              </div>
 
               <div class="form-group">
                 <label for="nip" class="col-sm-2 control-label">Nomor Induk</label>
@@ -110,7 +118,7 @@
                 <label for="password" class="col-sm-2 control-label">Ubah Sandi</label>
 
                 <div class="col-sm-10">
-                  <input type="password" name="password" class="form-control" id="password" onkeyup='check();'>
+                  <input type="password" name="password" class="form-control" id="password" onkeyup='check();' placeholder="biarkan kosong jika tidak ingin mengganti sandi">
                 </div>
               </div>
 
@@ -118,14 +126,14 @@
                 <label for="confirm_password" class="col-sm-2 control-label">Ulangi Sandi</label>
 
                 <div class="col-sm-10">
-                  <input type="password" name="confirm_password" class="form-control" id="confirm_password" onkeyup='check();'>
+                  <input type="password" name="password_confirmation" class="form-control" id="confirm_password" onkeyup='check();' placeholder="biarkan kosong jika tidak ingin mengganti sandi">
                   <span id='message' name="message"></span>
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-info center-block" name="submit" id="submit" disabled>Submit</button>
+                  <button type="submit" class="btn btn-info center-block" name="submit" id="submit">Submit</button>
                 </div>
               </div>
 
@@ -133,7 +141,7 @@
           </div>
           <!-- /.tab-pane -->
 
-          <div class="tab-pane" id="avatar">
+          <!-- <div class="tab-pane" id="avatar">
             <form class="form-horizontal" action="{{ url('profil/update/avatar/' . Session::get('data')->id_pegawai) }}" method="POST" enctype="multipart/form-data">
               {{ csrf_field() }}
               {{method_field('PATCH')}}
@@ -153,7 +161,7 @@
               </div>
 
             </form>
-          </div>
+          </div> -->
           <!-- /.tab-pane -->
 
         </div>

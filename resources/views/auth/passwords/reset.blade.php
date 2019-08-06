@@ -1,6 +1,25 @@
-@extends('layouts.staf')
+@extends('layouts.template')
 
 @section('content')
+
+    <!-- Main content -->
+<section class="content">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Ubah Sandi</h3>
+
+          <div class="box-tools pull-right">
+          </div>
+        </div>
+
+        <!-- /.box-header -->
+        <div class="box-body graphic">
+          <div class="row">
+            <div class="col-md-12">
+
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
@@ -50,4 +69,16 @@
                             </div>
                         </div>
                     </form>
+
+                      </div>
+          </div>
+          <!-- /.row -->
+        </div>
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
 @endsection

@@ -47,7 +47,7 @@ trait RoutesNotifications
             case 'database':
                 return $this->notifications();
             case 'mail':
-                return $this->email;
+                return $this->email_pegawai;
             case 'nexmo':
                 return $this->phone_number;
         }

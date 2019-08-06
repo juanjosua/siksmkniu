@@ -93,7 +93,13 @@ class SuratController extends Controller
 
         //redirect halaman daftar surat masuk
         //redirect ke show surat
-        return redirect('/surat');
+        // return redirect('/surat');
+
+        // redirect ke halaman detail surat
+        return redirect('/surat/detail/' . $surat->id_surat);
+
+        //test home ocr
+        // return view('home', compact('text'));
     }
 
     //show semua surat di database

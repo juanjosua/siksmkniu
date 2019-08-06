@@ -1,3 +1,4 @@
+@dump($errors)
 <html>
     <head>
 
@@ -46,22 +47,22 @@
 
                 <form method="POST" action="{{ route('register') }}">
                   {{ csrf_field() }}
-                  <div>
+                    <div>
                         <label for="nama_pegawai" ><b>Nama Lengkap</b></label>
                         <br>
-                        <input name="nama_pegawai" type="text" autofocus>
+                        <input id="nama_pegawai" name="nama_pegawai" type="text" autofocus>
 
                         <label for="email_pegawai" ><b>Surel</b></label>
                         <br>
-                        <input name="email_pegawai" type="email">
+                        <input id="email_pegawai" name="email_pegawai" type="email">
 
                         <label for="password" ><b>Kata Sandi</b></label>
                         <br>
-                        <input name="password" type="password">
+                        <input id="password" name="password" type="password">
 
-                        <label for="confirmation" ><b>Ulangi Kata Sandi</b></label>
+                        <label for="password_confirmation" ><b>Ulangi Kata Sandi</b></label>
                         <br>
-                        <input name="confirmation" type="password">
+                        <input id="password_confirmation" name="password_confirmation" type="password">
                     </div>
                     <button class="button">Daftar</button>
                 </form>

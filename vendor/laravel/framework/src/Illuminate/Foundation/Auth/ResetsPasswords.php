@@ -25,7 +25,7 @@ trait ResetsPasswords
     public function showResetForm(Request $request, $token = null)
     {
         return view('auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
+            ['token' => $token, 'email_pegawai' => $request->email_pegawai]
         );
     }
 
@@ -65,7 +65,7 @@ trait ResetsPasswords
     {
         return [
             'token' => 'required',
-            'email' => 'required|email',
+            'email_pegawai' => 'required|email',
             'password' => 'required|confirmed|min:8',
         ];
     }
@@ -89,7 +89,7 @@ trait ResetsPasswords
     protected function credentials(Request $request)
     {
         return $request->only(
-            'email', 'password', 'password_confirmation', 'token'
+            'email_pegawai', 'password', 'password_confirmation', 'token'
         );
     }
 
@@ -136,8 +136,8 @@ trait ResetsPasswords
     protected function sendResetFailedResponse(Request $request, $response)
     {
         return redirect()->back()
-                    ->withInput($request->only('email'))
-                    ->withErrors(['email' => trans($response)]);
+                    ->withInput($request->only('email_pegawai'))
+                    ->withErrors(['email_pegawai' => trans($response)]);
     }
 
     /**
