@@ -1,4 +1,3 @@
-@dump($errors)
 <html>
     <head>
 
