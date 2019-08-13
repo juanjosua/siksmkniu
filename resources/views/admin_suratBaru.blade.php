@@ -40,7 +40,7 @@
                   <tbody>
                   <!-- kondisi jika surat tidak ada di database -->
                   @if($jumlahsuratbaru !== 0 || $jumlahsurattinjau !== 0)
-                          @foreach($surats->sortByDesc('created_at') as $surat)
+                          @foreach($suratbaru->sortByDesc('created_at') as $surat)
                             <tr>
                                 <td>{{str_limit($surat->no_surat, 11, '...')}}</td>
                                 <td>{{str_limit($surat->instansi->nama_instansi, 21, '...')}}</td>
@@ -51,11 +51,7 @@
                                   <!-- proses surat untuk di tinjau pimpinan -->
                                   <a href="{{ url('/surat/proses/' . $surat->id_surat) }}">
                                   <!-- <input onclick="change(); this.onclick=null;" id="proses" class="btn btn-danger" value="Proses"> -->
-                                  @if($surat->status_surat == 'baru')
                                   <button type="button" class="btn btn-sm btn-primary btn-flat">Proses</button>
-                                  @else
-                                  <button type="button" class="btn btn-sm btn-dark btn-flat" disabled>Proses</button>
-                                  @endif
                                   </a>
 
                                   <!-- melihat detail surat -->

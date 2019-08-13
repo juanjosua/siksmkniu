@@ -18,11 +18,19 @@
     </div>
     <div class="container">
       <div class="row" style="margin-left: -190px; margin-top: -40px; width: 1000px; float: left; overflow-x:scroll; white-space: nowrap; display: flex">
-        @foreach($images as $image)
-          <div style="margin-left: 10px">
-            <embed src="{{ asset('storage/' . $image->image) }}" type="application/pdf" height="700px" width="500px">
-          </div>
-        @endforeach
+        @if($jumlah > 1)
+          @foreach($images as $image)
+            <div style="margin-left: 10px">
+              <embed src="{{ asset('storage/' . $image->image) }}" type="application/pdf" height="700px" width="500px">
+            </div>
+          @endforeach
+        @else
+          @foreach($images as $image)
+            <div style="margin-left: 10px">
+              <embed src="{{ asset('storage/' . $image->image) }}" type="application/pdf" height="700px" width="1000px">
+            </div>
+          @endforeach
+        @endif
       </div>
     </div>
 </section>

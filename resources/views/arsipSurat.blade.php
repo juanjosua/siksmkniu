@@ -47,7 +47,7 @@
                             	
                             <!-- detail surat -->
                             <a href="{{ url('/arsip/detail/' . $arsip->id_arsip) }}">
-                            <button type="button" class="btn btn-sm btn-warning btn-flat">Detail</button>
+                            <button type="button" class="btn btn-sm btn-warning btn-flat">Rincian</button>
                             </a>
 
                             <!-- hapus arsip -->

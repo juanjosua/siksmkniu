@@ -169,13 +169,19 @@
 
                   <li>
                     <a href="{{ url('/disposisi') }}">
-                      <i class="fa fa-folder"></i> <span>Disposisi</span>
+                      <div style="display: none;">
+                      {{ $disposisis = DB::table('disposisis')->where('id_staf', Session::get('data')->jabatanable_id)->where('status_disposisi', 'sedang')->count() }}
+                      </div>
+                      <i class="fa fa-folder"></i> <span>Disposisi</span> <span class="badge badge-danger pull-right">{{$disposisis}}</span>
                     </a>
                   </li>
 
                   <li>
                     <a href="{{ url('/arsip') }}">
-                      <i class="fa fa-folder"></i> <span>Arsip</span>
+                      <div style="display: none;">
+                      {{ $surats = DB::table('surats')->where('status_surat', 'arsip')->count() }}
+                      </div>
+                      <i class="fa fa-folder"></i> <span>Arsip</span> <span class="badge badge-danger pull-right">{{$surats}}</span>
                     </a>
                   </li>
 

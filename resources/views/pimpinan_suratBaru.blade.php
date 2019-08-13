@@ -39,7 +39,7 @@
                   </thead>
                   <tbody>
                     @if($jumlahsurattinjau !== 0)
-                          @foreach($surats->sortByDesc('created_at') as $surat)
+                          @foreach($surattinjau->sortByDesc('created_at') as $surat)
                             <tr>
                                 <td>{{$surat->no_surat}}</td>
                                 <td>{{$surat->instansi->nama_instansi}}</td>

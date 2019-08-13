@@ -37,6 +37,7 @@ return array(
     'Spatie\\PdfToText\\' => array($vendorDir . '/spatie/pdf-to-text/src'),
     'Spatie\\PdfToImage\\' => array($vendorDir . '/spatie/pdf-to-image/src'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
+    'Pusher\\' => array($vendorDir . '/pusher/pusher-php-server/src'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),

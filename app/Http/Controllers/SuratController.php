@@ -112,11 +112,13 @@ class SuratController extends Controller
 
         $jumlahsuratbaru = $surats->where('status_surat', 'baru')->count(); //jumlah surat baru diupload
         $jumlahsurattinjau = $surats->where('status_surat', 'tinjau')->count(); //jumlah surat sedang ditinjau
+        $suratbaru = $surats->where('status_surat', 'baru');
+        $surattinjau = $surats->where('status_surat', 'tinjau');
 
         if (Session::get('data')->jabatanable_type == 'App\Admin') {
-            return view('admin_suratBaru', compact('surats', 'jumlahsuratbaru', 'jumlahsurattinjau'));    
+            return view('admin_suratBaru', compact('surats', 'jumlahsuratbaru', 'jumlahsurattinjau', 'suratbaru'));    
         } else {
-            return view('pimpinan_suratBaru', compact('surats', 'jumlahsuratbaru', 'jumlahsurattinjau', 'pegawais'));
+            return view('pimpinan_suratBaru', compact('surats', 'jumlahsuratbaru', 'jumlahsurattinjau', 'pegawais', 'surattinjau'));
         }
     }
 

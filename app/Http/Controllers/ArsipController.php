@@ -29,6 +29,12 @@ class ArsipController extends Controller
           'id_surat'                => $id
         ]);
 
+        //update status disposisi jika ada
+        if (Disposisi::where('id_surat', $id)->exists()) {
+            $disposisi = Disposisi::where('id_surat', $id);
+            $disposisi->update(['status_disposisi' => 'selesai']);
+        }
+
         //update status surat
         $surat = Surat::find($id);
         $surat->status_surat = 'arsip';
@@ -62,7 +68,8 @@ class ArsipController extends Controller
 
         $arsip = Arsip::find($id);
         $images = Dokumen::all()->where('id_surat', $id_surat);
-        return view('detailArsip', compact('surat', 'disposisi', 'arsip', 'pimpinans', 'stafs', 'images', 'disposisi_stat'));
+        $jumlah = $images->count();
+        return view('detailArsip', compact('surat', 'disposisi', 'arsip', 'pimpinans', 'stafs', 'images', 'disposisi_stat', 'jumlah'));
     }
 
     //hapus arsip

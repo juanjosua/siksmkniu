@@ -165,19 +165,28 @@
 
                     <li>
                       <a href="{{ url('/surat') }}">
-                        <i class="fa fa-file-text"></i> <span>Surat Masuk</span>
+                        <div style="display: none;">
+                        {{ $surats = DB::table('surats')->where('status_surat', 'tinjau')->count() }}
+                        </div>
+                        <i class="fa fa-file-text"></i> <span>Surat Masuk</span> <span class="badge badge-danger pull-right">{{$surats}}</span>
                       </a>
                     </li>
 
                     <li>
                       <a href="{{ url('/disposisi') }}">
-                        <i class="fa fa-folder"></i> <span>Disposisi</span>
+                        <div style="display: none;">
+                        {{ $disposisis = DB::table('disposisis')->where('id_pimpinan', Session::get('data')->jabatanable_id)->where('status_disposisi', 'konfirmasi')->count() }}
+                        </div>
+                        <i class="fa fa-folder"></i> <span>Disposisi</span> <span class="badge badge-danger pull-right">{{$disposisis}}</span>
                       </a>
                     </li>
 
                     <li>
                       <a href="{{ url('/arsip') }}">
-                        <i class="fa fa-folder"></i> <span>Arsip</span>
+                        <div style="display: none;">
+                        {{ $surats = DB::table('surats')->where('status_surat', 'arsip')->count() }}
+                        </div>
+                        <i class="fa fa-folder"></i> <span>Arsip</span> <span class="badge badge-danger pull-right">{{$surats}}</span>
                       </a>
                     </li>
 

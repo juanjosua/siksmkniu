@@ -39,7 +39,13 @@
                             @if($disposisi->surat->status_surat != 'arsip')
                             <tr>
                                 <td class="py-1">
-                                  <img src="../../images/faces/face1.jpg" alt="image"/>
+                                  <!-- <img src="../../images/faces/face1.jpg" alt="image"/> -->
+                                  <div style="display: none;">
+                                  {{ $foto_pimpinan = $pimpinans->where('jabatanable_id', $disposisi->id_pimpinan) }}
+                                  </div>
+                                  @foreach($foto_pimpinan as $foto)
+                                  {{ $foto->nama_pegawai }}
+                                  @endforeach
                                 </td>
                                 <td>
                                   {{str_limit($disposisi->surat->perihal_surat, 15, '...')}}

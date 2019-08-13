@@ -46,7 +46,7 @@
         </button>
 	</div> -->
 	<div class="text-center mt-4 font-weight-light">
-        Belum memiliki akun? <a href="{{ route('register') }}" class="text-primary">Buat</a>
+        <a href="{{ route('register') }}" class="text-primary">Buat akun</a>
 	</div>
 </form>
 

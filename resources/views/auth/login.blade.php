@@ -34,35 +34,34 @@
                     <h2>Masuk</h2>
                 </div>
 
-                <!-- login error -->
-                @if(\Session::has('alert'))
-                <div class="alert alert-danger">
-                    <div>{{Session::get('alert')}}</div>
-                </div>
-                @endif
-                <!-- login berhasil -->
-                @if(\Session::has('alert-success'))
-                    <div class="alert alert-success">
-                        <div>{{Session::get('alert-success')}}</div>
-                    </div>
-                @endif
-
                 <form action="{{ route('login') }}" method="POST">
                   @csrf
                     <div>
                         <label for="email_pegawai" ><b>Surel</b></label>
                         <br>
-                        <input name="email_pegawai" type="email" id="email_pegawai" autofocus>
+                        <input name="email_pegawai" type="email" id="email_pegawai" class="@error('email_pegawai') is-invalid @enderror" value="{{ old('email_pegawai') }}" required autofocus>
+
+                        @error('email_pegawai')
+                            <span class="invalid-feedback" role="alert" style="color: red;">
+                                <strong>Surel atau sandi salah.</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div>
                         <label for="password" ><b>Sandi</b></label>
                         <br>
-                        <input name="password" type="password" id="password">
+                        <input name="password" type="password" id="password" class="@error('password') is-invalid @enderror" required>
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert" style="color: red;">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <button class="button">Masuk</button>
                     <a href="{{ route('password.request') }}" class="auth-link text-black">Lupa kata sandi?</a>
                     <br>
-                    Belum memiliki akun? <a href="{{ route('register') }}" class="text-primary">Buat</a>
+                    <a href="{{ route('register') }}" class="text-primary">Buat akun</a>
                 </form>
 
             </div>

@@ -72,7 +72,8 @@ class DisposisiController extends Controller
             }
         }
         $images = Dokumen::all()->where('id_surat', $id_surat);
-        return view('detailDisposisi', compact('surat', 'disposisi', 'pimpinans', 'stafs', 'images'));
+        $jumlah = $images->count();
+        return view('detailDisposisi', compact('surat', 'disposisi', 'pimpinans', 'stafs', 'images', 'jumlah'));
     }
 
     //ubah disposisi
@@ -88,7 +89,9 @@ class DisposisiController extends Controller
         $id_surat = $disposisi->surat->id_surat;
         $surat = Surat::find($id_surat);
         $surat->status_surat = 'selesai';
+        $disposisi->status_disposisi = 'konfirmasi';
         $surat->save();
+        $disposisi->save();
 
         return redirect()->back();
     }
