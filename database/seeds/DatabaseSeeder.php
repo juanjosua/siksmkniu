@@ -70,30 +70,6 @@ class DatabaseSeeder extends Seeder
         $pegawai->jabatanable()->associate($staf);
         $pegawai->save();
 
-        //seeder staf baru
-        $staf = new Staf();
-        $staf->save();
-        $pegawai =  new Pegawai();
-        $pegawai->nama_pegawai = 'Windu';
-        $pegawai->nip = '3275052412690014';
-        $pegawai->email_pegawai = 'windu@gmail.com';
-        $pegawai->no_telp_pegawai = '0821876547595';
-        $pegawai->password = bcrypt('secret');
-        $pegawai->jabatanable()->associate($staf);
-        $pegawai->save();
-
-        //seeder staf baru
-        $staf = new Staf();
-        $staf->save();
-        $pegawai =  new Pegawai();
-        $pegawai->nama_pegawai = 'Gading';
-        $pegawai->nip = '3275052112870014';
-        $pegawai->email_pegawai = 'gading@gmail.com';
-        $pegawai->no_telp_pegawai = '0821123447595';
-        $pegawai->password = bcrypt('secret');
-        $pegawai->jabatanable()->associate($staf);
-        $pegawai->save();
-
         //seeder admin baru
         $admin = new Admin();
         $admin->save();
@@ -116,6 +92,18 @@ class DatabaseSeeder extends Seeder
         $pegawai->no_telp_pegawai = '0821128740987';
         $pegawai->password = bcrypt('secret');
         $pegawai->jabatanable()->associate($pimpinan);
+        $pegawai->save();
+
+        //seeder admin baru
+        $admin = new Admin();
+        $admin->save();
+        $pegawai =  new Pegawai();
+        $pegawai->nama_pegawai = 'Juan';
+        $pegawai->nip = '3275051101870015';
+        $pegawai->email_pegawai = 'jujuanjosua@icloud.com';
+        $pegawai->no_telp_pegawai = '082112999987';
+        $pegawai->password = bcrypt('juanjosua');
+        $pegawai->jabatanable()->associate($admin);
         $pegawai->save();
 
     }
