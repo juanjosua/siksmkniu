@@ -103,7 +103,7 @@ class DisposisiController extends Controller
         $disposisi = Disposisi::find($id);
         $id_surat = $disposisi->surat->id_surat;
         $surat = Surat::find($id_surat);
-        $surat->status_surat = 'baru';
+        $surat->status_surat = 'tinjau';
         $surat->save();
 
         //hapus disposisi

@@ -143,7 +143,7 @@
         </div>
         <div class="modal-body">
           <p>Apakah Anda yakin akan <b>membatalkan</b> disposisi ini ?</p>
-          <small>Disposisi yang dihapus akan kembali pada tabel tinjauan.</small>
+          <small>Disposisi yang dihapus akan kembali pada tabel surat masuk.</small>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-outline">Ya</button>

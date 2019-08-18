@@ -97,7 +97,7 @@
         </div>
         <div class="modal-body">
           <p>Apakah Anda yakin akan <b>Menghapus Permanen</b> Arsip ini ?</p>
-          <small>Arsip yang dihapus akan kembali pada tabel tinjauan.</small>
+          <small>Arsip yang dihapus akan kembali pada tabel surat masuk.</small>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-outline">Ya</button>
