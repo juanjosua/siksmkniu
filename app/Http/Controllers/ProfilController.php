@@ -6,7 +6,10 @@ use App\Arsip;
 use App\Disposisi;
 use App\Surat;
 use App\Pegawai;
+use App\Sektor;
+use App\Staf;
 use DB;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +19,11 @@ class ProfilController extends Controller
     //view profile
     public function profil()
     {
-        return view('profilPegawai');
+    	// nama sektor pegawai
+    	$exist = Auth::user()->jabatanable->id_sektor;
+    	$nama_sektor = Sektor::find(Auth::user()->jabatanable->id_sektor);
+    	$sektors = Sektor::all();
+        return view('profilPegawai', compact('sektors', 'nama_sektor', 'exist'));
     }
 
     //update data
@@ -29,7 +36,9 @@ class ProfilController extends Controller
 	    }
 
 	    //upload gambar
+	    if($request->file('foto_pegawai')){
 	    $image  = $request->file('foto_pegawai')->store('avatars');
+		} else { $image = NULL; }
 
 	    $pegawai = Pegawai::find($id);
 	    //Update data
@@ -41,6 +50,12 @@ class ProfilController extends Controller
 	         'password'				=> bcrypt($request->input('password')),
 	         'foto_pegawai'        	=> $image
 	    ]);
+
+	    $staf = Staf::find($pegawai->jabatanable_id);
+	    $staf->update([
+	    	'id_sektor'				=> $request->input('id_sektor')
+	    ]);
+
 	    $data = Pegawai::find($id);
 	    Session::put('data', $data);
 

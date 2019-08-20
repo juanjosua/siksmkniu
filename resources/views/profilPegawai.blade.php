@@ -83,20 +83,42 @@
               </div>
 
               <div class="form-group">
-                <label for="nip" class="col-sm-2 control-label">Nomor Induk</label>
-
-                <div class="col-sm-10">
-                  <input type="number" name="nip" class="form-control" id="nip" placeholder="Nomor Induk" value="{{Session::get('data')->nip}}">
-                </div>
-              </div>
-
-              <div class="form-group">
                 <label for="nama_pegawai" class="col-sm-2 control-label">Nama</label>
 
                 <div class="col-sm-10">
                   <input type="text" name="nama_pegawai" class="form-control" id="nama_pegawai" placeholder="Nama" value="{{Session::get('data')->nama_pegawai}}">
                 </div>
               </div>
+
+              <div class="form-group">
+                <label for="nip" class="col-sm-2 control-label">NIP</label>
+
+                <div class="col-sm-10">
+                  <input type="number" name="nip" class="form-control" id="nip" placeholder="Nomor Induk" value="{{Session::get('data')->nip}}">
+                </div>
+              </div>
+
+              @if(Auth::user()->jabatanable_type == 'App\Staf')
+              <div class="form-group">
+                <label for="id_sektor" class="col-sm-2 control-label">Sektor</label>
+
+                <div class="col-sm-10">
+                  <select name="id_sektor" class="form-control" id="id_sektor">
+                    @if( $exist != null )
+                        <option value="{{ $nama_sektor->id_sektor }}" disabled selected>{{ $nama_sektor->nama_sektor }}</option>
+                      @foreach($sektors as $sektor)
+                        <option value="{{ $sektor->id_sektor }}">{{ $sektor->nama_sektor }}</option>
+                      @endforeach
+                    @else
+                        <option value="" disabled selected>Pilih Sektor</option>
+                      @foreach($sektors as $sektor)
+                        <option value="{{ $sektor->id_sektor }}">{{ $sektor->nama_sektor }}</option>
+                      @endforeach
+                    @endif
+                  </select>
+                </div>
+              </div>
+              @endif
 
               <div class="form-group">
                 <label for="email_pegawai" class="col-sm-2 control-label">Surel</label>
@@ -133,11 +155,13 @@
 
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-info center-block" name="submit" id="submit">Submit</button>
+                  <button type="submit" class="btn btn-info center-block" name="submit" id="submit">Submit</button> <br>
+                  <a href="{{ url('/unggah') }}" class="btn btn-info center-block">Kembali</a>
                 </div>
               </div>
 
             </form>
+
           </div>
           <!-- /.tab-pane -->
 
