@@ -16,6 +16,10 @@ class CreateStafsTable extends Migration
         Schema::create('stafs', function (Blueprint $table) {
             $table->increments('id_staf');
             $table->timestamps();
+
+            //foreign key sektor
+            $table->integer('id_sektor')->unsigned()->index()->nullable();
+            $table->foreign('id_sektor')->references('id_sektor')->on('sektors');
         });
     }
 

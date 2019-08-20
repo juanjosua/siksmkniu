@@ -16,4 +16,9 @@ class Sektor extends Model
     {
        return $this->hasMany(Surat::class);
     }
+
+    public function stafs()
+    {
+       return $this->hasMany(Staf::class);
+    }
 }
