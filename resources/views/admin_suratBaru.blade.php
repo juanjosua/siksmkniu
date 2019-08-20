@@ -31,7 +31,6 @@
                   <tr>
                     <th>Nomor</th>
                     <th>Instansi</th>
-                    <th>Bidang</th>
                     <th>Perihal</th>
                     <th>Tanggal Surat</th>
                     <th>Aksi</th>
@@ -44,7 +43,6 @@
                             <tr>
                                 <td>{{str_limit($surat->no_surat, 11, '...')}}</td>
                                 <td>{{str_limit($surat->instansi->nama_instansi, 21, '...')}}</td>
-                                <td>{{$surat->sektor->nama_sektor}}</td>
                                 <td>{{str_limit($surat->perihal_surat, 25, '...')}}</td>
                                 <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
                                 <td>

@@ -55,7 +55,11 @@
       Tujuan Sektor
       <br>
       <address>
+        @if($sektor_exist != null)
         <strong>{{$surat->sektor->nama_sektor}}</strong><br>
+        @else
+        <strong></strong><br>
+        @endif
       </address>
     </div>
     <!-- /.col -->

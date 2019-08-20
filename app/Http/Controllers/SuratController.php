@@ -38,7 +38,7 @@ class SuratController extends Controller
         //check if instansi already exists
         $instansi = Instansi::all()->where('nama_instansi', $request->pengirim_surat)->first();
         //get sektor
-        $sektor = Sektor::all()->where('nama_sektor', $request->tujuan_surat)->first();
+        // $sektor = Sektor::all()->where('nama_sektor', $request->tujuan_surat)->first();
         //check siapa yang mengunggah
         $jabatan = Session::get('data')->jabatanable_type;
         $id_jabatan = Session::get('data')->jabatanable_id;
@@ -72,7 +72,7 @@ class SuratController extends Controller
         $str_nomor = $explode_nomor[0]; //ambil text pertama setelah perihal sebelum newline
 
         //foreign key
-        $id_sektor      = $sektor->id_sektor;
+        // $id_sektor      = $sektor->id_sektor;
         $id_admin = $id_jabatan;
 
         $surat = Surat::create([
@@ -81,7 +81,7 @@ class SuratController extends Controller
             // 'perihal_surat'          => $request->perihal_surat,
             'perihal_surat'             => $str_perihal,
             'tanggal_surat'             => $request->tanggal_surat,
-            'id_sektor'                 => $id_sektor,
+            // 'id_sektor'                 => $id_sektor,
             'id_instansi'               => $id_instansi,
             'id_admin'                  => $id_admin
         ]);
@@ -183,6 +183,7 @@ class SuratController extends Controller
     {
         //menampilkan detil informasi setiap surat
         $surat = Surat::find($id);
+        $sektor_exist = $surat->id_sektor;
         $images = Dokumen::all()->where('id_surat', $id);
         $id_current_user = Session::get('data')->jabatanable_id;
         //pengunggah
@@ -190,7 +191,7 @@ class SuratController extends Controller
         $admin = Admin::find($id_admin);
         $pegawai = $admin->pegawais;
 
-        return view('detailSurat', compact('surat', 'admin', 'id_current_user', 'images', 'pegawai'));
+        return view('detailSurat', compact('surat', 'admin', 'id_current_user', 'images', 'pegawai', 'sektor_exist'));
     }
 
     //form edit surat

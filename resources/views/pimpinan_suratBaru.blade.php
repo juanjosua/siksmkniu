@@ -31,7 +31,6 @@
                   <tr>
                     <th>Nomor</th>
                     <th>Instansi</th>
-                    <th>Bidang</th>
                     <th>Perihal</th>
                     <th>Tanggal Surat</th>
                     <th>Aksi</th>
@@ -43,7 +42,6 @@
                             <tr>
                                 <td>{{$surat->no_surat}}</td>
                                 <td>{{$surat->instansi->nama_instansi}}</td>
-                                <td>{{$surat->sektor->nama_sektor}}</td>
                                 <td>{{$surat->perihal_surat}}</td>
                                 <td>{{date('d M Y', strtotime($surat->tanggal_surat))}}</td>
                                 <td>

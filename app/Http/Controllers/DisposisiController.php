@@ -6,6 +6,7 @@ use App\Disposisi;
 use App\Surat;
 use App\Pegawai;
 use App\Dokumen;
+use App\Staf;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -49,6 +50,10 @@ class DisposisiController extends Controller
         $surat = Surat::find($request->id_surat);
         $surat->status_surat = 'disposisi';
         $surat->save();
+
+        $surat->update([
+            'id_sektor' => Staf::find($id_staf)->id_sektor
+        ]);
 
         return redirect()->back();
     }
