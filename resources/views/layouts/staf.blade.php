@@ -345,6 +345,13 @@
                 alert(msg);
               }
             </script>
+            <script type="text/javascript">
+              function PreviewButton() // no ';' here
+              {
+                  var preview = document.querySelector(".preview-zone");
+                  active.classList.remove("hidden");
+              }
+            </script>
           <!-- Script End -->
 
           <!--begin info modal window-->

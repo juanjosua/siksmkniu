@@ -170,7 +170,39 @@
                 <h4 class="modal-title">Tambah Dokumen</h4>
               </div>
               <div class="modal-body">
-                <input type="file" value="" name="image" class="form-control" id="uploadPDF">
+                <!-- <input type="file" value="" name="image" class="form-control" id="uploadPDF"> -->
+
+                    <div class="dropzone-wrapper">
+                      <div class="dropzone-desc">
+                      <i class="glyphicon glyphicon-download-alt"></i>
+                      <p>Pilih berkas PDF atau seret berkas ke sini.</p>
+                      </div>
+                      <input id="uploadPDF" value="" type="file" name="image" class="dropzone">
+                    </div>
+
+                    <br>
+
+                    <div class="preview-zone hidden">
+                      <div class="box box-solid">
+
+                        <!-- PDF Preview Start -->
+
+                        <input class="btn btn-primary center-block" name="image" type="button" value="Preview" onclick="PreviewImage();">
+                        <br>
+
+                        <div id="preview" style="clear:both; display: none;">
+                          <iframe target="_blank" id="viewer" frameborder="0" scrolling="no" width="100%" height="500"></iframe>
+                        </div>
+
+                        <!-- PDF Preview End -->
+
+                        <!-- nama berkas -->
+                        <div class="box-body"></div> 
+
+                      </div>
+
+                    </div>
+
                 <!-- <small style="color: red">Max File Size = 2MB</small> -->
               </div>
               <div class="modal-footer">
