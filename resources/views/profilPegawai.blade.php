@@ -155,8 +155,8 @@
 
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-info center-block" name="submit" id="submit">Submit</button> <br>
-                  <a href="{{ url('/unggah') }}" class="btn btn-info center-block">Kembali</a>
+                  <button type="submit" class="btn btn-info" name="submit" id="submit">Submit</button>
+                  <a href="{{ url('/unggah') }}" class="btn btn-info">Kembali</a>
                 </div>
               </div>
 
