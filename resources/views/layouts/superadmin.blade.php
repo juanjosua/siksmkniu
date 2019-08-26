@@ -279,22 +279,22 @@
               <div id="myGallery" class="carousel slide" data-interval="false">
               <div class="carousel-inner">
 
-              <div class="item active"> <img src="{{ asset('storage/gif/admin-nav.gif')}}" alt="item0">
+              <div class="item active"> <img src="{{ asset('storage/gif/superadmin-ubahjabatan.gif')}}" alt="item0">
               <br>
               <div style="text-align: center;"><strong>Ubah Jabatan Pegawai</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-unggah.gif')}}" alt="item1">
+              <div class="item"> <img src="{{ asset('storage/gif/superadmin-nonaktifaktif.gif')}}" alt="item1">
               <br>
               <div style="text-align: center;"><strong>Non-aktifkan Pegawai</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-rincian.gif')}}" alt="item2">
+              <div class="item"> <img src="{{ asset('storage/gif/superadmin-keluar.gif')}}" alt="item2">
               <br>
               <div style="text-align: center;"><strong>Keluar</strong></div></div>
 
               <!--end carousel-inner--></div>
               <!--Begin Previous and Next buttons-->
-              <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev" style="color: green;"> <span class="glyphicon glyphicon-chevron-left"></span></a> 
-              <a class="right carousel-control" style="color: green;" href="#myGallery" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span></a>
+              <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev" style="color: yellow;"> <span class="glyphicon glyphicon-chevron-left"></span></a> 
+              <a class="right carousel-control" style="color: yellow;" href="#myGallery" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span></a>
               <!--end carousel--></div>
 
               <!--end modal-body--></div>

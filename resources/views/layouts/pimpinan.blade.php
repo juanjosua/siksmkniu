@@ -369,46 +369,46 @@
               <div id="myGallery" class="carousel slide" data-interval="false">
               <div class="carousel-inner">
 
-              <div class="item active"> <img src="{{ asset('storage/gif/admin-nav.gif')}}" alt="item0">
+              <div class="item active"> <img src="{{ asset('storage/gif/pimpinan-rinciansurat.gif')}}" alt="item0">
               <br>
               <div style="text-align: center;"><strong>Melihat Rincian Surat</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-unggah.gif')}}" alt="item1">
+              <div class="item"> <img src="{{ asset('storage/gif/pimpinan-unduhsurat.gif')}}" alt="item1">
               <br>
               <div style="text-align: center;"><strong>Mengunduh Surat</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-rincian.gif')}}" alt="item2">
+              <div class="item"> <img src="{{ asset('storage/gif/pimpinan-buatdisposisi.gif')}}" alt="item2">
               <br>
               <div style="text-align: center;"><strong>Memberikan Disposisi</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-proses.gif')}}" alt="item3">
+              <div class="item"> <img src="{{ asset('storage/gif/pimpinan-bataldisposisi.gif')}}" alt="item3">
               <br>
               <div style="text-align: center;"><strong>Membatalkan Disposisi</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-profil.gif')}}" alt="item4">
+              <div class="item"> <img src="{{ asset('storage/gif/pimpinan-konfirmasidisposisi.gif')}}" alt="item4">
               <br>
               <div style="text-align: center;"><strong>Konfirmasi Disposisi Selesai</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-unggah.gif')}}" alt="item5">
+              <div class="item"> <img src="{{ asset('storage/gif/pimpinan-arsip.gif')}}" alt="item5">
               <br>
               <div style="text-align: center;"><strong>Memasukkan Surat ke Dalam Arsip</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-rincian.gif')}}" alt="item6">
+              <div class="item"> <img src="{{ asset('storage/gif/pimpinan-hapusarsip.gif')}}" alt="item6">
               <br>
               <div style="text-align: center;"><strong>Menghapus Surat dari Arsip</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-proses.gif')}}" alt="item7">
+              <div class="item"> <img src="{{ asset('storage/gif/pimpinan-profil.gif')}}" alt="item7">
               <br>
               <div style="text-align: center;"><strong>Mengubah Profil</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-profil.gif')}}" alt="item8">
+              <div class="item"> <img src="{{ asset('storage/gif/pimpinan-keluar.gif')}}" alt="item8">
               <br>
               <div style="text-align: center;"><strong>Keluar</strong></div></div>
 
               <!--end carousel-inner--></div>
               <!--Begin Previous and Next buttons-->
-              <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev" style="color: green;"> <span class="glyphicon glyphicon-chevron-left"></span></a> 
-              <a class="right carousel-control" style="color: green;" href="#myGallery" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span></a>
+              <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev" style="color: purple;"> <span class="glyphicon glyphicon-chevron-left"></span></a> 
+              <a class="right carousel-control" style="color: purple;" href="#myGallery" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span></a>
               <!--end carousel--></div>
 
               <!--end modal-body--></div>
