@@ -16,8 +16,19 @@
 
           <h3>Rincian Surat</h3>
           <br>
+
           <div class="form-group">
-            <h4>Form Deskripsi Surat</h4>
+            <div class="row">
+              @foreach($images as $image)
+                <div>
+                  <embed src="{{ asset('storage/' . $image->image) }}" type="application/pdf" height="500px" width="100%">
+                </div>
+              @endforeach
+            </div>
+          </div>
+
+          <div class="form-group">
+            <h4>Deskripsi Surat</h4>
             <label class="pull-left">No. Surat</label>
             <input type="text" name="no_surat" class="form-control" placeholder="{{$surat->no_surat}}" value="{{$surat->no_surat}}">
           </div>
@@ -28,16 +39,6 @@
                 <datalist id="instansis">
                     @foreach($instansis as $instansi)
                         <option>{{ $instansi->nama_instansi }}</option>
-                    @endforeach
-                </datalist>
-          </div>
-
-          <div class="form-group">
-            <label class="pull-left">Tujuan Sektor</label>
-            <input type="text" list="sektors" name="tujuan_surat" class="form-control" placeholder="{{$surat->sektor->nama_sektor}}" value="{{$surat->sektor->nama_sektor}}">
-                <datalist id="sektors">
-                    @foreach($sektors as $sektor)
-                        <option>{{ $sektor->nama_sektor }}</option>
                     @endforeach
                 </datalist>
           </div>

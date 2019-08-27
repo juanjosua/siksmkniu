@@ -199,9 +199,9 @@ class SuratController extends Controller
     {
         //halaman edit surat
         $instansis  = Instansi::all();
-        $sektors    = Sektor::all();
         $surat = Surat::find($id);
-        return view('editSurat', compact('surat', 'instansis', 'sektors'));
+        $images = $surat->dokumens()->where('id_surat', $id)->get();
+        return view('editSurat', compact('surat', 'instansis', 'images'));
 
     }
 

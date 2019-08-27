@@ -34,6 +34,6 @@ class Surat extends Model
 
     public function dokumens()
     {
-       return $this->hasMany(Dokumen::class);
+       return $this->hasMany(Dokumen::class, 'id_surat');
     }
 }
