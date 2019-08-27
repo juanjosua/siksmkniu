@@ -78,7 +78,7 @@ class RegisterController extends Controller
         $pegawai =  new Pegawai();
         $pegawai->nama_pegawai = $data['nama_pegawai'];
         $pegawai->email_pegawai = $data['email_pegawai'];
-        $pegawai->password = bcrypt($data['password']);
+        $pegawai->password = Hash::make($data['password']);
         $pegawai->jabatanable()->associate($staf);
         $pegawai->save();
 

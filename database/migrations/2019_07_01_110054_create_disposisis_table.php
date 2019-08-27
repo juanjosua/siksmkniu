@@ -29,7 +29,7 @@ class CreateDisposisisTable extends Migration
             $table->integer('id_surat')->unsigned()->index()->nullable();
             $table->foreign('id_surat')->references('id_surat')->on('surats');
 
-            $table->date('tanggal_diterima')->nullable();
+            $table->dateTime('tanggal_diterima')->nullable();
             $table->timestamps();
         });
     }

@@ -84,7 +84,7 @@
     <div class="col-xs-12">
       <div class="btn-toolbar">
         <!-- user yang unggah -->
-        @if($id_current_user == $surat->id_admin)
+        @if($id_current_user == 'App\Admin')
         <a href="{{ url('surat/edit/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-edit"></i> Ubah</a>
         @else
         <a class="btn btn-dark pull-left" disabled="disabled"><i class="fa fa-edit"></i> Ubah</a>

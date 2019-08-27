@@ -82,8 +82,13 @@ class ArsipController extends Controller
         $surat->status_surat = 'tinjau';
         $surat->save();
 
-        //hapus disposisi
+        //hapus arsip
         $arsip->delete();
+
+        //hapus disposisi
+        $id_disposisi = $surat->disposisi->id_disposisi;
+        $disposisi = Disposisi::find($id_disposisi);
+        $disposisi->delete();
 
         return redirect()->back();
     }

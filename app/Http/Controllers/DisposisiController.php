@@ -72,8 +72,7 @@ class DisposisiController extends Controller
         //buat tanggal disposisis diterima
         if (Session::get('data')->jabatanable_type == 'App\Staf') {
             if ($disposisi->tanggal_diterima == null) {
-                $disposisi->tanggal_diterima = now();
-                $disposisi->save();
+                $disposisi->update([ 'tanggal_diterima' => now() ]);
             }
         }
         $images = Dokumen::all()->where('id_surat', $id_surat);

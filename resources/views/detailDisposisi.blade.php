@@ -58,7 +58,12 @@
       <strong>Nomor Surat :</strong> {{$surat->no_surat}}<br>
       <strong>Perihal Surat :</strong> {{$surat->tanggal_surat}}<br>
       <strong>Instansi :</strong> {{$surat->instansi->nama_instansi}}<br>
-      <strong>Sektor :</strong> {{$surat->sektor->nama_sektor}}<br>
+      <strong>Sektor :</strong> @if(!empty( $surat->sektor->nama_sektor ) )
+                                  {{$surat->sektor->nama_sektor}}
+                                @else
+                                  <i>tidak ada/belum ditentukan</i>
+                                @endif
+      <br>
       <strong>Tanggal Surat :</strong> {{date('d M Y', strtotime($surat->tanggal_surat))}}<br>
     </address>
     </div>
@@ -95,7 +100,7 @@
     <!-- tombol download -->
     <a href="{{ url('surat/download/' . $surat->id_surat) }}" class="btn btn-warning pull-left"><i class="fa fa-download"></i> Unduh</a>
 
-    <!-- tombol download -->
+    <!-- tombol kembali -->
     <a href="{{ url('/disposisi') }}" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i> Kembali</a>
     </div>
   </div>

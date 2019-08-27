@@ -40,7 +40,13 @@
                             <td>{{$arsip->surat->no_surat}}</td>
                             <td>{{str_limit($arsip->surat->perihal_surat, 15, '...')}}</td>
                             <td>{{$arsip->surat->instansi->nama_instansi}}</td>
-                            <td>{{$arsip->surat->sektor->nama_sektor}}</td>
+                            <td>
+                                  @if(!empty( $arsip->surat->sektor->nama_sektor ) )
+                                    {{$arsip->surat->sektor->nama_sektor}}
+                                  @else
+                                    <i>tidak ada/belum ditentukan</i>
+                                  @endif
+                            </td>
                             <td>{{$arsip->surat->created_at->format('d M Y')}}</td>
                             <td>{{$arsip->created_at->format('d M Y')}}</td>
                             <td>

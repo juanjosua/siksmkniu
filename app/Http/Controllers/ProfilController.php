@@ -13,6 +13,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class ProfilController extends Controller
 {
@@ -29,26 +30,30 @@ class ProfilController extends Controller
     //update data
     public function updateProfil(request $request, $id)
     {
-        //current foto
-    	$foto = Session::get('data')->foto_pegawai;
-	    if($foto) {
-	      Storage::delete($foto);
-	    }
+	    $pegawai = Pegawai::find($id);
 
 	    //upload gambar
-	    if($request->file('foto_pegawai')){
-	    $image  = $request->file('foto_pegawai')->store('avatars');
-		} else { $image = NULL; }
+	    if( !is_null( $request->file('foto_pegawai') ) ){
+		    	//current foto
+		    	$foto = Session::get('data')->foto_pegawai;
+			    if($foto) {
+			      Storage::delete($foto);
+			    }
+		    $image  = $request->file('foto_pegawai')->store('avatars');
+		    $pegawai->update([ 'foto_pegawai' => $image ]);
+		}
 
-	    $pegawai = Pegawai::find($id);
+		//password baru
+	    if( !is_null( $request->input('password') ) ){
+	    	$pegawai->update([ 'password' => Hash::make($request->input('password')) ]);
+		}
+
 	    //Update data
 	    $pegawai->update([
 	         'nama_pegawai'         => $request->input('nama_pegawai'),
 	         'email_pegawai'        => $request->input('email_pegawai'),
 	         'no_telp_pegawai'      => $request->input('no_telp_pegawai'),
-	         'nip'					=> $request->input('nip'),
-	         'password'				=> bcrypt($request->input('password')),
-	         'foto_pegawai'        	=> $image
+	         'nip'					=> $request->input('nip')
 	    ]);
 
 	    $staf = Staf::find($pegawai->jabatanable_id);

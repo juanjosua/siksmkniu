@@ -51,7 +51,11 @@
                                   {{str_limit($disposisi->surat->perihal_surat, 15, '...')}}
                                 </td>
                                 <td>
-                                  {{$disposisi->surat->sektor->nama_sektor}}
+                                  @if(!empty( $disposisi->surat->sektor->nama_sektor ) )
+                                    {{$disposisi->surat->sektor->nama_sektor}}
+                                  @else
+                                    <i>tidak ada/belum ditentukan</i>
+                                  @endif
                                 </td>
                                 <td>
                                   {{str_limit($disposisi->pesan_disposisi, 35, '...')}}

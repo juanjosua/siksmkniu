@@ -7,21 +7,16 @@
 
   <!-- Navigation Tab Start -->
 
-  <div class="col-md-12">
-    <div class="nav-tabs-custom">
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#tinjau" data-toggle="tab">Unggahan</a></li>
-      </ul>
-      <div class="tab-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Surat Masuk</h3>
 
-        <!-- Tinjau Tab Start -->
+          <div class="box-tools pull-right">
+          </div>
+        </div>
 
-        <div class="active tab-pane" id="tinjau">
-
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Perlu Tinjauan</h3>
-            </div>
             <!-- /.box-header -->
 
             <div class="box-body">
@@ -72,20 +67,22 @@
               <!-- /.table-responsive -->
             </div>
 
-          </div>
+            </div>
 
           <!-- TABLE : Document End -->
 
         </div>
         <!-- /.tab-pane -->
 
-        <!-- Tinjau Tab End -->
+        <!-- Disposisi Tab End -->
 
       </div>
       <!-- /.tab-content -->
     </div>
     <!-- /.nav-tabs-custom -->
   </div>
+
+          
 
   <!-- Navigation Tab End -->
 

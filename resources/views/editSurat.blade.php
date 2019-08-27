@@ -61,8 +61,9 @@
       </div>
       </div>
       <div class="row">
-      <div class="col-md-12">
-        <button type="submit" class="btn btn-primary center-block">Perbarui</button>
+      <div class="col-md-12" style="text-align: center;">
+        <button type="submit" class="btn btn-primary">Perbarui</button>
+        <a href="{{ url('/surat/detail/' . $surat->id_surat) }}" class="btn btn-primary">Kembali</a>
       </div>
       </div>
     </div>

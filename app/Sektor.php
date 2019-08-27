@@ -19,6 +19,6 @@ class Sektor extends Model
 
     public function stafs()
     {
-       return $this->hasMany(Staf::class);
+       return $this->hasMany(Staf::class, 'id_sektor');
     }
 }

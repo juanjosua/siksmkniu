@@ -89,7 +89,7 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- profile picture default & update-->
                         <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="user-image" alt="User Image">
-                        <span class="hidden-xs">Lupa Sandi</span>
+                        <span class="hidden-xs">Ubah Sandi</span>
                       </a>
                       <ul class="dropdown-menu">
                         <!-- User image -->
@@ -98,8 +98,8 @@
                           <img src="{{ asset('beranda/dist/img/profilepicture.png') }}" class="img-circle" alt="User Image">
 
                           <p>
-                            Lupa Sandi - Lupa Sandi
-                            <small>Lupa Sandi</small>
+                            Ubah Sandi - Ubah Sandi
+                            <small>Ubah Sandi</small>
                           </p>
                         </li>
 
@@ -145,7 +145,7 @@
                   </div>
                   <div class="pull-left info">
                     <br>
-                    <p>Lupa Sandi</p>
+                    <p>Ubah Sandi</p>
                   </div>
                 </div>
 

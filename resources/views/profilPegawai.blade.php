@@ -105,7 +105,7 @@
                 <div class="col-sm-10">
                   <select name="id_sektor" class="form-control" id="id_sektor">
                     @if( $exist != null )
-                        <option value="{{ $nama_sektor->id_sektor }}" disabled selected>{{ $nama_sektor->nama_sektor }}</option>
+                        <option value="{{ $nama_sektor->id_sektor }}" selected>{{ $nama_sektor->nama_sektor }}</option>
                       @foreach($sektors as $sektor)
                         <option value="{{ $sektor->id_sektor }}">{{ $sektor->nama_sektor }}</option>
                       @endforeach
@@ -154,9 +154,9 @@
               </div>
 
               <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-info" name="submit" id="submit">Submit</button>
-                  <a href="{{ url('/unggah') }}" class="btn btn-info">Kembali</a>
+                <div class="col-sm-offset-2 col-sm-10" style="text-align: center;">
+                  <button type="submit" class="btn btn-info" name="submit" id="submit">Simpan</button>
+                  <a href="{{ url('/home') }}" class="btn btn-info">Kembali</a>
                 </div>
               </div>
 

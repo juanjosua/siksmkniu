@@ -59,7 +59,12 @@
       <strong>Nomor Surat :</strong> {{$surat->no_surat}}<br>
       <strong>Perihal Surat :</strong> {{$surat->tanggal_surat}}<br>
       <strong>Instansi :</strong> {{$surat->instansi->nama_instansi}}<br>
-      <strong>Sektor :</strong> {{$surat->sektor->nama_sektor}}<br>
+      <strong>Sektor :</strong> @if(!empty( $surat->sektor->nama_sektor ) )
+                                  {{$surat->sektor->nama_sektor}}
+                                @else
+                                  <i>tidak ada/belum ditentukan</i>
+                                @endif
+      <br>
       <strong>Tanggal Surat :</strong> {{date('d M Y', strtotime($surat->tanggal_surat))}}<br>
     </address>
     </div>
@@ -82,8 +87,8 @@
       <strong>Penerima Disposisi :</strong> {{$ns->nama_pegawai}}<br>
     @endforeach
       <strong>Pesan Disposisi :</strong> {{$disposisi->pesan_disposisi}}<br>
-      <strong>Tanggal Disposisi :</strong> {{$disposisi->created_at->format('d M Y')}}<br>
-
+      <strong>Tanggal Disposisi :</strong> {{$disposisi->created_at->format('d-M-Y H:i:s') }}<br>
+      <strong>Tanggal Diterima :</strong> {{date('d-M-Y H:i:s', strtotime($disposisi->tanggal_diterima))}}<br>
       <?php endif ?>
     </address>
     </div>

@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
         $pegawai->nip = '3275052410960014';
         $pegawai->email_pegawai = 'donna@gmail.com';
         $pegawai->no_telp_pegawai = '0821128747595';
-        $pegawai->password = bcrypt('secret');
+        $pegawai->password = Hash::make('secret');
         $pegawai->jabatanable()->associate($staf);
         $pegawai->save();
 
@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
         $pegawai->nip = '3275051101870015';
         $pegawai->email_pegawai = 'karna@gmail.com';
         $pegawai->no_telp_pegawai = '082112999987';
-        $pegawai->password = bcrypt('secret');
+        $pegawai->password = Hash::make('secret');
         $pegawai->jabatanable()->associate($admin);
         $pegawai->save();
 
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
         $pegawai->nip = '3275051010970014';
         $pegawai->email_pegawai = 'desi@gmail.com';
         $pegawai->no_telp_pegawai = '0821128740987';
-        $pegawai->password = bcrypt('secret');
+        $pegawai->password = Hash::make('secret');
         $pegawai->jabatanable()->associate($pimpinan);
         $pegawai->save();
 
@@ -102,7 +102,7 @@ class DatabaseSeeder extends Seeder
         $pegawai->nip = '3275051101870015';
         $pegawai->email_pegawai = 'jujuanjosua@icloud.com';
         $pegawai->no_telp_pegawai = '082112999987';
-        $pegawai->password = bcrypt('juanjosua');
+        $pegawai->password = Hash::make('juanjosua');
         $pegawai->jabatanable()->associate($admin);
         $pegawai->save();
 

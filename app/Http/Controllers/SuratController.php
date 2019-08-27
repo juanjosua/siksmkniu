@@ -185,7 +185,7 @@ class SuratController extends Controller
         $surat = Surat::find($id);
         $sektor_exist = $surat->id_sektor;
         $images = Dokumen::all()->where('id_surat', $id);
-        $id_current_user = Session::get('data')->jabatanable_id;
+        $id_current_user = Session::get('data')->jabatanable_type;
         //pengunggah
         $id_admin = $surat->id_admin;
         $admin = Admin::find($id_admin);
@@ -210,8 +210,7 @@ class SuratController extends Controller
     {
         //check if instansi already exists
         $instansi = Instansi::all()->where('nama_instansi', $request->input('pengirim_surat'))->first();
-        //get sektor
-        $sektor = Sektor::all()->where('nama_sektor', $request->input('tujuan_surat'))->first();
+
         //buat instansi baru jika belum ada
         if (!$instansi) {
             Instansi::create([
@@ -220,7 +219,6 @@ class SuratController extends Controller
         };
 
         //foreign key
-        $id_sektor      = $sektor->id_sektor;
         $id_instansi    = $instansi->id_instansi;
 
         //update suratnya
@@ -229,7 +227,6 @@ class SuratController extends Controller
           'no_surat'                => $request->input('no_surat'),
           'perihal_surat'           => $request->input('perihal_surat'),
           'tanggal_surat'           => $request->input('tanggal_surat'),
-          'id_sektor'               => $id_sektor,
           'id_instansi'             => $id_instansi,
         ]);
 
