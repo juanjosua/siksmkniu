@@ -80,12 +80,6 @@ class DisposisiController extends Controller
         return view('detailDisposisi', compact('surat', 'disposisi', 'pimpinans', 'stafs', 'images', 'jumlah'));
     }
 
-    //ubah disposisi
-    public function editDisposisi(disposisi $disposisi)
-    {
-        //
-    }
-
     //update disposisi sudah selesai
     public function updateDisposisi($id)
     {
