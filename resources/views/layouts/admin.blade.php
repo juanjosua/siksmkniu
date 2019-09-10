@@ -375,27 +375,27 @@
               <div id="myGallery" class="carousel slide" data-interval="false">
               <div class="carousel-inner">
 
-              <div class="item active"> <img src="{{ asset('storage/gif/admin-unggah.gif')}}" alt="item0">
+              <div class="item active"> <img src="{{ asset('gif/admin-unggah.gif')}}" alt="item0">
               <br>
               <div style="text-align: center;"><strong>Mengunggah Surat</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-ubahrincian.gif')}}" alt="item1">
+              <div class="item"> <img src="{{ asset('gif/admin-ubahrincian.gif')}}" alt="item1">
               <br>
               <div style="text-align: center;"><strong>Mengubah Rincian Surat</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-unduh.gif')}}" alt="item2">
+              <div class="item"> <img src="{{ asset('gif/admin-unduh.gif')}}" alt="item2">
               <br>
               <div style="text-align: center;"><strong>Mengunduh Surat</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-proses.gif')}}" alt="item3">
+              <div class="item"> <img src="{{ asset('gif/admin-proses.gif')}}" alt="item3">
               <br>
               <div style="text-align: center;"><strong>Memproses Surat</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-profil.gif')}}" alt="item4">
+              <div class="item"> <img src="{{ asset('gif/admin-profil.gif')}}" alt="item4">
               <br>
               <div style="text-align: center;"><strong>Mengubah Profil</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/admin-keluar.gif')}}" alt="item5">
+              <div class="item"> <img src="{{ asset('gif/admin-keluar.gif')}}" alt="item5">
               <br>
               <div style="text-align: center;"><strong>Keluar</strong></div></div>
 

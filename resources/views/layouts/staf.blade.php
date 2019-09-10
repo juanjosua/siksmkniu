@@ -368,27 +368,27 @@
               <div id="myGallery" class="carousel slide" data-interval="false">
               <div class="carousel-inner">
 
-              <div class="item active"> <img src="{{ asset('storage/gif/staf-rincian.gif')}}" alt="item0">
+              <div class="item active"> <img src="{{ asset('gif/staf-rincian.gif')}}" alt="item0">
               <br>
               <div style="text-align: center;"><strong>Melihat Rincian Surat</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/staf-unduhsurat.gif')}}" alt="item1">
+              <div class="item"> <img src="{{ asset('gif/staf-unduhsurat.gif')}}" alt="item1">
               <br>
               <div style="text-align: center;"><strong>Mengunduh Surat</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/staf-tambahdokumen.gif')}}" alt="item2">
+              <div class="item"> <img src="{{ asset('gif/staf-tambahdokumen.gif')}}" alt="item2">
               <br>
               <div style="text-align: center;"><strong>Menambah Dokumen Pada Disposisi</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/staf-selesaidisposisi.gif')}}" alt="item3">
+              <div class="item"> <img src="{{ asset('gif/staf-selesaidisposisi.gif')}}" alt="item3">
               <br>
               <div style="text-align: center;"><strong>Menyelesaikan Disposisi</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/staf-profil.gif')}}" alt="item4">
+              <div class="item"> <img src="{{ asset('gif/staf-profil.gif')}}" alt="item4">
               <br>
               <div style="text-align: center;"><strong>Mengubah Profil</strong></div></div>
 
-              <div class="item"> <img src="{{ asset('storage/gif/staf-keluar.gif')}}" alt="item5">
+              <div class="item"> <img src="{{ asset('gif/staf-keluar.gif')}}" alt="item5">
               <br>
               <div style="text-align: center;"><strong>Keluar</strong></div></div>
 
