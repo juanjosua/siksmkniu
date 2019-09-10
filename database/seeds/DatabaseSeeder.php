@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
         $staf->save();
         $pegawai =  new Pegawai();
         $pegawai->nama_pegawai = 'Staf';
-        $pegawai->email_pegawai = 'donna@gmail.com';
+        $pegawai->email_pegawai = 'staf@gmail.com';
         $pegawai->password = Hash::make('secret');
         $pegawai->jabatanable()->associate($staf);
         $pegawai->save();
@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
         $admin->save();
         $pegawai =  new Pegawai();
         $pegawai->nama_pegawai = 'Admin';
-        $pegawai->email_pegawai = 'karna@gmail.com';
+        $pegawai->email_pegawai = 'admin@gmail.com';
         $pegawai->password = Hash::make('secret');
         $pegawai->jabatanable()->associate($admin);
         $pegawai->save();
@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
         $pimpinan->save();
         $pegawai =  new Pegawai();
         $pegawai->nama_pegawai = 'Pimpinan';
-        $pegawai->email_pegawai = 'desi@gmail.com';
+        $pegawai->email_pegawai = 'pimpinan@gmail.com';
         $pegawai->password = Hash::make('secret');
         $pegawai->jabatanable()->associate($pimpinan);
         $pegawai->save();
