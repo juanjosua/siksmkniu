@@ -56,10 +56,12 @@ class ProfilController extends Controller
 	         'nip'					=> $request->input('nip')
 	    ]);
 
-	    $staf = Staf::find($pegawai->jabatanable_id);
-	    $staf->update([
-	    	'id_sektor'				=> $request->input('id_sektor')
-	    ]);
+	    if (Auth::user()->jabatanable_type == 'App\Staf') {
+	    	$staf = Staf::find($pegawai->jabatanable_id);
+		    $staf->update([
+		    	'id_sektor'				=> $request->input('id_sektor')
+		    ]);
+	    }
 
 	    $data = Pegawai::find($id);
 	    Session::put('data', $data);

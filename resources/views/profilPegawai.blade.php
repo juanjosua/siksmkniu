@@ -94,7 +94,7 @@
                 <label for="nip" class="col-sm-2 control-label">NIP</label>
 
                 <div class="col-sm-10">
-                  <input type="number" name="nip" class="form-control" id="nip" placeholder="Nomor Induk" value="{{Session::get('data')->nip}}">
+                  <input type="number" name="nip" class="form-control" id="nip" placeholder="Nomor Induk" value="{{Session::get('data')->nip}}" required>
                 </div>
               </div>
 
@@ -103,7 +103,7 @@
                 <label for="id_sektor" class="col-sm-2 control-label">Sektor</label>
 
                 <div class="col-sm-10">
-                  <select name="id_sektor" class="form-control" id="id_sektor">
+                  <select name="id_sektor" class="form-control" id="id_sektor" required>
                     @if( $exist != null )
                         <option value="{{ $nama_sektor->id_sektor }}" selected>{{ $nama_sektor->nama_sektor }}</option>
                       @foreach($sektors as $sektor)
@@ -132,7 +132,7 @@
                 <label for="no_telp_pegawai" class="col-sm-2 control-label">Nomor Telepon</label>
 
                 <div class="col-sm-10">
-                  <input type="number" name="no_telp_pegawai" class="form-control" id="no_telp_pegawai" placeholder="Nomor Handphone" value="{{Session::get('data')->no_telp_pegawai}}">
+                  <input type="number" name="no_telp_pegawai" class="form-control" id="no_telp_pegawai" placeholder="Nomor Handphone" value="{{Session::get('data')->no_telp_pegawai}}" required>
                 </div>
               </div>
 

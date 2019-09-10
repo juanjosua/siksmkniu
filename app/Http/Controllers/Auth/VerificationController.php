@@ -33,7 +33,7 @@ class VerificationController extends Controller
         $email = Auth::user()->email_pegawai;
         $data = Pegawai::where('email_pegawai', $email)->first();
         Session::put('data', $data);
-        return '/home';
+        return 'profil/edit';
     }
 
     /**

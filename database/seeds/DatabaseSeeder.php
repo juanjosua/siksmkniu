@@ -62,10 +62,8 @@ class DatabaseSeeder extends Seeder
         $staf = new Staf();
         $staf->save();
         $pegawai =  new Pegawai();
-        $pegawai->nama_pegawai = 'Donna';
-        $pegawai->nip = '3275052410960014';
+        $pegawai->nama_pegawai = 'Staf';
         $pegawai->email_pegawai = 'donna@gmail.com';
-        $pegawai->no_telp_pegawai = '0821128747595';
         $pegawai->password = Hash::make('secret');
         $pegawai->jabatanable()->associate($staf);
         $pegawai->save();
@@ -74,10 +72,8 @@ class DatabaseSeeder extends Seeder
         $admin = new Admin();
         $admin->save();
         $pegawai =  new Pegawai();
-        $pegawai->nama_pegawai = 'Karna';
-        $pegawai->nip = '3275051101870015';
+        $pegawai->nama_pegawai = 'Admin';
         $pegawai->email_pegawai = 'karna@gmail.com';
-        $pegawai->no_telp_pegawai = '082112999987';
         $pegawai->password = Hash::make('secret');
         $pegawai->jabatanable()->associate($admin);
         $pegawai->save();
@@ -86,25 +82,10 @@ class DatabaseSeeder extends Seeder
         $pimpinan = new Pimpinan();
         $pimpinan->save();
         $pegawai =  new Pegawai();
-        $pegawai->nama_pegawai = 'Desi';
-        $pegawai->nip = '3275051010970014';
+        $pegawai->nama_pegawai = 'Pimpinan';
         $pegawai->email_pegawai = 'desi@gmail.com';
-        $pegawai->no_telp_pegawai = '0821128740987';
         $pegawai->password = Hash::make('secret');
         $pegawai->jabatanable()->associate($pimpinan);
         $pegawai->save();
-
-        //seeder admin baru
-        $admin = new Admin();
-        $admin->save();
-        $pegawai =  new Pegawai();
-        $pegawai->nama_pegawai = 'Juan';
-        $pegawai->nip = '3275051101870015';
-        $pegawai->email_pegawai = 'jujuanjosua@icloud.com';
-        $pegawai->no_telp_pegawai = '082112999987';
-        $pegawai->password = Hash::make('juanjosua');
-        $pegawai->jabatanable()->associate($admin);
-        $pegawai->save();
-
     }
 }

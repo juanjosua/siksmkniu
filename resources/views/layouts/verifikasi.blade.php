@@ -61,7 +61,7 @@
             <header class="main-header">
 
               <!-- Logo -->
-              <a href="{{ url('/home') }}" class="logo">
+              <a href="" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>S</b>K</span>
                 <!-- logo for regular state and mobile devices -->
@@ -113,9 +113,6 @@
 
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                          <div class="pull-left">
-                            <a href="{{ url('/profil/edit') }}" class="btn btn-default btn-flat">Profil</a>
-                          </div>
                           <div class="pull-right">
                             <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
                                 onclick="event.preventDefault();
@@ -162,45 +159,6 @@
                 </div>
 
                 <!-- sidebar menu: : style can be found in sidebar.less -->
-
-                <ul class="sidebar-menu" data-widget="tree">
-
-                  <li class="header">MENU UTAMA</li>
-
-                  <li>
-                    <a href="{{ url('/disposisi') }}">
-                      <div style="display: none;">
-                      {{ $disposisis = DB::table('disposisis')->where('id_staf', Session::get('data')->jabatanable_id)->where('status_disposisi', 'sedang')->count() }}
-                      </div>
-                      <i class="fa fa-folder"></i> <span>Disposisi</span> <span class="badge badge-danger pull-right">{{$disposisis}}</span>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="{{ url('/arsip') }}">
-                      <div style="display: none;">
-                      {{ $surats = DB::table('surats')->where('status_surat', 'arsip')->count() }}
-                      </div>
-                      <i class="fa fa-folder"></i> <span>Arsip</span> <span class="badge badge-danger pull-right">{{$surats}}</span>
-                    </a>
-                  </li>
-
-                    <ul class="list-inline">
-                        <li data-toggle="modal" data-target="#infoModal">
-                          <a href="#myGallery" data-slide-to="0" style="
-                            background-color : blue;
-                            color: white;
-                            padding: 10px 20px;
-                            border-radius: 50%;
-                            border-color: #46b8da;
-                            position: fixed;
-                            bottom: 10px;
-                            right: 10px;
-                          ">?</a>
-                        </li>
-                      </ul>
-
-                </ul>
 
               </section>
               <!-- /.sidebar -->
@@ -353,61 +311,6 @@
               }
             </script>
           <!-- Script End -->
-
-          <!--begin info modal window-->
-            <div class="modal fade" id="infoModal">
-            <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-              <div class="pull-left">Informasi Sistem</div>
-              <button type="button" class="close" data-dismiss="modal" title="Close"> <span class="glyphicon glyphicon-remove"></span></button>
-              </div>
-              <div class="modal-body">
-
-              <!--begin carousel-->
-              <div id="myGallery" class="carousel slide" data-interval="false">
-              <div class="carousel-inner">
-
-              <div class="item active"> <img src="{{ asset('storage/gif/staf-rincian.gif')}}" alt="item0">
-              <br>
-              <div style="text-align: center;"><strong>Melihat Rincian Surat</strong></div></div>
-
-              <div class="item"> <img src="{{ asset('storage/gif/staf-unduhsurat.gif')}}" alt="item1">
-              <br>
-              <div style="text-align: center;"><strong>Mengunduh Surat</strong></div></div>
-
-              <div class="item"> <img src="{{ asset('storage/gif/staf-tambahdokumen.gif')}}" alt="item2">
-              <br>
-              <div style="text-align: center;"><strong>Menambah Dokumen Pada Disposisi</strong></div></div>
-
-              <div class="item"> <img src="{{ asset('storage/gif/staf-selesaidisposisi.gif')}}" alt="item3">
-              <br>
-              <div style="text-align: center;"><strong>Menyelesaikan Disposisi</strong></div></div>
-
-              <div class="item"> <img src="{{ asset('storage/gif/staf-profil.gif')}}" alt="item4">
-              <br>
-              <div style="text-align: center;"><strong>Mengubah Profil</strong></div></div>
-
-              <div class="item"> <img src="{{ asset('storage/gif/staf-keluar.gif')}}" alt="item5">
-              <br>
-              <div style="text-align: center;"><strong>Keluar</strong></div></div>
-
-              <!--end carousel-inner--></div>
-              <!--Begin Previous and Next buttons-->
-              <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev" style="color: blue;"> <span class="glyphicon glyphicon-chevron-left"></span></a> 
-              <a class="right carousel-control" style="color: blue;" href="#myGallery" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span></a>
-              <!--end carousel--></div>
-
-              <!--end modal-body--></div>
-              <div class="modal-footer">
-              <div class="pull-left">
-              <small>Dibuat dengan <i class="mdi mdi-heart text-danger"></i> !</small>
-              </div>
-              <button class="btn-sm close" type="button" data-dismiss="modal">Close</button>
-              <!--end modal-footer--></div>
-            <!--end modal-content--></div>
-            <!--end modal-dialoge--></div>
-            <!--end infoModal-->></div>
 
         </body>
         </html>
